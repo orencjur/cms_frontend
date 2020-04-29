@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cmsClient.controllers.ShipmentManagementController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Shipment Manager">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TabPane layoutX="14.0" layoutY="67.0" prefHeight="325.0" prefWidth="576.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Overview">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="265.0" prefWidth="576.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="254.0" prefWidth="565.0" />
+                          </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Create a Shipment">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="18.0" layoutY="47.0" text="Cargo:" />
+                        <Label layoutX="18.0" layoutY="75.0" text="Date to ship:" />
+                        <Label layoutX="18.0" layoutY="115.0" text="Vehicle:" />
+                        <JFXTextField layoutX="290.0" layoutY="43.0" prefHeight="26.0" prefWidth="151.0" />
+                        <JFXDatePicker layoutX="288.0" layoutY="70.0" />
+                        <Label layoutX="442.0" layoutY="155.0" text="Address:" />
+                        <Label layoutX="293.0" layoutY="154.0" text="City" />
+                        <Label layoutX="107.0" layoutY="155.0" text="Country" />
+                        <JFXTextField layoutX="55.0" layoutY="176.0" />
+                        <JFXTextField layoutX="217.0" layoutY="176.0" />
+                        <JFXTextField layoutX="393.0" layoutY="176.0" />
+                        <JFXComboBox layoutX="288.0" layoutY="101.0" prefHeight="28.0" prefWidth="154.0" />
+                        <JFXButton layoutX="131.0" layoutY="219.0" prefHeight="32.0" prefWidth="133.0" text="Confirm" />
+                        <JFXButton layoutX="288.0" layoutY="219.0" prefHeight="32.0" prefWidth="133.0" text="Clear" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
