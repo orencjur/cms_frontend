@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public abstract class  AbstractController {
 
@@ -27,7 +28,7 @@ public abstract class  AbstractController {
     private void HttpErrorWindow(String response){
 
     }
-    protected static ObservableList<String> parse(String toparse){
-        return (ObservableList<String>) Arrays.asList(toparse.split("\n"));
+    protected static List<String> parse(String toparse){
+        return  Arrays.asList(toparse.split("@",0));
     }
 }

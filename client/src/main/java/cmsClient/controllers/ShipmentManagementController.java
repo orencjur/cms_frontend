@@ -35,7 +35,8 @@ public class ShipmentManagementController extends AbstractController {
 
     @FXML
     public void initialize() {
-        String response = getRequest("/cms/vehicles");
+        String response = getRequest("/vehicles");
+        LOG.debug(response+"\n"+parse(response));
         vehicle.getItems().addAll(parse(response));
     }
 
