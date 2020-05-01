@@ -8,8 +8,12 @@ import java.net.URL;
 public class GetHttp extends HttpRequest {
 
     public GetHttp(String url) throws IOException {
-
-        obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        try {
+            obj = new URL(url);
+            con = (HttpURLConnection) obj.openConnection();
+        }
+        catch (MalformedURLException e) {
+            LOG.debug("url went wrong",e);
+        }
     }
 }

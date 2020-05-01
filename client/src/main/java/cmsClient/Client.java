@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 public class Client extends Application {
 
+    private final static Logger LOG = Logger.getLogger(Client.class);
     private final StageManager stageManager = StageManager.getInstance();
     private static Scene scene;
 
@@ -25,8 +27,10 @@ public class Client extends Application {
 
         @Override
         public void start(Stage stage) throws IOException {
-            HtttpHandler.getInstance().createFactory("loacalhost:8080/cms");
+            HtttpHandler.getInstance().createFactory("http://localhost:8080/cms");
             displayInitialScene();
+            LOG.info("app started");
+
         }
 
         static void setRoot(String fxml) throws IOException {

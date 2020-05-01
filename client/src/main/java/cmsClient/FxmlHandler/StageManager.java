@@ -7,18 +7,16 @@ import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.slf4j.Logger;
 
 import java.util.Objects;
-
-import static org.slf4j.LoggerFactory.getLogger;
+import org.apache.log4j.Logger;
 
 /**
  * Manages switching Scenes on the Primary Stage
  */
 public class StageManager {
 
-    private static final Logger LOG = getLogger(StageManager.class);
+    private final static Logger LOG = Logger.getLogger(StageManager.class);
     private final Stage primaryStage;
     private final SpringFXMLLoader springFXMLLoader;
     private static StageManager instance;
@@ -32,6 +30,8 @@ public class StageManager {
             instance = new StageManager(new SpringFXMLLoader(),new Stage());
         }return instance;
     }
+
+
 
 
     public void switchScene(final FxmlView view) {
@@ -87,7 +87,7 @@ public class StageManager {
 
 
     private void logAndExit(String errorMsg, Exception exception) {
-        LOG.error(errorMsg, exception, exception.getCause());
+        LOG.error(errorMsg, exception);
         Platform.exit();
     }
 

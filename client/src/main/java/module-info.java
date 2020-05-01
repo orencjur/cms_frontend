@@ -6,7 +6,7 @@ module cmsClient {
     requires javafx.base;
     requires javafx.graphics;
     requires com.jfoenix;
-    requires org.slf4j;
+    requires log4j;
 
     opens cmsClient.controllers to javafx.fxml;
     exports cmsClient;

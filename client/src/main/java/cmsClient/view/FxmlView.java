@@ -28,6 +28,18 @@ public enum FxmlView {
         public String getFxmlFile() {
             return "/views/Login.fxml";
         }
+    },
+
+    Dispatch {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("dispatch.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/MainMenuDispatch.fxml";
+        }
     };
 
     public abstract String getTitle();

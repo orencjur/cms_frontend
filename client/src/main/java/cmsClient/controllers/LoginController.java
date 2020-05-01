@@ -1,6 +1,7 @@
 package cmsClient.controllers;
 
 import cmsClient.Http.HtttpHandler;
+import cmsClient.view.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -17,11 +18,15 @@ public class LoginController extends AbstractController {
     private TextField password;
 
     public void login(ActionEvent actionEvent) {
-        if(username.getText()=="" || password.getText()==""){
+        LOG.debug("username= "+username.getText()+" password= "+ password.getText());
+        if(username.getText()=="" || password.getText()==""){//bitch dont work
+            System.out.println("kokot");
             //vokno please fill username and password
         }else {
-            getRequest("/login?username="+username.getText()+"&password="+password.getText());
-
+            LOG.debug("login submit");
+            String desider = getRequest("/login?username="+username.getText()+"&password="+password.getText());
+            stageManager.switchScene(FxmlView.valueOf(desider));
         }
     }
+
 }

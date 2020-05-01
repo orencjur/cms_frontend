@@ -1,12 +1,16 @@
 package cmsClient.controllers;
 
+import cmsClient.Client;
 import cmsClient.FxmlHandler.StageManager;
 import cmsClient.Http.HttpRequestFactory;
 import cmsClient.Http.HtttpHandler;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 
 public abstract class  AbstractController {
+
+    protected final static Logger LOG = Logger.getLogger(AbstractController.class);
     private final HtttpHandler htttpHandler = HtttpHandler.getInstance();
     protected final StageManager stageManager = StageManager.getInstance();
 
