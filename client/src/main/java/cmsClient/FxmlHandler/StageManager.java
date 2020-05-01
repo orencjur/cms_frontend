@@ -1,6 +1,7 @@
 package cmsClient.FxmlHandler;
 
 import cmsClient.FxmlHandler.SpringFXMLLoader;
+import cmsClient.Http.HtttpHandler;
 import cmsClient.view.FxmlView;
 import javafx.application.Platform;
 import javafx.scene.Parent;
@@ -20,11 +21,18 @@ public class StageManager {
     private static final Logger LOG = getLogger(StageManager.class);
     private final Stage primaryStage;
     private final SpringFXMLLoader springFXMLLoader;
+    private static StageManager instance;
 
-    public StageManager(SpringFXMLLoader springFXMLLoader, Stage stage) {
-        this.springFXMLLoader = springFXMLLoader;
-        this.primaryStage =  new Stage();
+    private StageManager(SpringFXMLLoader fxmlLoader,Stage stage){
+        this.springFXMLLoader = fxmlLoader;
+        this.primaryStage = new Stage();
     }
+    public static StageManager getInstance(){
+        if(instance == null){
+            instance = new StageManager(new SpringFXMLLoader(),new Stage());
+        }return instance;
+    }
+
 
     public void switchScene(final FxmlView view) {
         Parent viewRootNodeHierarchy = loadViewNodeHierarchy(view.getFxmlFile());

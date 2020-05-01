@@ -2,6 +2,7 @@ package cmsClient;
 
 import cmsClient.FxmlHandler.SpringFXMLLoader;
 import cmsClient.FxmlHandler.StageManager;
+import cmsClient.Http.HtttpHandler;
 import cmsClient.view.FxmlView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +16,7 @@ import java.io.IOException;
 
 public class Client extends Application {
 
-    protected StageManager stageManager;
+    private final StageManager stageManager = StageManager.getInstance();
     private static Scene scene;
 
         public static void main(String[] args){
@@ -24,7 +25,7 @@ public class Client extends Application {
 
         @Override
         public void start(Stage stage) throws IOException {
-            stageManager = new StageManager(new SpringFXMLLoader(),stage);
+            HtttpHandler.getInstance().createFactory("loacalhost:8080/cms");
             displayInitialScene();
         }
 

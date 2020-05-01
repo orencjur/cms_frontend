@@ -11,7 +11,5 @@ public class GetHttp extends HttpRequest {
 
         obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-
     }
 }

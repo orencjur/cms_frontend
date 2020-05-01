@@ -26,7 +26,7 @@ public enum FxmlView {
 
         @Override
         public String getFxmlFile() {
-            return "/views/ShipmentManagement.fxml";
+            return "/views/Login.fxml";
         }
     };
 
