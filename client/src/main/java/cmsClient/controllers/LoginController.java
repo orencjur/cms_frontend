@@ -19,7 +19,7 @@ public class LoginController extends AbstractController {
 
     public void login(ActionEvent actionEvent) {
         LOG.debug("username= "+username.getText()+" password= "+ password.getText());
-        if(username.getText()=="" || password.getText()==""){//bitch dont work
+        if(username.getText()==null || password.getText()==null){//bitch dont work
             System.out.println("kokot");
             //vokno please fill username and password
         }else {
@@ -28,5 +28,4 @@ public class LoginController extends AbstractController {
             stageManager.switchScene(FxmlView.valueOf(desider));
         }
     }
-
 }

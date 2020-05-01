@@ -4,9 +4,11 @@ import cmsClient.Client;
 import cmsClient.FxmlHandler.StageManager;
 import cmsClient.Http.HttpRequestFactory;
 import cmsClient.Http.HtttpHandler;
+import javafx.collections.ObservableList;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 public abstract class  AbstractController {
 
@@ -24,5 +26,8 @@ public abstract class  AbstractController {
     }
     private void HttpErrorWindow(String response){
 
+    }
+    protected static ObservableList<String> parse(String toparse){
+        return (ObservableList<String>) Arrays.asList(toparse.split("\n"));
     }
 }

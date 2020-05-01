@@ -7,15 +7,38 @@ public enum FxmlView {
     /**
      * directories for Views are stored here
      */
-    USER {
+    //TODO loginfailed not have fxml yet
+    LOGINFAILED {
         @Override
         public String getTitle() {
-            return getStringFromResourceBundle("user.title");
+            return getStringFromResourceBundle("driver.title");
         }
 
         @Override
         public String getFxmlFile() {
-            return "/fxml/User.fxml";
+            return "/views/MainMenuDispatch.fxml";
+        }
+    },
+    SHIPMENT {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("shipment.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/ShipmentManagement.fxml";
+        }
+    },
+    DRIVER {
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("driver.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/MainMenuDriver.fxml";
         }
     },
     LOGIN {
@@ -30,7 +53,7 @@ public enum FxmlView {
         }
     },
 
-    Dispatch {
+    DISPATCH {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("dispatch.title");
