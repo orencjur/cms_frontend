@@ -1,29 +1,38 @@
 package cmsClient.controllers;
 
-import cmsClient.Client;
 import cmsClient.FxmlHandler.StageManager;
-import cmsClient.Http.HttpRequestFactory;
 import cmsClient.Http.HtttpHandler;
-import javafx.collections.ObservableList;
+import cmsClient.view.FxmlView;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public abstract class  AbstractController {
 
-    protected final static Logger LOG = Logger.getLogger(AbstractController.class);
-    private final HtttpHandler htttpHandler = HtttpHandler.getInstance();
-    protected final StageManager stageManager = StageManager.getInstance();
 
-    protected String getRequest(String url)  {
-        try {
-            return htttpHandler.sendGetRequest(url);
-        }catch (IOException e){
-            //vokno cant connect to server, maybe try send again?
-            return "";
-        }
+    private Thread thread;
+    protected final StageManager stageManager =StageManager.getInstance();
+    protected final static Logger LOG = Logger.getLogger(AbstractController.class);
+
+
+    protected void getRequest(String url)  {
+        Service<String> ser = new HtttpHandler(url);
+        ser.setOnSucceeded((WorkerStateEvent event) -> {
+            LOG.debug(ser.getMessage()+ser.getValue());
+            if(ser.getValue().trim()=="noconnection"){
+                timeout(10,url);
+                return;
+            }
+            stageManager.switchScene(FxmlView.valueOf(ser.getValue()));
+        });
+
+        ser.start();
     }
     private void HttpErrorWindow(String response){
 
@@ -31,4 +40,18 @@ public abstract class  AbstractController {
     protected static List<String> parse(String toparse){
         return  Arrays.asList(toparse.split("@",0));
     }
+    private void timeout(int seconds,String url)  {
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            public void run() {
+                getRequest(url);
+            }
+        };
+
+        timer.schedule(task, seconds * 1000);
+    }
+
+
+
 }

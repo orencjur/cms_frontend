@@ -8,26 +8,43 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
+import cmsClient.controllers.AbstractController;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import org.apache.log4j.Logger;
 
-public class HtttpHandler {
+import static java.lang.Thread.*;
+import static java.lang.Thread.sleep;
 
+public class HtttpHandler extends Service<String> {
+
+    String baseurl ="http://localhost:8080/cms";
     private final static Logger LOG = Logger.getLogger(HtttpHandler.class);
-    private HttpRequestFactory factory;
-    private static  HtttpHandler instance = new HtttpHandler();
-    public static HtttpHandler getInstance(){
-        return instance;
+    private HttpRequestFactory factory =new HttpRequestFactory(baseurl);
+    private String url;
+    private final StageManager stageManager = StageManager.getInstance();
+
+    public HtttpHandler(String url) {
+        this.url = url;
     }
 
-    public void createFactory(String baseurl){
+    public void createFactory(){
         factory = new HttpRequestFactory(baseurl);
     }
 
-    public String sendGetRequest(String url) throws IOException {
-        HttpRequest  request =  factory.createGetRequest(url);
-        LOG.debug("http request: "+request.getCon());
-        return getResponse(request);
+    private String sendGetRequest(String url) {
+        HttpRequest request = null;
+        try {
+            request = factory.createGetRequest(url);
+            LOG.debug("http request: " + request.getCon());
+            return getResponse(request);
+
+        } catch (IOException e) {
+            LOG.debug("no connecntio trying again");
+            return "noconnection";
+        }
     }
+
 
     private String getResponse (HttpRequest request) throws IOException {
         HttpURLConnection con = request.getCon();
@@ -52,5 +69,17 @@ public class HtttpHandler {
             in.close();
             LOG.debug("response: "+response.toString());
             return response.toString();
+    }
+
+
+    @Override
+    protected Task createTask() {
+        sendGetRequest(url);
+        return new Task<String>() {
+            @Override protected String call() throws InterruptedException {
+                return sendGetRequest(url);
+
+            }
+        };
     }
 }

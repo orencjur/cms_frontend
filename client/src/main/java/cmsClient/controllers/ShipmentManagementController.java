@@ -35,9 +35,9 @@ public class ShipmentManagementController extends AbstractController {
 
     @FXML
     public void initialize() {
-        String response = getRequest("/vehicles");
-        LOG.debug(response+"\n"+parse(response));
-        vehicle.getItems().addAll(parse(response));
+        getRequest("/vehicles");
+        //LOG.debug(response+"\n"+parse(response));
+        //vehicle.getItems().addAll(parse(response));
     }
 
     public void clear(ActionEvent event) {
@@ -52,5 +52,9 @@ public class ShipmentManagementController extends AbstractController {
     }
 
     public void confirm(ActionEvent event) {
+        if(cargo.getText().trim().equals("") || country.getText().trim().equals("") || city.getText().trim().equals("") || adress.getText().trim().equals("") || vehicle.getSelectionModel().isEmpty() || date.getValue()==null){
+            System.out.println("kokot");
+            //vokno please fill everything
+        }
     }
 }

@@ -19,20 +19,24 @@ public class StageManager {
     private final static Logger LOG = Logger.getLogger(StageManager.class);
     private final Stage primaryStage;
     private final SpringFXMLLoader springFXMLLoader;
-    private static StageManager instance;
+    private static  StageManager instance;
+    private AppSession session;
 
     private StageManager(SpringFXMLLoader fxmlLoader,Stage stage){
         this.springFXMLLoader = fxmlLoader;
         this.primaryStage = new Stage();
+        session = new AppSession();
     }
-    public static StageManager getInstance(){
+    public static synchronized StageManager getInstance(){
         if(instance == null){
             instance = new StageManager(new SpringFXMLLoader(),new Stage());
         }return instance;
     }
 
 
-
+    public AppSession getSession() {
+        return session;
+    }
 
     public void switchScene(final FxmlView view) {
         Parent viewRootNodeHierarchy = loadViewNodeHierarchy(view.getFxmlFile());

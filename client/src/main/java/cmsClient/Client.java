@@ -27,7 +27,6 @@ public class Client extends Application {
 
         @Override
         public void start(Stage stage) throws IOException {
-            HtttpHandler.getInstance().createFactory("http://localhost:8080/cms");
             displayInitialScene();
             LOG.info("app started");
 

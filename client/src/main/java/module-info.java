@@ -7,6 +7,7 @@ module cmsClient {
     requires javafx.graphics;
     requires com.jfoenix;
     requires log4j;
+    requires org.apache.httpcomponents.httpcore;
 
     opens cmsClient.controllers to javafx.fxml;
     exports cmsClient;
