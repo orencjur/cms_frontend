@@ -8,6 +8,6 @@ public class MainMenuDispatchController extends AbstractController {
 
     @FXML
     public void shipments(ActionEvent event){
-        stageManager.switchScene(FxmlView.SHIPMENT);
+        switchSceneEvent("SHIPMENT");
     }
 }

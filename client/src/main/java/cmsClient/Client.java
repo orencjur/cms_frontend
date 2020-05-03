@@ -5,10 +5,13 @@ import cmsClient.FxmlHandler.StageManager;
 import cmsClient.Http.HtttpHandler;
 import cmsClient.view.FxmlView;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -32,7 +35,18 @@ public class Client extends Application {
 
         }
 
-        static void setRoot(String fxml) throws IOException {
+
+
+        @Override
+        public void stop() throws Exception {
+            Platform.exit();
+            super.stop(); //To change body of generated methods, choose Tools | Templates.
+            System.exit(0);
+        }
+
+
+
+    static void setRoot(String fxml) throws IOException {
             scene.setRoot(loadFXML(fxml));
         }
 

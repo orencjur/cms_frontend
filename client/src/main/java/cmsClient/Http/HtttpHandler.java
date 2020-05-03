@@ -74,7 +74,6 @@ public class HtttpHandler extends Service<String> {
 
     @Override
     protected Task createTask() {
-        sendGetRequest(url);
         return new Task<String>() {
             @Override protected String call() throws InterruptedException {
                 return sendGetRequest(url);
