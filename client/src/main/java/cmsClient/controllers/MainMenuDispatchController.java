@@ -8,6 +8,10 @@ public class MainMenuDispatchController extends AbstractController {
 
     @FXML
     public void shipments(ActionEvent event){
-        switchSceneEvent("SHIPMENT");
+        switchSceneEvent(FxmlView.SHIPMENT);
+    }
+    @FXML
+    public void msgBoard(ActionEvent event) {
+        switchSceneEvent(FxmlView.MSGBOARD);
     }
 }

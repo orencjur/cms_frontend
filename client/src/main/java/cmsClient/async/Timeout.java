@@ -10,13 +10,14 @@ import static java.lang.Thread.sleep;
 
 public class Timeout {
     private IntegerProperty intProperty;
+    private Timer timer;
 
     public Timeout() {
         intProperty = new SimpleIntegerProperty(this, "int", 0);
     }
 
     public void timeout(int seconds)  {
-        Timer timer = new Timer();
+         timer = new Timer();
 
         TimerTask task = new TimerTask() {
             public void run() {
@@ -28,6 +29,12 @@ public class Timeout {
     }
     public IntegerProperty intProperty() {
         return intProperty;
+    }
+
+    public void cancel(){
+        if(timer!=null) {
+            timer.cancel();
+        }
     }
 
 }

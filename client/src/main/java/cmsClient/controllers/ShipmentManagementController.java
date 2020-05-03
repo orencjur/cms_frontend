@@ -40,13 +40,12 @@ public class ShipmentManagementController extends AbstractController {
 
     @FXML
     public void initialize() {
-        service = getRequest("/vehicles");
+        Service<String> service = getRequest("/vehicles");
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            vehicle.getItems().removeAll();
+            vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
-            setTimeout(10,service);
+            setTimeout(60,service);
         });
-
     }
 
 
@@ -65,6 +64,12 @@ public class ShipmentManagementController extends AbstractController {
         if(cargo.getText().trim().equals("") || country.getText().trim().equals("") || city.getText().trim().equals("") || adress.getText().trim().equals("") || vehicle.getSelectionModel().isEmpty() || date.getValue()==null){
             System.out.println("kokot");
             //vokno please fill everything
+        }else {
+            String url ="/createshipment?cargo="+cargo.getText()+"&vehicle="+vehicle.getValue()+"&date="+date.getValue()+"&destination="+country.getText()+city.getText()+adress.getText();
+            Service<String> service = getRequest(url);
+            service.setOnSucceeded(e -> {
+                LOG.debug("shipment created");
+            });
         }
     }
 }

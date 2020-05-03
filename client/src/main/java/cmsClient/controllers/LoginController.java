@@ -29,9 +29,9 @@ public class LoginController extends AbstractController {
         }else {
             LOG.debug("login submit");
             String url ="/login?username="+username.getText()+"&password="+password.getText();
-            service = getRequest(url);
+            Service<String> service = getRequest(url);
             service.setOnSucceeded((WorkerStateEvent event) -> {
-                switchSceneEvent(service.getValue());
+                switchSceneEvent(FxmlView.valueOf(service.getValue()));
             });
         }
     }

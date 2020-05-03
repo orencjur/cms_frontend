@@ -9,6 +9,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
+import javafx.fxml.FXML;
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
@@ -21,34 +22,31 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class  AbstractController {
 
     final AtomicInteger count = new AtomicInteger(-1);
-    final Timeout timeout = new Timeout();
-    protected Service<String> service;
-    private Thread thread;
+    private Service<String> service;
     protected final StageManager stageManager =StageManager.getInstance();
     protected final static Logger LOG = Logger.getLogger(AbstractController.class);
 
 
 
-    protected void switchSceneEvent(String response){
-        if(response.trim()=="noconnection"){
+    protected void switchSceneEvent(FxmlView view){
+        if(view.equals(FxmlView.NOCONNECTION)){
             setTimeout(10,service);
             //timeout(10,url);
             return;
         }
-        stageManager.switchScene(FxmlView.valueOf(response));
+        stageManager.switchScene(view);
     }
 
     protected void setTimeout(int seconds,Service<String> requestSer){
+        Timeout timeout = new Timeout();
         timeout.timeout(seconds);
         timeout.intProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(final ObservableValue<? extends Number> observable,
                                 final Number oldValue, final Number newValue) {
-                if (count.getAndSet(newValue.intValue()) == -1) {
                     Platform.runLater(() -> {
-                        requestSer.restart();
+                       requestSer.restart();
                     });
-                }
 
             }
         });
@@ -57,6 +55,7 @@ public abstract class  AbstractController {
     protected Service<String> getRequest(String url){
         Service<String> ser = new HtttpHandler(url);
         ser.start();
+        service =ser;
         return ser;
     }
     private void HttpErrorWindow(String response){
@@ -65,17 +64,7 @@ public abstract class  AbstractController {
     protected static List<String> parse(String toparse){
         return  Arrays.asList(toparse.split("@",0));
     }
-    protected void timeout(int seconds, String url)  {
-        Timer timer = new Timer();
 
-        TimerTask task = new TimerTask() {
-            public void run() {
-                getRequest(url);
-            }
-        };
-
-        timer.schedule(task, seconds * 1000);
-    }
 
 
 

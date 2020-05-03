@@ -8,6 +8,39 @@ public enum FxmlView {
      * directories for Views are stored here
      */
     //TODO loginfailed not have fxml yet
+    NEW{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("new.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/NewMessage.fxml";
+        }
+    },
+    MSGBOARD{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("msgboard.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/MsgBoard.fxml";
+        }
+    },
+    NOCONNECTION{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("driver.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/Login.fxml";
+        }
+    },
     LOGINFAILED {
         @Override
         public String getTitle() {
