@@ -1,6 +1,6 @@
-package cmsClient.controllers;
+package cms.client.controllers;
 
-import cmsClient.view.FxmlView;
+import cms.client.view.FxmlView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 

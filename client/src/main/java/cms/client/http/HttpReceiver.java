@@ -1,13 +1,9 @@
-package cmsClient.Http;
+package cms.client.http;
 
-import cmsClient.Http.requests.GetHttp;
-import cmsClient.Http.requests.HttpRequest;
+import cms.client.http.requests.HttpRequest;
 
 import java.io.*;
 import java.net.HttpURLConnection;
-import java.net.Socket;
-import java.net.URL;
-import java.net.UnknownHostException;
 
 import static java.lang.Thread.sleep;
 

@@ -1,4 +1,4 @@
-package cmsClient.FxmlHandler;
+package cms.client.fxmlhandler;
 
 public class AppSession {
 

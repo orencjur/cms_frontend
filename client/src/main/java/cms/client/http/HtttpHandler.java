@@ -1,19 +1,17 @@
-package cmsClient.Http;
+package cms.client.http;
 
-import cmsClient.FxmlHandler.StageManager;
-import cmsClient.Http.requests.HttpRequest;
+import cms.client.fxmlhandler.StageManager;
+import cms.client.http.requests.HttpRequest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 
-import cmsClient.controllers.AbstractController;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import org.apache.log4j.Logger;
 
-import static java.lang.Thread.*;
 import static java.lang.Thread.sleep;
 
 public class HtttpHandler extends Service<String> {

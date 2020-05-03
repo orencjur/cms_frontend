@@ -1,8 +1,6 @@
-package cmsClient.FxmlHandler;
+package cms.client.fxmlhandler;
 
-import cmsClient.FxmlHandler.SpringFXMLLoader;
-import cmsClient.Http.HtttpHandler;
-import cmsClient.view.FxmlView;
+import cms.client.view.FxmlView;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

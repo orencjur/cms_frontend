@@ -1,4 +1,4 @@
-package cmsClient.Http.requests;
+package cms.client.http.requests;
 
 import org.apache.log4j.Logger;
 

@@ -64,7 +64,7 @@
                 <option>--add-exports</option>
                 <option>javafx.base/com.sun.javafx.event=com.jfoenix</option>
             </options>
-            <mainClass>cmsClient.Client</mainClass>
+            <mainClass>cms.client.Client</mainClass>
             <includePathExceptionsInClasspath>true</includePathExceptionsInClasspath>
         </configuration>
     </plugin>

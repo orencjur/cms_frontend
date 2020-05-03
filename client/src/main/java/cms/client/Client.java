@@ -1,17 +1,13 @@
-package cmsClient;
+package cms.client;
 
-import cmsClient.FxmlHandler.SpringFXMLLoader;
-import cmsClient.FxmlHandler.StageManager;
-import cmsClient.Http.HtttpHandler;
-import cmsClient.view.FxmlView;
+import cms.client.fxmlhandler.StageManager;
+import cms.client.view.FxmlView;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;

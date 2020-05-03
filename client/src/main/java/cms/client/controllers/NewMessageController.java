@@ -1,4 +1,4 @@
-package cmsClient.controllers;
+package cms.client.controllers;
 
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;

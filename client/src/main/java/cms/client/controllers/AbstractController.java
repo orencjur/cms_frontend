@@ -1,22 +1,17 @@
-package cmsClient.controllers;
+package cms.client.controllers;
 
-import cmsClient.FxmlHandler.StageManager;
-import cmsClient.Http.HtttpHandler;
-import cmsClient.async.Timeout;
-import cmsClient.view.FxmlView;
+import cms.client.fxmlhandler.StageManager;
+import cms.client.async.Timeout;
+import cms.client.http.HtttpHandler;
+import cms.client.view.FxmlView;
 import javafx.application.Platform;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
-import javafx.fxml.FXML;
 import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.Callable;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class  AbstractController {

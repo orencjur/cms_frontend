@@ -1,17 +1,13 @@
-package cmsClient.Http.requests;
-
-import org.apache.http.NameValuePair;
+package cms.client.http.requests;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 
-public class PostHttp extends HttpRequest {
+public class GetHttp extends HttpRequest {
 
-
-    public PostHttp(String url, ArrayList<NameValuePair> paramentr) throws IOException {
+    public GetHttp(String url) throws IOException {
         try {
             obj = new URL(url);
             con = (HttpURLConnection) obj.openConnection();

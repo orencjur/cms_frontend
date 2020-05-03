@@ -1,10 +1,9 @@
-package cmsClient.Http;
+package cms.client.http;
 
-import cmsClient.Http.requests.GetHttp;
-import cmsClient.Http.requests.HttpRequest;
+import cms.client.http.requests.GetHttp;
+import cms.client.http.requests.HttpRequest;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 
 public class HttpRequestFactory {
 

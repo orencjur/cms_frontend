@@ -1,4 +1,4 @@
-package cmsClient.async;
+package cms.client.async;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;

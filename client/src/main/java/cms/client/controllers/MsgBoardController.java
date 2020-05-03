@@ -1,11 +1,10 @@
-package cmsClient.controllers;
+package cms.client.controllers;
 
-import cmsClient.view.FxmlView;
+import cms.client.view.FxmlView;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 

@@ -1,11 +1,10 @@
-package cmsClient.FxmlHandler;
+package cms.client.fxmlhandler;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 
 public class SpringFXMLLoader {

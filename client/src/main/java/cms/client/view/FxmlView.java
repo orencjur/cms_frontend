@@ -1,4 +1,4 @@
-package cmsClient.view;
+package cms.client.view;
 
 import java.util.ResourceBundle;
 
