@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import org.apache.commons.codec.binary.Hex;
 
 public class NewMessageController extends AbstractController {
     @FXML
@@ -30,7 +31,7 @@ public class NewMessageController extends AbstractController {
         service.setOnSucceeded((WorkerStateEvent event) -> {
             users.getItems().clear();
             users.getItems().addAll(parse(service.getValue()));
-            setTimeout(60,service);
+            initSynchronizers.add(setTimeout(60,service));
         });
     }
 
@@ -39,7 +40,7 @@ public class NewMessageController extends AbstractController {
         if(cont.trim().equals("")||users.getSelectionModel().isEmpty()){
             LOG.debug("fill everythig");
         }else {
-            cont.replaceAll("\\s+",".");
+            cont=cont.replaceAll("\\s",":");
             String receiver = users.getValue();
             String url ="/send?dispatcher=";
             if(stageManager.getSession().getLoggedRole()== FxmlView.DRIVER) {
@@ -53,6 +54,7 @@ public class NewMessageController extends AbstractController {
             Service<String> service = getRequest(url);
             service.setOnSucceeded(e -> {
                 LOG.debug("message send");
+                stageManager.switchScene(FxmlView.MSGBOARD);
             });
         }
     }

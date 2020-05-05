@@ -13,11 +13,12 @@ import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 public abstract class  AbstractController {
 
-    protected ArrayList<TimeoutSericeSynchronizer> initSynchronizers = new ArrayList<>();
+    protected HashSet<TimeoutSericeSynchronizer> initSynchronizers = new HashSet<>();
     boolean init;
     private Service<String> service;
     protected final StageManager stageManager =StageManager.getInstance();
@@ -26,6 +27,7 @@ public abstract class  AbstractController {
 
 
     protected void switchSceneEvent(FxmlView view){
+        shutdown();
         if(view.equals(FxmlView.NOCONNECTION)){
             setTimeout(10,service);
             //timeout(10,url);

@@ -8,6 +8,17 @@ public enum FxmlView {
      * directories for Views are stored here
      */
     //TODO loginfailed not have fxml yet
+    MSGVIEW{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("msgview.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/MessageView.fxml";
+        }
+    },
     NEW{
         @Override
         public String getTitle() {

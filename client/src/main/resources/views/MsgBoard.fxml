@@ -17,12 +17,12 @@
       <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="304.0" prefWidth="571.0">
          <children>
             <JFXButton onAction="#newMessage" layoutX="224.0" layoutY="260.0" prefHeight="38.0" prefWidth="127.0" text="New Message" />
-            <TableView fx:id="tableView" layoutX="14.0" layoutY="8.0" prefHeight="246.0" prefWidth="546.0">
+            <TableView onMouseClicked="#messageView"  fx:id="tableView" layoutX="14.0" layoutY="8.0" prefHeight="246.0" prefWidth="546.0">
               <columns>
-                <TableColumn fx:id="user" prefWidth="75.0" text="User" />
+                <TableColumn  fx:id="user" prefWidth="75.0" text="User" />
                 <TableColumn fx:id="date" prefWidth="75.0" text="Date" />
                   <TableColumn fx:id="time" prefWidth="75.0" text="Time" />
-                  <TableColumn fx:id="id" visible="false"></TableColumn>
+                  <TableColumn fx:id="content" prefWidth="75.0" text="Content" />
               </columns>
             </TableView>
          </children>

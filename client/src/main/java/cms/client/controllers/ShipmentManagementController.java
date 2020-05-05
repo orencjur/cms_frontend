@@ -32,12 +32,17 @@ public class ShipmentManagementController extends AbstractController {
 
     @FXML
     public void initialize() {
+        if(init==true){
+            restart();
+            return;
+        }
         Service<String> service = getRequest("/vehicles");
         service.setOnSucceeded((WorkerStateEvent event) -> {
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
-            setTimeout(60,service);
+            initSynchronizers.add(setTimeout(60,service));
         });
+        init=true;
     }
 
 
