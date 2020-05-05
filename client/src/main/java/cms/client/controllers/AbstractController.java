@@ -21,6 +21,7 @@ public abstract class  AbstractController {
     protected HashSet<TimeoutSericeSynchronizer> initSynchronizers = new HashSet<>();
     boolean init;
     private Service<String> service;
+    private TimeoutSericeSynchronizer lastRequest;
     protected final StageManager stageManager =StageManager.getInstance();
     protected final static Logger LOG = Logger.getLogger(AbstractController.class);
 
@@ -28,8 +29,11 @@ public abstract class  AbstractController {
 
     protected void switchSceneEvent(FxmlView view){
         shutdown();
+        if(lastRequest!=null) {
+            lastRequest.stop();
+        }
         if(view.equals(FxmlView.NOCONNECTION)){
-            setTimeout(10,service);
+            lastRequest=setTimeout(10,service);
             //timeout(10,url);
             return;
         }
@@ -41,19 +45,19 @@ public abstract class  AbstractController {
         timeout.timeout(seconds);
         TimeoutSericeSynchronizer synchronizer = new TimeoutSericeSynchronizer(timeout,service);
         return synchronizer;
-       /* timeout.intProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(final ObservableValue<? extends Number> observable,
-                                final Number oldValue, final Number newValue) {
-                    Platform.runLater(() -> {
-                       requestSer.restart();
-                    });
-
-            }
-        });*/
     }
 
     protected Service<String> getRequest(String url){
+        if(service!=null){
+            service.cancel();
+        }
+        Service<String> ser = new HtttpService(url);
+        ser.start();
+        service =ser;
+        return ser;
+    }
+
+    protected Service<String> getInitRequest(String url){
         Service<String> ser = new HtttpService(url);
         ser.start();
         service =ser;

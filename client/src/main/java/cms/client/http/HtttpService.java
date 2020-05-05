@@ -41,7 +41,7 @@ public class HtttpService extends Service<String> {
 
         } catch (IOException e) {
             LOG.debug("no connecntio trying again");
-            return "noconnection";
+            return "NOCONNECTION";
         }
     }
 

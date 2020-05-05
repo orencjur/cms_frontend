@@ -36,7 +36,7 @@ public class ShipmentManagementController extends AbstractController {
             restart();
             return;
         }
-        Service<String> service = getRequest("/vehicles");
+        Service<String> service = getInitRequest("/vehicles");
         service.setOnSucceeded((WorkerStateEvent event) -> {
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));

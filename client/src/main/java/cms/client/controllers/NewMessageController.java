@@ -20,9 +20,9 @@ public class NewMessageController extends AbstractController {
     public void initialize() {
         Service<String> service;
         if(stageManager.getSession().getLoggedRole()==FxmlView.DISPATCH){
-            service=getRequest("/regularuser");
+            service=getInitRequest("/regularuser");
         }else if (stageManager.getSession().getLoggedRole()==FxmlView.DRIVER){
-            service=getRequest("/manager");
+            service=getInitRequest("/manager");
         }else {
             LOG.debug("smth strange happened logged as:"+stageManager.getSession().getLoggedUser()+"with role"+stageManager.getSession().getLoggedRole() );
             stageManager.switchScene(FxmlView.LOGIN);

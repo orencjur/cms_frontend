@@ -32,7 +32,7 @@ public class MsgBoardController extends AbstractController {
             return;
         }
         setRowFact();
-        Service<String> service = getRequest("/messages?user="+stageManager.getSession().getLoggedUser()+"&role="+stageManager.getSession().getLoggedRole());
+        Service<String> service = getInitRequest("/messages?user="+stageManager.getSession().getLoggedUser()+"&role="+stageManager.getSession().getLoggedRole());
         service.setOnSucceeded((WorkerStateEvent event) -> {
             tableView.getItems().clear();
             user.setCellValueFactory(new PropertyValueFactory<Message, String>("user"));
