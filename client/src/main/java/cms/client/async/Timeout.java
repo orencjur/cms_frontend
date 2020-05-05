@@ -24,7 +24,6 @@ public class Timeout {
                 intProperty.setValue(intProperty.getValue()+1);
             }
         };
-
         timer.schedule(task, seconds * 1000);
     }
     public IntegerProperty intProperty() {

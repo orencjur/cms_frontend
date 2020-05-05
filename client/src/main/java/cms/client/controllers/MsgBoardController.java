@@ -16,16 +16,23 @@ public class MsgBoardController extends AbstractController {
     private TextField content;
     @FXML
     public void initialize() {
-        Service<String> service = getRequest("/messages");
+        if(init==true){
+            restart();
+            return;
+        }
+        Service<String> service = getRequest("/messages?user="+stageManager.getSession().getLoggedUser()+"&role="+stageManager.getSession().getLoggedRole());
         service.setOnSucceeded((WorkerStateEvent event) -> {
             tableView.getItems().clear();
             tableView.getItems().addAll(parse(service.getValue()));
-            setTimeout(60,service);
+            initSynchronizers.add(setTimeout(2,service));
         });
+        init=true;
     }
 
 
+
     public void newMessage(ActionEvent event) {
+        shutdown();
         switchSceneEvent(FxmlView.NEW);
     }
 }

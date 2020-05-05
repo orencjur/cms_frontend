@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 
 public class MainMenuDispatchController extends AbstractController {
 
+
+
     @FXML
     public void shipments(ActionEvent event){
         switchSceneEvent(FxmlView.SHIPMENT);
@@ -14,4 +16,6 @@ public class MainMenuDispatchController extends AbstractController {
     public void msgBoard(ActionEvent event) {
         switchSceneEvent(FxmlView.MSGBOARD);
     }
+
+
 }

@@ -1,6 +1,6 @@
 
 
-module cmsClient {
+module cms.client {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.base;
@@ -9,6 +9,6 @@ module cmsClient {
     requires log4j;
     requires org.apache.httpcomponents.httpcore;
 
-    opens cmsClient.controllers to javafx.fxml;
-    exports cmsClient;
+    opens cms.client.controllers to javafx.fxml;
+    exports cms.client;
 }

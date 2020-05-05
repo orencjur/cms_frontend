@@ -1,5 +1,6 @@
 package cms.client.http;
 
+import cms.client.async.Timeout;
 import cms.client.fxmlhandler.StageManager;
 import cms.client.http.requests.HttpRequest;
 
@@ -14,17 +15,18 @@ import org.apache.log4j.Logger;
 
 import static java.lang.Thread.sleep;
 
-public class HtttpHandler extends Service<String> {
+public class HtttpService extends Service<String> {
 
     String baseurl ="http://localhost:8080/cms";
-    private final static Logger LOG = Logger.getLogger(HtttpHandler.class);
+    private final static Logger LOG = Logger.getLogger(HtttpService.class);
     private HttpRequestFactory factory =new HttpRequestFactory(baseurl);
     private String url;
     private final StageManager stageManager = StageManager.getInstance();
 
-    public HtttpHandler(String url) {
+    public HtttpService( String url) {
         this.url = url;
     }
+
 
     public void createFactory(){
         factory = new HttpRequestFactory(baseurl);

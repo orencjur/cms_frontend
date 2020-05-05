@@ -1,5 +1,6 @@
 package cms.client.controllers;
 
+import cms.client.view.FxmlView;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -16,7 +17,16 @@ public class NewMessageController extends AbstractController {
 
     @FXML
     public void initialize() {
-        Service<String> service = getRequest("/users");
+        Service<String> service;
+        if(stageManager.getSession().getLoggedRole()==FxmlView.DISPATCH){
+            service=getRequest("/regularuser");
+        }else if (stageManager.getSession().getLoggedRole()==FxmlView.DRIVER){
+            service=getRequest("/manager");
+        }else {
+            LOG.debug("smth strange happened logged as:"+stageManager.getSession().getLoggedUser()+"with role"+stageManager.getSession().getLoggedRole() );
+            stageManager.switchScene(FxmlView.LOGIN);
+            return;
+        }
         service.setOnSucceeded((WorkerStateEvent event) -> {
             users.getItems().clear();
             users.getItems().addAll(parse(service.getValue()));
@@ -25,10 +35,21 @@ public class NewMessageController extends AbstractController {
     }
 
     public void send(ActionEvent event) {
-        if(content.getText().trim().equals("")||users.getSelectionModel().isEmpty()){
+        String cont= content.getText();
+        if(cont.trim().equals("")||users.getSelectionModel().isEmpty()){
             LOG.debug("fill everythig");
         }else {
-            String url = "/send?user="+users.getValue()+"&content="+content.getText().trim();
+            cont.replaceAll("\\s+",".");
+            String receiver = users.getValue();
+            String url ="/send?dispatcher=";
+            if(stageManager.getSession().getLoggedRole()== FxmlView.DRIVER) {
+                 url = url + receiver +"&driver="+stageManager.getSession().getLoggedUser()+"&sender="+stageManager.getSession().getLoggedRole()+"&content=" + cont;
+            }else if(stageManager.getSession().getLoggedRole()==FxmlView.DISPATCH){
+                url = url + stageManager.getSession().getLoggedUser()+"&driver="+receiver+"&sender="+stageManager.getSession().getLoggedRole()+"&content=" + cont;
+            }else {
+                stageManager.switchScene(FxmlView.LOGIN);
+                LOG.debug("smth strange happened logged as:"+stageManager.getSession().getLoggedUser()+"with role"+stageManager.getSession().getLoggedRole() );
+            }
             Service<String> service = getRequest(url);
             service.setOnSucceeded(e -> {
                 LOG.debug("message send");

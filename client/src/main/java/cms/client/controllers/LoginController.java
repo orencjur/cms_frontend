@@ -19,15 +19,19 @@ public class LoginController extends AbstractController {
 
 
     public void login(ActionEvent actionEvent) {
-        LOG.debug("username= "+username.getText()+" password= "+ password.getText());
-        if(username.getText().trim().equals("") || password.getText().trim().equals("") ){
+        String user = username.getText().trim(); //textfield add some rubbish
+        String pass = password.getText().trim();
+        LOG.debug("username= "+user+" password= "+ pass);
+        if(user.equals("") || pass.equals("") ){
             System.out.println("kokot");
             //vokno please fill username and password
         }else {
             LOG.debug("login submit");
-            String url ="/login?username="+username.getText()+"&password="+password.getText();
+            String url ="/login?username="+user+"&password="+pass;
             Service<String> service = getRequest(url);
             service.setOnSucceeded((WorkerStateEvent event) -> {
+                stageManager.getSession().setLoggedUser(user);
+                stageManager.getSession().setLoggedRole(FxmlView.valueOf(service.getValue()));
                 switchSceneEvent(FxmlView.valueOf(service.getValue()));
             });
         }
