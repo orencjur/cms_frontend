@@ -3,11 +3,9 @@
 module cms.client {
     requires javafx.controls;
     requires javafx.fxml;
-    requires javafx.base;
-    requires javafx.graphics;
-    requires com.jfoenix;
+    requires java.base;
     requires log4j;
-    requires org.apache.httpcomponents.httpcore;
+    requires com.jfoenix;
     requires org.apache.commons.codec;
 
     opens cms.client.controllers to javafx.fxml;
