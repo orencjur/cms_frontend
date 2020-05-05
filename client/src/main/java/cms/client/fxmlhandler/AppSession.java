@@ -7,6 +7,7 @@ public class AppSession {
 
     private String loggedUser;
     private FxmlView loggedRole;
+    private Message ViewingMessage;
 
     public Message getViewingMessage() {
         return ViewingMessage;
@@ -16,7 +17,6 @@ public class AppSession {
         ViewingMessage = viewingMessage;
     }
 
-    private Message ViewingMessage;
 
     public FxmlView getLoggedRole() {
         return loggedRole;

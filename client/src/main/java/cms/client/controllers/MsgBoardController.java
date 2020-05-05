@@ -49,12 +49,12 @@ public class MsgBoardController extends AbstractController {
     private List<Message> parseMessages(List<String> strings){
 
         List<Message> result = new ArrayList<Message>();
-        if(strings.size()%3!=0){
+        if(strings.size()%4!=0){
             LOG.debug("bad parsing");
             return result;
         }
-        for(int i=0;i<strings.size();i+=3){
-            result.add(new Message(strings.get(i),strings.get(i+1),strings.get(i+2)));
+        for(int i=0;i<strings.size();i+=4){
+            result.add(new Message(strings.get(i),strings.get(i+1),strings.get(i+2),strings.get(i+3)));
         }
         return result;
     }

@@ -15,7 +15,11 @@ public class MessageViewController extends AbstractController {
     @FXML
     public void initialize() {
         Message message = stageManager.getSession().getViewingMessage();
-        from.setText(from.getText()+": "+message.getUser());
+        if(message.getSender().equals(stageManager.getSession().getLoggedRole())){
+            from.setText(from.getText()+": You to: "+message.getUser());
+        }else {
+            from.setText(from.getText() + ": " + message.getUser());
+        }
        date.setText(date.getText()+": "+message.getDate()+" "+message.getTime());
        content.setText(message.getContent());
     }

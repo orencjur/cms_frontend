@@ -1,12 +1,19 @@
 package cms.client.controllers.entityhelpers;
 
+import cms.client.view.FxmlView;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Message {
-    public SimpleStringProperty user;
-    public SimpleStringProperty date;
-    public SimpleStringProperty time;
-    public SimpleStringProperty content;
+    private SimpleStringProperty user;
+    private SimpleStringProperty date;
+    private SimpleStringProperty time;
+    private SimpleStringProperty content;
+    private FxmlView sender;
+
+    public FxmlView getSender() {
+        return sender;
+    }
+
 
     public String getUser() {
         return user.get();
@@ -40,11 +47,12 @@ public class Message {
         return content;
     }
 
-    public Message(String user, String time, String content){
+    public Message(String user, String time, String content, String sender){
         this.user=new SimpleStringProperty(user);
         String []datetime = time.split(" ");
         this.date= new SimpleStringProperty(datetime[0]);
         this.time= new SimpleStringProperty(datetime[1]);
         this.content= new SimpleStringProperty(content.replaceAll(":"," "));
+        this.sender=FxmlView.valueOf(sender);
     }
 }
