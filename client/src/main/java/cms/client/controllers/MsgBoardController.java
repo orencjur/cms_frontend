@@ -31,7 +31,7 @@ public class MsgBoardController extends AbstractController {
             restart();
             return;
         }
-        //tableView.setRowFactory();
+        setRowFact();
         Service<String> service = getRequest("/messages?user="+stageManager.getSession().getLoggedUser()+"&role="+stageManager.getSession().getLoggedRole());
         service.setOnSucceeded((WorkerStateEvent event) -> {
             tableView.getItems().clear();
@@ -59,23 +59,23 @@ public class MsgBoardController extends AbstractController {
         return result;
     }
 
-
-
-    public void newMessage(ActionEvent event) {
-        switchSceneEvent(FxmlView.NEW);
-    }
-
-    public void messageView(MouseEvent mouseEvent) {
+    private void setRowFact(){
         tableView.setRowFactory( tv -> {
             TableRow<Message> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     Message rowData = row.getItem();
-                    System.out.println(rowData);
+                    stageManager.getSession().setViewingMessage(rowData);
+                    switchSceneEvent(FxmlView.MSGVIEW);
                 }
             });
             return row ;
         });
-        switchSceneEvent(FxmlView.MSGVIEW);
     }
+
+    public void newMessage(ActionEvent event) {
+        switchSceneEvent(FxmlView.NEW);
+    }
+
+
 }

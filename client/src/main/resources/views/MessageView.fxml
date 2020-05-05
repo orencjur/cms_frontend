@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" fx:controller="cms.client.controllers.MessageViewController" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Message view">
          <font>
@@ -14,10 +14,10 @@
       </Label>
       <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="304.0" prefWidth="571.0">
          <children>
-            <JFXTextField alignment="TOP_LEFT" centerShape="false" editable="false" layoutX="101.0" layoutY="73.0" prefHeight="116.0" prefWidth="456.0" scaleShape="false" />
-            <Label layoutX="38.0" layoutY="19.0" text="From" />
-            <Label layoutX="19.0" layoutY="113.0" text="Message:" />
-            <Label layoutX="296.0" layoutY="19.0" text="Timestamp" />
+            <JFXTextField fx:id="content" alignment="TOP_LEFT" centerShape="false" editable="false" layoutX="101.0" layoutY="73.0" prefHeight="116.0" prefWidth="456.0" scaleShape="false" />
+            <Label fx:id="from" layoutX="38.0" layoutY="19.0" text="From" />
+            <Label  layoutX="19.0" layoutY="113.0" text="Message:" />
+            <Label fx:id="date" layoutX="296.0" layoutY="19.0" text="Timestamp" />
          </children>
       </AnchorPane>
    </children>
