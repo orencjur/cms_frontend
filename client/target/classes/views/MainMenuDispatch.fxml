@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="cms.client.controllers.MainMenuDispatchController" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="cms.client.controllers.MainMenuDispatchController" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="115.0" layoutY="135.0" prefHeight="220.0" prefWidth="370.0">
         <columnConstraints>
@@ -23,22 +23,22 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <JFXButton layoutX="57.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="User Profile" />
+                  <JFXButton stylesheets="jfx-button.css" layoutX="57.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="User Profile" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <JFXButton  onAction="#shipments" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="14.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="Shipments" />
+                  <JFXButton  stylesheets="jfx-button.css" onAction="#shipments" alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="14.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="Shipments" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <JFXButton onAction="#msgBoard" layoutX="14.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="MsgBoard" />
+                  <JFXButton  stylesheets="jfx-button.css" onAction="#msgBoard" layoutX="14.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="MsgBoard" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <JFXButton  layoutX="57.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="User Management" textAlignment="CENTER" wrapText="true" />
+                  <JFXButton  stylesheets="jfx-button.css" layoutX="57.0" layoutY="14.0" prefHeight="88.0" prefWidth="114.0" text="User Management" textAlignment="CENTER" wrapText="true" />
                </children>
             </AnchorPane>
          </children>
