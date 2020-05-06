@@ -8,6 +8,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class ShipmentManagementController extends AbstractController {
 
     @FXML
@@ -27,7 +30,6 @@ public class ShipmentManagementController extends AbstractController {
 
     @FXML
     private ComboBox<String> vehicle;
-
 
 
     @FXML
@@ -58,9 +60,13 @@ public class ShipmentManagementController extends AbstractController {
     }
 
     public void confirm(ActionEvent event) {
-        if(cargo.getText().trim().equals("") || country.getText().trim().equals("") || city.getText().trim().equals("") || adress.getText().trim().equals("") || vehicle.getSelectionModel().isEmpty() || date.getValue()==null){
+        if(cargo.getText().trim().equals("") || country.getText().trim().equals("") || city.getText().trim().equals("") || adress.getText().trim().equals("") || vehicle.getSelectionModel().isEmpty() || date.getValue()==null) {
             System.out.println("kokot");
-            //vokno please fill everything
+            //vokno please fill everythin}
+        //}
+        //else if(date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay())){
+
+        //}
         }else {
             String url ="/createshipment?cargo="+cargo.getText()+"&vehicle="+vehicle.getValue()+"&date="+date.getValue()+"&destination="+country.getText()+city.getText()+adress.getText();
             Service<String> service = getRequest(url);

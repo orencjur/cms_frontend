@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
+import javafx.fxml.FXML;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -83,5 +84,21 @@ public abstract class  AbstractController {
         }
     }
 
+    @FXML
+    protected void home(){
+        if(stageManager.getSession().getLoggedRole()==FxmlView.DISPATCH){
+            switchSceneEvent(FxmlView.DISPATCH);
+        }else if(stageManager.getSession().getLoggedRole()==FxmlView.DRIVER){
+            switchSceneEvent(FxmlView.DRIVER);
+        }
+        else {
+            LOG.debug("bad session");
+            switchSceneEvent(FxmlView.LOGIN);
+        }
+    }
+    @FXML
+    protected void cancel(){
+        switchSceneEvent(FxmlView.MSGBOARD);
+    }
 
 }
