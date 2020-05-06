@@ -21,7 +21,7 @@
 .jfx-button:hover,
 .jfx-button:focused,
 .jfx-button {
-    -fx-background-color: TRANSPARENT, TRANSPARENT, TRANSPARENT, TRANSPARENT;
+    -fx-background-color: -red-900, TRANSPARENT, TRANSPARENT, TRANSPARENT;
     -fx-background-radius: 3px;
     -fx-background-insets: 0px;
 }
@@ -82,5 +82,5 @@
 }
 
 .jfx-tab-pane .headers-region .tab:selected .tab-container .tab-close-button > .jfx-svg-glyph {
-    -fx-background-color: WHITE;
+    -fx-background-color: -red-900;
 }
