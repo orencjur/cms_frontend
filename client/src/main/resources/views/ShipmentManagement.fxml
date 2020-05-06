@@ -11,18 +11,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.collections.FXCollections?>
-<?import java.lang.String?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ShipmentManagementController">
+<AnchorPane  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ShipmentManagementController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Shipment Manager">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TabPane layoutX="14.0" layoutY="67.0" prefHeight="325.0" prefWidth="576.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="14.0" layoutY="67.0" prefHeight="325.0" prefWidth="576.0" styleClass="black" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Overview">
+          <Tab styleClass="black" text="Overview">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -35,12 +33,12 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Create a Shipment">
+          <Tab styleClass="black" text="Create a Shipment">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label  layoutX="18.0" layoutY="47.0" text="Cargo:" />
-                        <Label  layoutX="18.0" layoutY="75.0" text="Date to ship:" />
+                        <Label layoutX="18.0" layoutY="47.0" text="Cargo:" />
+                        <Label layoutX="18.0" layoutY="75.0" text="Date to ship:" />
                         <Label layoutX="18.0" layoutY="115.0" text="Vehicle:" />
                         <JFXTextField fx:id="cargo" layoutX="290.0" layoutY="43.0" prefHeight="26.0" prefWidth="151.0" />
                         <JFXDatePicker fx:id="date" layoutX="288.0" layoutY="70.0" />
@@ -51,8 +49,8 @@
                         <JFXTextField fx:id="city" layoutX="217.0" layoutY="176.0" />
                         <JFXTextField fx:id="adress" layoutX="393.0" layoutY="176.0" />
                         <JFXComboBox fx:id="vehicle" layoutX="288.0" layoutY="101.0" prefHeight="28.0" prefWidth="154.0" />
-                        <JFXButton onAction="#confirm" layoutX="131.0" layoutY="219.0" prefHeight="32.0" prefWidth="133.0" text="Confirm" />
-                        <JFXButton onAction="#clear" layoutX="288.0" layoutY="219.0" prefHeight="32.0" prefWidth="133.0" text="Clear" />
+                        <JFXButton stylesheets="styles/controls/jfx-button.css" layoutX="131.0" layoutY="219.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" styleClass="buttons-container" text="Confirm" />
+                        <JFXButton stylesheets="styles/controls/jfx-button.css" layoutX="288.0" layoutY="219.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" text="Clear" />
                      </children>
                   </AnchorPane>
             </content>

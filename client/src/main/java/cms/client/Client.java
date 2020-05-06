@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
+import java.io.File;
 import java.io.IOException;
 
 
@@ -52,6 +53,7 @@ public class Client extends Application {
         }
     protected void displayInitialScene() {
         stageManager.switchScene(FxmlView.LOGIN);
+
     }
 
 
