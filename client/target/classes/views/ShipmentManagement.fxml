@@ -14,6 +14,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.control.ComboBox?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ShipmentManagementController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Shipment Manager">
@@ -31,16 +34,24 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0">
                                  <children>
-                                    <ChoiceBox layoutX="73.0" layoutY="15.0" prefHeight="16.0" prefWidth="99.0" />
+                                    <ComboBox fx:id="statuses" layoutX="73.0" layoutY="15.0" prefHeight="16.0" prefWidth="99.0" >
+                                     <items>
+                                         <FXCollections fx:factory="observableArrayList">
+                                             <String fx:value="Active" />
+                                             <String fx:value="Inactive" />
+                                             <String fx:value="Both" />
+                                         </FXCollections>
+                                     </items>
+                                    </ComboBox>
                                     <Label layoutX="22.0" layoutY="20.0" text="Show" />
-                                    <TableView layoutX="14.0" layoutY="57.0" prefHeight="396.0" prefWidth="845.0">
+                                    <TableView fx:id="shipmentTable" layoutX="14.0" layoutY="57.0" prefHeight="396.0" prefWidth="845.0">
                                       <columns>
-                                        <TableColumn editable="false" prefWidth="114.0" text="Date of expedition" />
-                                        <TableColumn editable="false" prefWidth="61.0" text="Status" />
-                                          <TableColumn editable="false" minWidth="0.0" prefWidth="154.0" text="Date of completion" />
-                                          <TableColumn editable="false" prefWidth="89.0" text="Vehicle" />
-                                          <TableColumn editable="false" prefWidth="134.0" text="Driver" />
-                                          <TableColumn editable="false" prefWidth="292.0" text="Destination" />
+                                        <TableColumn fx:id="expedition" editable="false" prefWidth="114.0" text="Date of expedition" />
+                                        <TableColumn fx:id="status" editable="false" prefWidth="61.0" text="Status" />
+                                          <TableColumn fx:id="completition" editable="false" minWidth="0.0" prefWidth="154.0" text="Date of completion" />
+                                          <TableColumn fx:id="shipmentVehicle" editable="false" prefWidth="89.0" text="Vehicle" />
+                                          <TableColumn fx:id="driver" editable="false" prefWidth="134.0" text="Driver" />
+                                          <TableColumn fx:id="destination" editable="false" prefWidth="292.0" text="Destination" />
                                       </columns>
                                     </TableView>
                                  </children>

@@ -44,7 +44,7 @@ public abstract class  AbstractController {
     protected TimeoutSericeSynchronizer setTimeout(int seconds,Service<String> requestSer){
         Timeout timeout = new Timeout();
         timeout.timeout(seconds);
-        TimeoutSericeSynchronizer synchronizer = new TimeoutSericeSynchronizer(timeout,service);
+        TimeoutSericeSynchronizer synchronizer = new TimeoutSericeSynchronizer(timeout,requestSer);
         return synchronizer;
     }
 
@@ -100,5 +100,6 @@ public abstract class  AbstractController {
     protected void cancel(){
         switchSceneEvent(FxmlView.MSGBOARD);
     }
+
 
 }

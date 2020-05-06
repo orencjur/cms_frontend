@@ -10,6 +10,8 @@ public class Message {
     private SimpleStringProperty content;
     private FxmlView sender;
 
+
+
     public FxmlView getSender() {
         return sender;
     }

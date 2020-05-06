@@ -21,7 +21,6 @@ public class HtttpService extends Service<String> {
     private final static Logger LOG = Logger.getLogger(HtttpService.class);
     private HttpRequestFactory factory =new HttpRequestFactory(baseurl);
     private String url;
-    private final StageManager stageManager = StageManager.getInstance();
 
     public HtttpService( String url) {
         this.url = url;

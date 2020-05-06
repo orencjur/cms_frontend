@@ -1,5 +1,6 @@
 package cms.client.controllers;
 
+import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.view.FxmlView;
 import javafx.concurrent.Service;
@@ -9,12 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MsgBoardController extends AbstractController {
 
@@ -39,24 +35,11 @@ public class MsgBoardController extends AbstractController {
             date.setCellValueFactory(new PropertyValueFactory<Message, String>("date"));
             time.setCellValueFactory(new PropertyValueFactory<Message, String>("time"));
             content.setCellValueFactory(new PropertyValueFactory<Message, String>("content"));
-            tableView.getItems().addAll(parseMessages(parse(service.getValue())));
+            tableView.getItems().addAll(EntityFactory.parseMessages(parse(service.getValue())));
             initSynchronizers.add(setTimeout(60,service));
         });
 
         init=true;
-    }
-
-    private List<Message> parseMessages(List<String> strings){
-
-        List<Message> result = new ArrayList<Message>();
-        if(strings.size()%4!=0){
-            LOG.debug("bad parsing");
-            return result;
-        }
-        for(int i=0;i<strings.size();i+=4){
-            result.add(new Message(strings.get(i),strings.get(i+1),strings.get(i+2),strings.get(i+3)));
-        }
-        return result;
     }
 
     private void setRowFact(){
