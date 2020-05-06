@@ -31,6 +31,7 @@
             <Label layoutX="27.0" layoutY="221.0" text="Vehicle" />
          </children>
       </AnchorPane>
-      <JFXButton layoutX="474.0" layoutY="25.0" opacity="0.0" text="Save changes" />
+      <JFXButton disable="true" layoutX="474.0" layoutY="25.0" opacity="0.0" text="Save changes" />
+      <JFXButton disable="true" layoutX="363.0" layoutY="25.0" opacity="0.0" text="Delete User" />
    </children>
 </AnchorPane>
