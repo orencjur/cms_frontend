@@ -9,7 +9,9 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -72,6 +74,7 @@ public abstract class  AbstractController {
     }
 
 
+
     public void shutdown(){
         for (TimeoutSericeSynchronizer s:initSynchronizers){
             s.stop();
@@ -83,6 +86,8 @@ public abstract class  AbstractController {
             s.restart();
         }
     }
+
+    //Back Buttons ------------------------------------------------------------------------------------------------
 
     @FXML
     protected void home(){
@@ -100,6 +105,17 @@ public abstract class  AbstractController {
     protected void cancel(){
         switchSceneEvent(FxmlView.MSGBOARD);
     }
+
+    //Inits ---------------------------------------------------------------------------------------------
+    protected void initVehicles(ComboBox<String> vehicle){
+        Service<String> service = getInitRequest("/vehicles");
+        service.setOnSucceeded((WorkerStateEvent event) -> {
+            vehicle.getItems().clear();
+            vehicle.getItems().addAll(parse(service.getValue()));
+            initSynchronizers.add(setTimeout(60,service));
+        });
+    }
+
 
 
 }

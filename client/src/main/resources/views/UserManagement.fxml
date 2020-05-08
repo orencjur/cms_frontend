@@ -13,7 +13,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ShipmentManagementController">
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.UserManagementController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="User Manager">
          <font>
@@ -26,21 +29,30 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
+
                         <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="534.0" prefWidth="1175.0" AnchorPane.bottomAnchor="-70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0">
                                  <children>
-                                    <TableView layoutX="14.0" layoutY="57.0" prefHeight="396.0" prefWidth="845.0">
+                                     <ComboBox fx:id="userRole" layoutX="73.0" layoutY="15.0" prefHeight="16.0" prefWidth="99.0" >
+                                         <items>
+                                             <FXCollections fx:factory="observableArrayList">
+                                                 <String fx:value="Dispatcher" />
+                                                 <String fx:value="Driver" />
+                                             </FXCollections>
+                                         </items>
+                                     </ComboBox>
+                                    <TableView fx:id="userTable" layoutX="14.0" layoutY="57.0" prefHeight="396.0" prefWidth="845.0">
                                       <columns>
-                                        <TableColumn editable="false" prefWidth="114.0" text="Name" />
-                                        <TableColumn editable="false" prefWidth="127.0" text="Surname" />
-                                          <TableColumn editable="false" minWidth="0.0" prefWidth="144.0" text="username" />
-                                          <TableColumn editable="false" prefWidth="115.0" text="Vehicle" />
-                                          <TableColumn editable="false" prefWidth="125.0" text="License Number" />
-                                          <TableColumn editable="false" prefWidth="241.0" text="Available?" />
+                                        <TableColumn fx:id="name" editable="false" prefWidth="114.0" text="Name" />
+                                        <TableColumn fx:id="surname" editable="false" prefWidth="127.0" text="Surname" />
+                                          <TableColumn fx:id="username" editable="false" minWidth="0.0" prefWidth="144.0" text="username" />
+                                          <TableColumn fx:id="userVehicle" editable="false" prefWidth="115.0" text="Vehicle" />
+                                          <TableColumn fx:id="licenceNumber" editable="false" prefWidth="125.0" text="License Number" />
+                                          <TableColumn fx:id="available" editable="false" prefWidth="241.0" text="Available?" />
                                       </columns>
                                     </TableView>
-                                    <JFXButton layoutX="710.0" layoutY="14.0" prefHeight="32.0" prefWidth="138.0" text="Create New User" />
+                                    <JFXButton fx:id="newUser" onAction="#newUser" layoutX="710.0" layoutY="14.0" prefHeight="32.0" prefWidth="138.0" text="Create New User" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -65,14 +77,14 @@
                         <JFXTextField fx:id="city" layoutX="385.0" layoutY="339.0" />
                         <JFXTextField fx:id="adress" layoutX="549.0" layoutY="339.0" />
                         <JFXComboBox fx:id="vehicle" layoutX="548.0" layoutY="218.0" prefHeight="28.0" prefWidth="154.0" />
-                        <JFXButton layoutX="244.0" layoutY="399.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" text="Confirm" />
-                        <JFXButton layoutX="473.0" layoutY="399.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" text="Clear" />
+                        <JFXButton layoutX="244.0" layoutY="399.0"  prefHeight="32.0" prefWidth="133.0" text="Confirm" />
+                        <JFXButton layoutX="473.0" layoutY="399.0"  prefHeight="32.0" prefWidth="133.0" text="Clear" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
         </tabs>
       </TabPane>
-      <JFXButton layoutX="813.0" layoutY="28.0" text="Home" />
+      <JFXButton onAction="#home"  layoutX="813.0" layoutY="28.0" text="Home" />
    </children>
 </AnchorPane>

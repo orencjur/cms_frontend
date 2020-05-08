@@ -20,13 +20,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ShipmentManagementController extends AbstractController {
-
-    public TableColumn expedition;
-    public TableColumn status;
-    public TableColumn completition;
-    public TableColumn shipmentVehicle;
-    public TableColumn driver;
-    public TableColumn destination;
+    @FXML
+    private TableColumn expedition;
+    @FXML
+    private TableColumn status;
+    @FXML
+    private TableColumn completition;
+    @FXML
+    private TableColumn shipmentVehicle;
+    @FXML
+    private TableColumn driver;
+    @FXML
+    private TableColumn destination;
     @FXML
     private TextField cargo;
 
@@ -49,7 +54,7 @@ public class ShipmentManagementController extends AbstractController {
     private ComboBox<String> statuses;
 
     @FXML
-    TableView<Shipment> shipmentTable;
+    private TableView<Shipment> shipmentTable;
 
 
     @FXML
@@ -59,7 +64,7 @@ public class ShipmentManagementController extends AbstractController {
             return;
         }
         intitStatuses();
-        initVehicles();
+        initVehicles(vehicle);
         init=true;
     }
 
@@ -134,13 +139,6 @@ public class ShipmentManagementController extends AbstractController {
         });
     }
 
-    private void initVehicles(){
-        Service<String> service = getInitRequest("/vehicles");
-        service.setOnSucceeded((WorkerStateEvent event) -> {
-            vehicle.getItems().clear();
-            vehicle.getItems().addAll(parse(service.getValue()));
-            initSynchronizers.add(setTimeout(60,service));
-        });
-    }
+
 
 }

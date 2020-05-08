@@ -8,6 +8,28 @@ public enum FxmlView {
      * directories for Views are stored here
      */
     //TODO loginfailed not have fxml yet
+    NEWUSER{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("newuser.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/NewUser.fxml";
+        }
+    },
+    USERMANAGEMENT{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("userman.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/UserManagement.fxml";
+        }
+    },
     MSGVIEW{
         @Override
         public String getTitle() {

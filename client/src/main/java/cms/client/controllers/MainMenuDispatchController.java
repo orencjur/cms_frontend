@@ -7,13 +7,13 @@ import javafx.scene.control.Label;
 
 public class MainMenuDispatchController extends AbstractController {
 
-
+    @FXML
     public Label name;
 
     @FXML
-public void initialize() {
-    name.setText(stageManager.getSession().getLoggedUser());
-}
+    public void initialize() {
+        name.setText("Logged as "+stageManager.getSession().getLoggedUser());
+    }
 
     @FXML
     public void shipments(ActionEvent event){
@@ -24,5 +24,8 @@ public void initialize() {
         switchSceneEvent(FxmlView.MSGBOARD);
     }
 
-
+    @FXML
+    public void users(ActionEvent event) {
+        switchSceneEvent(FxmlView.USERMANAGEMENT);
+    }
 }

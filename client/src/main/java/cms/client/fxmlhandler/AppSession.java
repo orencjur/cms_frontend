@@ -8,6 +8,19 @@ public class AppSession {
     private String loggedUser;
     private FxmlView loggedRole;
     private Message ViewingMessage;
+    private boolean CreatingDriver;
+
+
+
+    public boolean isCreatingDriver() {
+        return CreatingDriver;
+    }
+
+    public void setCreatingDriver(boolean creatingDriver) {
+        CreatingDriver = creatingDriver;
+    }
+
+
 
     public Message getViewingMessage() {
         return ViewingMessage;
