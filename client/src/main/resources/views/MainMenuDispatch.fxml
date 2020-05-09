@@ -18,6 +18,6 @@
       <JFXButton layoutX="334.0" layoutY="231.0" prefHeight="53.0" prefWidth="233.0" stylesheets="jfx-button.css" onAction="#users" text="User Management" textAlignment="CENTER" wrapText="true" />
       <Label fx:id="name" layoutX="14.0" layoutY="14.0" text="Full Name" />
       <Label layoutX="14.0" layoutY="42.0" prefHeight="18.0" prefWidth="60.0" text="Vehicle" />
-      <JFXButton layoutX="381.0" layoutY="492.0" prefHeight="53.0" prefWidth="131.0" stylesheets="jfx-button.css" text="Logout" />
+      <JFXButton onAction="#logout" layoutX="381.0" layoutY="492.0" prefHeight="53.0" prefWidth="131.0" stylesheets="jfx-button.css" text="Logout" />
    </children>
 </AnchorPane>

@@ -81,8 +81,8 @@ public class UserManagementController extends AbstractController {
 
     private ArrayList<Service<String>> initServices() {
         ArrayList<Service<String>> statusServices = new ArrayList<>();
-        statusServices.add(new HtttpService("/manager/full"));
-        statusServices.add(new HtttpService("/regularuser/full"));
+        statusServices.add(getRequest("/manager/full"));
+        statusServices.add(getRequest("/regularuser/full"));
         for(Service s : statusServices){
             setSucceededStatusService(s);
         }
