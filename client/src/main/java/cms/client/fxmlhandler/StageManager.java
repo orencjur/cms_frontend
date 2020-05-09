@@ -88,6 +88,10 @@ public class StageManager {
         return rootNode;
     }
 
+    public void emptySession(){
+        this.session=new AppSession();
+    }
+
 
     private void logAndExit(String errorMsg, Exception exception) {
         LOG.error(errorMsg, exception);

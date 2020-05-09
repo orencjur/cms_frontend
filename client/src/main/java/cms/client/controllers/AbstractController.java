@@ -1,6 +1,7 @@
 package cms.client.controllers;
 
 import cms.client.async.TimeoutSericeSynchronizer;
+import cms.client.fxmlhandler.AppSession;
 import cms.client.fxmlhandler.StageManager;
 import cms.client.async.Timeout;
 import cms.client.http.HtttpService;
@@ -104,6 +105,12 @@ public abstract class  AbstractController {
     @FXML
     protected void cancel(){
         switchSceneEvent(FxmlView.MSGBOARD);
+    }
+
+    @FXML
+    protected void logout(){
+        stageManager.emptySession();
+        switchSceneEvent(FxmlView.LOGIN);
     }
 
     //Inits ---------------------------------------------------------------------------------------------

@@ -13,7 +13,7 @@ public class User {
 
     public User(String fullname,String username,String vehicle, String licenceNumber,String availibility){
         try {
-            String [] full = fullname.split(" ");
+            String [] full = fullname.split(":");
             name = new SimpleStringProperty(full[0]);
             surname   = new SimpleStringProperty(full[1]);
         }catch (Exception e){//idiot with fucking name

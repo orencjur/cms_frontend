@@ -48,5 +48,6 @@
             <Font size="36.0" />
          </font>
       </Label>
+       <JFXButton onAction="#logout" layoutX="381.0" layoutY="492.0" prefHeight="53.0" prefWidth="131.0" stylesheets="jfx-button.css" text="Logout" />
    </children>
 </AnchorPane>

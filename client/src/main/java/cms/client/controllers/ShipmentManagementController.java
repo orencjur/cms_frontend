@@ -116,9 +116,9 @@ public class ShipmentManagementController extends AbstractController {
 
     private ArrayList<Service<String>> initStatusServices(){
         ArrayList<Service<String>> statusServices = new ArrayList<>();
-        statusServices.add(new HtttpService("/activeshipment"));
-        statusServices.add(new HtttpService("/inactiveshipment"));
-        statusServices.add(new HtttpService("/shipment"));
+        statusServices.add(getRequest("/activeshipment"));
+        statusServices.add(getRequest("/inactiveshipment"));
+        statusServices.add(getRequest("/shipment"));
         for(Service s : statusServices){
             setSucceededStatusService(s);
         }
