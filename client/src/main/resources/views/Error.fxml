@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane stylesheets="@jfoenix-main-demo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.LoginController">
+    <children>
+        <Rectangle fill="#242424" height="223.0" stroke="#ffffff8b" strokeType="INSIDE" width="360.0" />
+        <Label fx:id="lblLogin" layoutX="102.0" layoutY="34.0" text="Whoops..." textFill="WHITE">
+            <font>
+                <Font size="36.0" />
+            </font>
+        </Label>
+      <Label fx:id="lblLogin1" layoutX="118.0" layoutY="87.0" text="You fucked up mate" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="112.0" layoutY="124.0" text="Take me back home" />
+    </children>
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+</AnchorPane>
