@@ -11,8 +11,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
@@ -42,6 +49,23 @@ public abstract class  AbstractController {
             return;
         }
         stageManager.switchScene(view);
+    }
+
+
+    public void popup(final Stage primaryStage) {
+        new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                final Stage dialog = new Stage();
+                switchSceneEvent(FxmlView.POPUP);
+                /*
+                dialog.setScene(scene);
+                dialog.alwaysOnTopProperty();
+                dialog.show();
+
+                 */
+            }
+        };
     }
 
     protected TimeoutSericeSynchronizer setTimeout(int seconds,Service<String> requestSer){

@@ -129,7 +129,34 @@ public enum FxmlView {
         public String getFxmlFile() {
             return "/views/MainMenuDispatch.fxml";
         }
+    },
+
+    POPUP{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("error.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/Error.fxml";
+        }
+    },
+
+    DRIVER_SHIPMENT{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("shipment.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/DriverShipment.fxml";
+        }
     };
+
+
+
 
     public abstract String getTitle();
     public abstract String getFxmlFile();

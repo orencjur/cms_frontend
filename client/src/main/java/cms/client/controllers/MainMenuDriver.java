@@ -9,6 +9,6 @@ public class MainMenuDriver extends AbstractController{
     }
 
     public void shipments(ActionEvent event) {
-        switchSceneEvent(FxmlView.SHIPMENT);
+        switchSceneEvent(FxmlView.DRIVER_SHIPMENT);
     }
 }
