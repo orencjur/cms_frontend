@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@jfoenix-main-demo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.LoginController">
+<AnchorPane stylesheets="@jfoenix-main-demo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ErrorController">
     <children>
         <Rectangle fill="#242424" height="223.0" stroke="#ffffff8b" strokeType="INSIDE" width="360.0" />
         <Label fx:id="lblLogin" layoutX="102.0" layoutY="34.0" text="Whoops..." textFill="WHITE">

@@ -32,6 +32,9 @@ public class LoginController extends AbstractController {
             service.setOnSucceeded((WorkerStateEvent event) -> {
                 stageManager.getSession().setLoggedUser(user);
                 stageManager.getSession().setLoggedRole(FxmlView.valueOf(service.getValue()));
+                if(FxmlView.valueOf(service.getValue()).equals(FxmlView.LOGIN)){
+                    stageManager.errorPopup("ERRor");
+                }
                 switchSceneEvent(FxmlView.valueOf(service.getValue()));
             });
         }

@@ -9,11 +9,24 @@ public class AppSession {
     private FxmlView loggedRole;
     private Message ViewingMessage;
     private boolean CreatingDriver;
+    private FxmlView lastPage;
+
+    AppSession(){
+        lastPage=FxmlView.LOGIN;
+    }
 
 
 
     public boolean isCreatingDriver() {
         return CreatingDriver;
+    }
+
+    public FxmlView getLastPage() {
+        return lastPage;
+    }
+
+    public void setLastPage(FxmlView lastPage) {
+        this.lastPage = lastPage;
     }
 
     public void setCreatingDriver(boolean creatingDriver) {
