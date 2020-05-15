@@ -59,7 +59,7 @@ public class DriverShipmentController extends AbstractController {
             return;
         }
         intitStatuses();
-        initVehicles(vehicle);
+        initVehicleCombo(vehicle);
         init=true;
     }
 

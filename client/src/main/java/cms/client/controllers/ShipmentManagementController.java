@@ -1,10 +1,7 @@
 package cms.client.controllers;
 
-import cms.client.async.TimeoutSericeSynchronizer;
 import cms.client.controllers.entityhelpers.EntityFactory;
-import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.Shipment;
-import cms.client.http.HtttpService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
@@ -14,9 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class ShipmentManagementController extends AbstractController {
@@ -64,7 +59,7 @@ public class ShipmentManagementController extends AbstractController {
             return;
         }
         intitStatuses();
-        initVehicles(vehicle);
+        initVehicleCombo(vehicle);
         init=true;
     }
 

@@ -6,9 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
 public class NewUserController extends AbstractController {
@@ -34,7 +32,7 @@ public class NewUserController extends AbstractController {
     @FXML
     public void initialize() {
         if(stageManager.getSession().isCreatingDriver()){
-            initVehicles(vehicle);
+            initVehicleCombo(vehicle);
             licenceNumber.setVisible(true);
             vehicle.setVisible(true);
             vehicleLabel.setVisible(true);
@@ -77,7 +75,5 @@ public class NewUserController extends AbstractController {
     }
 
 
-    public void userManaagement(ActionEvent event) {
-        switchSceneEvent(FxmlView.USERMANAGEMENT);
-    }
+
 }

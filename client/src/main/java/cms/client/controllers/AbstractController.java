@@ -138,13 +138,28 @@ public abstract class  AbstractController {
     }
 
     //Inits ---------------------------------------------------------------------------------------------
-    protected void initVehicles(ComboBox<String> vehicle){
+    protected void initVehicleCombo(ComboBox<String> vehicle){
         Service<String> service = getInitRequest("/vehicles");
         service.setOnSucceeded((WorkerStateEvent event) -> {
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
             initSynchronizers.add(setTimeout(60,service));
         });
+    }
+
+    protected void initVehicleCombo(ComboBox<String> vehicle, String defaultValue){
+        Service<String> service = getInitRequest("/vehicles");
+        service.setOnSucceeded((WorkerStateEvent event) -> {
+            vehicle.getItems().clear();
+            vehicle.getItems().addAll(parse(service.getValue()));
+            vehicle.setValue(defaultValue);
+            initSynchronizers.add(setTimeout(60,service));
+        });
+    }
+
+    @FXML
+    protected void userManaagement(ActionEvent event) {
+        switchSceneEvent(FxmlView.USERMANAGEMENT);
     }
 
 

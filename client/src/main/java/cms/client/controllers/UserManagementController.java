@@ -54,6 +54,7 @@ public class UserManagementController extends AbstractController {
     }
 
     private void intitUsers() {
+        setRowFact();
         ArrayList<Service<String>> userServices = initServices();
         userRole.valueProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -110,8 +111,8 @@ public class UserManagementController extends AbstractController {
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
                     User rowData = row.getItem();
-                   // stageManager.getSession().setViewingMessage(rowData);
-                    switchSceneEvent(FxmlView.MSGVIEW);
+                    stageManager.getSession().setViewingUser(rowData);
+                    switchSceneEvent(FxmlView.MODIFYUSER);
                 }
             });
             return row ;
