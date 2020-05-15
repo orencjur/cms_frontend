@@ -5,6 +5,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
 import java.util.Objects;
@@ -42,7 +43,8 @@ public class StageManager {
         show(primaryStage,viewRootNodeHierarchy, view.getTitle());
     }
 
-    public void errorPopup(String Error) {
+    public void errorPopup(String error) {
+        session.setError(error);
         Parent viewRootNodeHierarchy = loadViewNodeHierarchy(FxmlView.ERROR.getFxmlFile());
         show(new Stage(),viewRootNodeHierarchy, FxmlView.ERROR.getTitle());
     }

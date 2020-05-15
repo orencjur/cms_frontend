@@ -1,6 +1,7 @@
 package cms.client.controllers;
 
 import cms.client.controllers.entityhelpers.EntityFactory;
+import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.Shipment;
 import cms.client.controllers.entityhelpers.User;
 import cms.client.http.HtttpService;
@@ -14,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -99,6 +101,20 @@ public class UserManagementController extends AbstractController {
             licenceNumber.setCellValueFactory(new PropertyValueFactory<User, String>("licenceNumber"));
             available.setCellValueFactory(new PropertyValueFactory<User, String>("availability"));
             userTable.getItems().addAll(EntityFactory.parseUser(parse(service.getValue())));
+        });
+    }
+
+    private void setRowFact(){
+        userTable.setRowFactory( tv -> {
+            TableRow<User> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    User rowData = row.getItem();
+                   // stageManager.getSession().setViewingMessage(rowData);
+                    switchSceneEvent(FxmlView.MSGVIEW);
+                }
+            });
+            return row ;
         });
     }
 

@@ -33,7 +33,7 @@ public class LoginController extends AbstractController {
                 stageManager.getSession().setLoggedUser(user);
                 stageManager.getSession().setLoggedRole(FxmlView.valueOf(service.getValue()));
                 if(FxmlView.valueOf(service.getValue()).equals(FxmlView.LOGIN)){
-                    stageManager.errorPopup("ERRor");
+                    stageManager.errorPopup("Incorrect username or password");
                 }
                 switchSceneEvent(FxmlView.valueOf(service.getValue()));
             });

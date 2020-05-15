@@ -1,6 +1,7 @@
 package cms.client.fxmlhandler;
 
 import cms.client.controllers.entityhelpers.Message;
+import cms.client.controllers.entityhelpers.User;
 import cms.client.view.FxmlView;
 
 public class AppSession {
@@ -9,11 +10,25 @@ public class AppSession {
     private FxmlView loggedRole;
     private Message ViewingMessage;
     private boolean CreatingDriver;
-    private FxmlView lastPage;
+    private User ViewingUser;
+    private String Error;
 
-    AppSession(){
-        lastPage=FxmlView.LOGIN;
+    public User getViewingUser() {
+        return ViewingUser;
     }
+
+    public void setViewingUser(User viewingUser) {
+        ViewingUser = viewingUser;
+    }
+
+    public String getError() {
+        return Error;
+    }
+
+    public void setError(String error) {
+        Error = error;
+    }
+
 
 
 
@@ -21,13 +36,7 @@ public class AppSession {
         return CreatingDriver;
     }
 
-    public FxmlView getLastPage() {
-        return lastPage;
-    }
 
-    public void setLastPage(FxmlView lastPage) {
-        this.lastPage = lastPage;
-    }
 
     public void setCreatingDriver(boolean creatingDriver) {
         CreatingDriver = creatingDriver;
