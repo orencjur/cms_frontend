@@ -25,7 +25,7 @@ public class ModifyDispatcherStrategy extends ModifyUserController implements Mo
         setOnSucceeded(service);
     }
         
-    
+
 
     @Override
     public void init(User user) {
