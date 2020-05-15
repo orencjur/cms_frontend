@@ -1,16 +1,4 @@
-package cms.client.controllers.TableFillers;
-
-import cms.client.async.TimeoutSericeSynchronizer;
-import cms.client.controllers.entityhelpers.Shipment;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Service;
-import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-
-import java.util.ArrayList;
-import java.util.HashSet;
+package cms.client.controllers.tablefillers;
 
 public class ShipmentFiller {//extends BaseTableFiller implements TableFillerInteface {
     /*@FXML

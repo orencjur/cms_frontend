@@ -1,12 +1,10 @@
-package cms.client.controllers.ModifyUserControllers;
+package cms.client.controllers.modifyuser;
 
 import cms.client.controllers.AbstractController;
 import cms.client.controllers.ModifyUserController;
 import cms.client.controllers.entityhelpers.User;
 import cms.client.view.FxmlView;
 import javafx.concurrent.Service;
-
-import java.security.Provider;
 
 public class ModifyDispatcherStrategy extends AbstractController implements ModifyUserInterface {
     private ModifyUserController parent;

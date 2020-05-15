@@ -1,9 +1,8 @@
 package cms.client.controllers;
 
-import cms.client.controllers.AbstractController;
-import cms.client.controllers.ModifyUserControllers.ModifyDispatcherStrategy;
-import cms.client.controllers.ModifyUserControllers.ModifyDriverStrategy;
-import cms.client.controllers.ModifyUserControllers.ModifyUserInterface;
+import cms.client.controllers.modifyuser.ModifyDispatcherStrategy;
+import cms.client.controllers.modifyuser.ModifyDriverStrategy;
+import cms.client.controllers.modifyuser.ModifyUserInterface;
 import cms.client.controllers.entityhelpers.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -67,6 +66,7 @@ public class ModifyUserController extends AbstractController {
 
 
     public void delete(ActionEvent event) {
+        userModifier.delete();
     }
 
     public void save(ActionEvent event) {

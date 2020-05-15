@@ -1,4 +1,4 @@
-package cms.client.controllers.ModifyUserControllers;
+package cms.client.controllers.modifyuser;
 
 import cms.client.controllers.entityhelpers.User;
 

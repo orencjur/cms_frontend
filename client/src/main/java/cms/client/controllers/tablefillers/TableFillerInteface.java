@@ -1,4 +1,4 @@
-package cms.client.controllers.TableFillers;
+package cms.client.controllers.tablefillers;
 
 import cms.client.http.HtttpService;
 import javafx.concurrent.Service;
