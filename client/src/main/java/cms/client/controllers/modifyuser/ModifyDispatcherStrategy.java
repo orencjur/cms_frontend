@@ -21,10 +21,10 @@ public class ModifyDispatcherStrategy extends ModifyUserController implements Mo
             LOG.debug("fill all");
             return;
         }
-        Service<String> service =getRequest("/regularuser/create?username="+parent.getUsername().getText().trim()+"&name="+parent.getFname().getText().trim()+":"+parent.getLname().getText().trim()+"&password="+parent.getPass().getText().trim()+"&licence="+parent.getLicense().getText().trim()+"&vehicle="+parent.getVehicle().getValue());
+        Service<String> service=getRequest("/regularuser/create?username="+parent.getUsername().getText().trim()+"&name="+parent.getFname().getText().trim()+":"+parent.getLname().getText().trim()+"&password="+parent.getPass().getText().trim()+"&licence="+parent.getLicense().getText().trim()+"&vehicle="+parent.getVehicle().getValue());
         setOnSucceeded(service);
     }
-
+        
     
 
     @Override
