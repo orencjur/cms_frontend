@@ -15,7 +15,7 @@ public class ModifyDriverStrategy extends ModifyUserController implements Modify
 
     @Override
     public void save() {
-      Service<String> service = getRequest("/manager/modify?username="+parent.getUsername().getText().trim()+"&name="+parent.getFname().getText().trim()+":"+parent.getLname().getText().trim()+"&password="+parent.getPass().getText().trim());
+      Service<String> service = getRequest("/regularuser/modify?previoususername="+stageManager.getSession().getViewingUser().getUsername()+"&username="+parent.getUsername().getText().trim()+"&name="+parent.getFname().getText().trim()+":"+parent.getLname().getText().trim()+"&password="+parent.getPass().getText().trim()+"&licence="+parent.getLicense().getText().trim()+"&vehicle="+parent.getVehicle().getValue());
       setOnSucceeded( service);
     }
 

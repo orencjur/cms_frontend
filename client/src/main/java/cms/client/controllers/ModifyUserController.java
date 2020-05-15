@@ -63,7 +63,7 @@ public class ModifyUserController extends AbstractController {
         lname.setDisable(false);
         pass.setDisable(false);
         vehicle.setDisable(false);
-        username.setDisable(false);
+        //username.setDisable(false);
     }
 
 
@@ -72,7 +72,7 @@ public class ModifyUserController extends AbstractController {
     }
 
     public void save(ActionEvent event) {
-        if(getUsername().getText().trim().equals("")||getFname().getText().trim().equals("")||getPass().getText().trim().equals("")||getLname().getText().trim().equals("")){
+        if(getUsername().getText().trim().equals("")||getFname().getText().trim().equals("")||getLname().getText().trim().equals("")){
             LOG.debug("please fill all");
             return;
         }
@@ -81,7 +81,7 @@ public class ModifyUserController extends AbstractController {
 
     protected void setOnSucceeded(Service<String> service){
         service.setOnSucceeded(workerStateEvent -> {
-            if(service.getValue().equals(true)){
+            if(service.getValue().equals("true")){
                 switchSceneEvent(FxmlView.USERMANAGEMENT);
             }else{
                 LOG.debug("username not found");
