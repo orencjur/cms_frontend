@@ -6,7 +6,7 @@ import cms.client.controllers.entityhelpers.User;
 import cms.client.view.FxmlView;
 import javafx.concurrent.Service;
 
-public class ModifyDriverStrategy extends AbstractController implements ModifyUserInterface {
+public class ModifyDriverStrategy extends ModifyUserController implements ModifyUserInterface {
     private ModifyUserController parent;
     public ModifyDriverStrategy(ModifyUserController modifyUserController) {
         parent=modifyUserController;
@@ -15,7 +15,8 @@ public class ModifyDriverStrategy extends AbstractController implements ModifyUs
 
     @Override
     public void save() {
-
+      Service<String> service = getRequest("/manager/modify?username="+parent.getUsername().getText().trim()+"&name="+parent.getFname().getText().trim()+":"+parent.getLname().getText().trim()+"&password="+parent.getPass().getText().trim());
+      setOnSucceeded( service);
     }
 
     @Override
@@ -30,12 +31,6 @@ public class ModifyDriverStrategy extends AbstractController implements ModifyUs
     @Override
     public void delete() {
         Service<String> service = getRequest("/regularuser/delete?username="+parent.getUsername().getText().trim());
-        service.setOnSucceeded(workerStateEvent -> {
-            if(service.getValue().equals(true)){
-                switchSceneEvent(FxmlView.USERMANAGEMENT);
-            }else{
-                LOG.debug("username not found");
-            }
-        });
+       setOnSucceeded(service);
     }
 }

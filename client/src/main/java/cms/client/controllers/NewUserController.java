@@ -47,12 +47,16 @@ public class NewUserController extends AbstractController {
     public void send(ActionEvent event) {
         if(username.getText().trim().equals("")||firstName.getText().trim().equals("")||password.getText().trim().equals("")||lastName.getText().trim().equals("")){
             LOG.debug("please fill all");
+            return;
         }
         Service<String> service;
         if(stageManager.getSession().isCreatingDriver()){
             service = createDriver();
         }else {
             service = createDispatcher();
+        }
+        if(service ==null){
+            return;
         }
         service.setOnSucceeded((WorkerStateEvent e) -> {
             if(service.getValue().trim().equals("true")){
@@ -66,6 +70,7 @@ public class NewUserController extends AbstractController {
     private Service<String> createDriver() {
         if(licenceNumber.getText().trim().equals("")){
             LOG.debug("fill all");
+            return null;
         }
         return getRequest("/regularuser/create?username="+username.getText().trim()+"&name="+firstName.getText().trim()+":"+lastName.getText().trim()+"&password="+password.getText().trim()+"&licence="+licenceNumber.getText().trim()+"&vehicle="+vehicle.getValue());
     }

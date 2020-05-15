@@ -4,9 +4,11 @@ import cms.client.controllers.modifyuser.ModifyDispatcherStrategy;
 import cms.client.controllers.modifyuser.ModifyDriverStrategy;
 import cms.client.controllers.modifyuser.ModifyUserInterface;
 import cms.client.controllers.entityhelpers.User;
+import cms.client.view.FxmlView;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import javafx.concurrent.Service;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -70,11 +72,26 @@ public class ModifyUserController extends AbstractController {
     }
 
     public void save(ActionEvent event) {
+        if(getUsername().getText().trim().equals("")||getFname().getText().trim().equals("")||getPass().getText().trim().equals("")||getLname().getText().trim().equals("")){
+            LOG.debug("please fill all");
+            return;
+        }
+        userModifier.save();
+    }
+
+    protected void setOnSucceeded(Service<String> service){
+        service.setOnSucceeded(workerStateEvent -> {
+            if(service.getValue().equals(true)){
+                switchSceneEvent(FxmlView.USERMANAGEMENT);
+            }else{
+                LOG.debug("username not found");
+            }
+        });
     }
 
     //-------------GETTERS-----------------------
 
-    public JFXTextField getLicense() {
+   public JFXTextField getLicense() {
         return license;
     }
 
