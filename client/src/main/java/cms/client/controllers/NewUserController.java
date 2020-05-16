@@ -47,6 +47,7 @@ public class NewUserController extends AbstractController {
     public void send(ActionEvent event) {
         if(username.getText().trim().equals("")||firstName.getText().trim().equals("")||password.getText().trim().equals("")||lastName.getText().trim().equals("")){
             LOG.debug("please fill all");
+            displayError("Please fill every field");
             return;
         }
         Service<String> service;
@@ -63,6 +64,7 @@ public class NewUserController extends AbstractController {
                 switchSceneEvent(FxmlView.USERMANAGEMENT);
             }else {
                 LOG.debug("username exists");
+                displayError("This username is already taken");
             }
         });
     }
@@ -70,6 +72,7 @@ public class NewUserController extends AbstractController {
     private Service<String> createDriver() {
         if(licenceNumber.getText().trim().equals("")){
             LOG.debug("fill all");
+            displayError("Please fill every field");
             return null;
         }
         return getRequest("/regularuser/create?username="+username.getText().trim()+"&name="+firstName.getText().trim()+":"+lastName.getText().trim()+"&password="+password.getText().trim()+"&licence="+licenceNumber.getText().trim()+"&vehicle="+vehicle.getValue());

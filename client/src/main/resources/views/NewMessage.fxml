@@ -21,8 +21,13 @@
             <Label layoutX="38.0" layoutY="19.0" text="To:" />
             <Label layoutX="19.0" layoutY="113.0" text="Message:" />
             <JFXButton layoutX="225.0" layoutY="249.0" onAction="#send" stylesheets="styles/controls/jfx-button.css" text="Send" />
-            <JFXButton onAction="#cancel" layoutX="307.0" layoutY="249.0" text="Cancel" />
+            <JFXButton layoutX="307.0" layoutY="249.0" onAction="#cancel" text="Cancel" />
          </children>
       </AnchorPane>
+      <Label fx:id="error" layoutX="188.0" layoutY="32.0" prefHeight="18.0" prefWidth="275.0" textFill="#bf0303" />
    </children>
+
+
+
+
 </AnchorPane>

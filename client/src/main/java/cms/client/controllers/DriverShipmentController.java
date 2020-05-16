@@ -82,6 +82,7 @@ public class DriverShipmentController extends AbstractController {
         }
         else if(date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay())<0){
             LOG.debug("nobody cant change their past");
+            displayError("Please enter a valid date");
         }
         else {
             String url ="/createshipment?cargo="+cargo.getText()+"&vehicle="+vehicle.getValue()+"&date="+date.getValue()+"&destination="+country.getText()+city.getText()+adress.getText();

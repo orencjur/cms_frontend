@@ -2,13 +2,26 @@ package cms.client.controllers;
 
 import cms.client.view.FxmlView;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class MainMenuDriver extends AbstractController{
-    public void msgboard(ActionEvent event) {
+
+    @FXML
+    public void msgBoard(ActionEvent event) {
         switchSceneEvent(FxmlView.MSGBOARD);
     }
 
+    @FXML
     public void shipments(ActionEvent event) {
         switchSceneEvent(FxmlView.DRIVER_SHIPMENT);
+    }
+
+    @FXML
+    public Label name;
+
+    @FXML
+    public void initialize() {
+        name.setText("Logged as "+stageManager.getSession().getLoggedUser());
     }
 }

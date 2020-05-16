@@ -14,14 +14,16 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.apache.log4j.Logger;
-
+import javafx.scene.layout.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -52,21 +54,7 @@ public abstract class  AbstractController {
     }
 
 
-    public void popup(final Stage primaryStage) {
-        new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                final Stage dialog = new Stage();
-                switchSceneEvent(FxmlView.POPUP);
-                /*
-                dialog.setScene(scene);
-                dialog.alwaysOnTopProperty();
-                dialog.show();
 
-                 */
-            }
-        };
-    }
 
     protected TimeoutSericeSynchronizer setTimeout(int seconds,Service<String> requestSer){
         Timeout timeout = new Timeout();
@@ -137,6 +125,13 @@ public abstract class  AbstractController {
         switchSceneEvent(FxmlView.LOGIN);
     }
 
+
+    @FXML
+    private Label error;
+
+    protected void displayError(String message){
+        error.setText(message);
+    }
     //Inits ---------------------------------------------------------------------------------------------
     protected void initVehicleCombo(ComboBox<String> vehicle){
         Service<String> service = getInitRequest("/vehicles");

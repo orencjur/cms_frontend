@@ -74,6 +74,7 @@ public class ModifyUserController extends AbstractController {
     public void save(ActionEvent event) {
         if(getUsername().getText().trim().equals("")||getFname().getText().trim().equals("")||getLname().getText().trim().equals("")){
             LOG.debug("please fill all");
+            displayError("Please fill all the fields");
             return;
         }
         userModifier.save();
@@ -85,6 +86,7 @@ public class ModifyUserController extends AbstractController {
                 switchSceneEvent(FxmlView.USERMANAGEMENT);
             }else{
                 LOG.debug("username not found");
+                displayError("User not found");
             }
         });
     }

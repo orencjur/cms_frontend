@@ -39,6 +39,7 @@ public class NewMessageController extends AbstractController {
         String cont= content.getText();
         if(cont.trim().equals("")||users.getSelectionModel().isEmpty()){
             LOG.debug("fill everythig");
+            displayError("Please fill every field");
         }else {
             cont=cont.replaceAll("\\s",":");
             String receiver = users.getValue();
