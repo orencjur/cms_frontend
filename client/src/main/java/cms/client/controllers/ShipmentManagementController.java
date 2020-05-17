@@ -60,7 +60,7 @@ public class ShipmentManagementController extends AbstractController {
             return;
         }
         intitStatuses();
-        initVehicleCombo(vehicle,"/vehicles");
+        initCombo(vehicle,"/vehicles");
         init=true;
     }
 
@@ -90,6 +90,7 @@ public class ShipmentManagementController extends AbstractController {
             Service<String> service = getRequest(url);
             service.setOnSucceeded(e -> {
                 LOG.debug("shipment created");
+                displayError("shipment created succesfully");
             });
         }
     }

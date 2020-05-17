@@ -40,7 +40,7 @@ public class NewUserController extends AbstractController {
         initTextFields();
         if(stageManager.getSession().isCreatingDriver()){
             textFields.add(licenceNumber);
-            initVehicleCombo(vehicle,"/vehicles/available");
+            initCombo(vehicle,"/vehicles/available");
             licenceNumber.setVisible(true);
             vehicle.setVisible(true);
             vehicleLabel.setVisible(true);

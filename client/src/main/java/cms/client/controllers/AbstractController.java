@@ -124,7 +124,7 @@ public abstract class  AbstractController {
         error.setText(message);
     }
     //Inits ---------------------------------------------------------------------------------------------
-    protected void initVehicleCombo(ComboBox<String> vehicle,String url){
+    protected void initCombo(ComboBox vehicle,String url){
         Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
             vehicle.getItems().clear();
@@ -133,7 +133,7 @@ public abstract class  AbstractController {
         });
     }
 
-    protected void initVehicleCombo(ComboBox<String> vehicle, String defaultValue,String url){
+    protected void initCombo(ComboBox vehicle, String defaultValue,String url){
         Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
             vehicle.getItems().clear();

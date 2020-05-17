@@ -14,6 +14,8 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Arrays;
+
 public class VehicleManagementController extends AbstractController {
     @FXML
     private JFXTextField licencefill;
@@ -29,10 +31,22 @@ public class VehicleManagementController extends AbstractController {
     @FXML
     private TableColumn driver;
 
+
     public void confirm(ActionEvent event) {
+        if(!validator.validateTextFields(Arrays.asList(licencefill))){
+            return;
+        }
+       Service<String> service = getRequest("/vehicles/create?licence="+licencefill);
+        service.setOnSucceeded((WorkerStateEvent e) -> {
+            displayError("Vehicle created successfully");
+        });
     }
 
     public void clear(ActionEvent event) {
+        licencefill.setText("");
+        try {
+            driverCombo.valueProperty().setValue(null);
+        }catch (Exception e){/*nothing to worry about just not filled*/}
     }
 
     @FXML
@@ -44,6 +58,7 @@ public class VehicleManagementController extends AbstractController {
         intitVehicles();
         init=true;
     }
+
 
     private void intitVehicles() {
         setRowFact();
