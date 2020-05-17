@@ -16,10 +16,10 @@
       <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="304.0" prefWidth="571.0">
          <children>
             <JFXTextField fx:id="content" alignment="TOP_LEFT" centerShape="false" editable="false" layoutX="101.0" layoutY="73.0" prefHeight="116.0" prefWidth="456.0" scaleShape="false" />
-            <Label fx:id="from" layoutX="38.0" layoutY="19.0" text="From" />
-            <Label layoutX="19.0" layoutY="113.0" text="Message:" />
-            <Label fx:id="date" layoutX="296.0" layoutY="19.0" text="Timestamp" />
-            <JFXButton layoutX="307.0" layoutY="249.0" onAction="#cancel" text="Cancel"  style="-fx-background-color: #b61101;"/>
+            <Label fx:id="from" layoutX="38.0" layoutY="19.0" text="From" textFill="WHITE"/>
+            <Label layoutX="19.0" layoutY="113.0" text="Message:" textFill="WHITE" />
+            <Label fx:id="date" layoutX="296.0" layoutY="19.0" text="Timestamp" textFill="WHITE"/>
+            <JFXButton layoutX="307.0" layoutY="249.0" onAction="#cancel" text="Cancel"  style="-fx-background-color: #b61101;" textFill="WHITE"/>
          </children>
       </AnchorPane>
       <Label fx:id="error" layoutX="283.0" layoutY="32.0" prefHeight="18.0" prefWidth="269.0" textFill="#bf0303" />
