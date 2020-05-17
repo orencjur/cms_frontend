@@ -3,6 +3,8 @@ package cms.client.controllers;
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.Vehicle;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -13,6 +15,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class VehicleManagementController extends AbstractController {
+    @FXML
+    private JFXTextField licencefill;
+    @FXML
+    private JFXComboBox driverCombo;
     @FXML
     private TableView tableView;
 
@@ -58,8 +64,8 @@ public class VehicleManagementController extends AbstractController {
             TableRow<Message> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    Message rowData = row.getItem();
-                    stageManager.getSession().setViewingMessage(rowData);
+                   // Message rowData = row.getItem();
+                    //stageManager.getSession().setViewingMessage(rowData);
                    // switchSceneEvent(FxmlView.MSGVIEW);
                 }
             });
