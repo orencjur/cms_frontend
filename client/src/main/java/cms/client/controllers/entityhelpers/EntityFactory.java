@@ -48,6 +48,19 @@ public class EntityFactory<T > {
         return result;
     }
 
+    public static List<Vehicle> parseVehicle(List<String> strings){
+
+        List<Vehicle> result = new ArrayList<>();
+        if(strings.size()%2!=0){
+            LOG.debug("bad parsing "+strings.size());
+            return result;
+        }
+        for(int i=0;i<strings.size();i+=6){
+            result.add(new Vehicle(strings.get(i),strings.get(i+1)));
+        }
+        return result;
+    }
+
     public static List<User> parseUser(List<String> strings){
         List<User> result = new ArrayList<>();
         if(strings.size() % 5 == 0 && (strings.get(4).equals("true")||strings.get(4).equals("false"))) {

@@ -28,4 +28,9 @@ public class MainMenuDispatchController extends AbstractController {
     public void users(ActionEvent event) {
         switchSceneEvent(FxmlView.USERMANAGEMENT);
     }
+
+    @FXML
+    public void vehicleManagement(ActionEvent event) {
+        switchSceneEvent(FxmlView.VEHICLES);
+    }
 }

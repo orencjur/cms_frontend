@@ -24,8 +24,7 @@ public class LoginController extends AbstractController {
         String pass = password.getText().trim();
         LOG.debug("username= "+user+" password= "+ pass);
         if(user.equals("") || pass.equals("") ){
-            System.out.println("kokot");
-            //vokno please fill username and password
+            displayError("Please fill all textfields");
         }else {
             LOG.debug("login submit");
             String url ="/login?username="+user+"&password="+pass;

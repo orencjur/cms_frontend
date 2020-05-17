@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ShipmentManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.VehicleManagementController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Vehicle Manager">
          <font>
@@ -29,11 +29,11 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0">
                                  <children>
-                                    <TableView fx:id="shipmentTable" layoutX="14.0" layoutY="10.0" prefHeight="443.0" prefWidth="845.0">
+                                    <TableView fx:id="tableView" layoutX="14.0" layoutY="10.0" prefHeight="443.0" prefWidth="845.0">
                                       <columns>
-                                        <TableColumn fx:id="expedition" editable="false" prefWidth="180.0" text="License plate" />
-                                        <TableColumn fx:id="status" editable="false" prefWidth="136.0" text="Availability" />
-                                          <TableColumn fx:id="completition" editable="false" minWidth="0.0" prefWidth="528.0" text="Driver" />
+                                        <TableColumn fx:id="licencePlate" editable="false" prefWidth="180.0" text="License plate" />
+                                        <TableColumn fx:id="availability" editable="false" prefWidth="136.0" text="Availability" />
+                                          <TableColumn fx:id="driver" editable="false" minWidth="0.0" prefWidth="528.0" text="Driver" />
                                       </columns>
                                     </TableView>
                                  </children>
