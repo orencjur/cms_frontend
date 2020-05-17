@@ -24,7 +24,7 @@ public class ModifyDriverStrategy extends ModifyUserController implements Modify
         parent.getFname().setText(user.getName());
         parent.getLname().setText(user.getSurname());
         parent.getUsername().setText(user.getUsername());
-        initVehicleCombo(parent.getVehicle(),user.getUserVehicle());
+        initVehicleCombo(parent.getVehicle(),user.getUserVehicle(),"/vehicles/available");
         parent.getLicense().setText(user.getLicenceNumber());
     }
 

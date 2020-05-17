@@ -88,7 +88,7 @@ public class ModifyUserController extends AbstractController {
     }
 
     public void save(ActionEvent event) {
-        if(!validator.validate(textFields)){
+        if(!validator.validateTextFields(textFields)){
             return;
         }
         userModifier.save();

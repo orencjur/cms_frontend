@@ -7,7 +7,6 @@ import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 
 import java.util.ArrayList;
@@ -61,7 +60,7 @@ public class NewUserController extends AbstractController {
         textFields.add(username);
     }
     public void send(ActionEvent event) {
-        if(!validator.validate(textFields)){
+        if(!validator.validateTextFields(textFields)){
             return;
         }
         Service<String> service;
