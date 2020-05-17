@@ -9,30 +9,30 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #242424" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ModifyUserController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="User Info">
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="User Info" style="-fx-text-fill: WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <AnchorPane layoutX="15.0" layoutY="67.0" prefHeight="304.0" prefWidth="571.0">
          <children>
-            <Label layoutX="26.0" layoutY="20.0" text="Name" />
-            <JFXButton fx:id="modify" layoutX="212.0" layoutY="249.0" onAction="#modify" stylesheets="styles/controls/jfx-button.css" text="Modify" style="-fx-background-color: #b61101;"/>
-            <JFXButton fx:id="close" layoutX="307.0" layoutY="249.0" onAction="#userManaagement" text="Close" style="-fx-background-color: #b61101;"/>
-            <JFXTextField fx:id="fname" disable="true" layoutX="134.0" layoutY="16.0" />
-            <JFXTextField fx:id="lname" disable="true" layoutX="307.0" layoutY="16.0" />
-            <JFXTextField fx:id="pass" disable="true" layoutX="212.0" layoutY="117.0" />
-            <JFXComboBox fx:id="vehicle" disable="true" layoutX="212.0" layoutY="207.0" prefHeight="28.0" prefWidth="152.0" />
-            <JFXTextField fx:id="username" disable="true" layoutX="212.0" layoutY="65.0" />
-            <Label layoutX="26.0" layoutY="69.0" text="Username" />
-            <Label layoutX="27.0" layoutY="121.0" text="Password" />
-            <Label fx:id="licenceLabel" layoutX="26.0" layoutY="170.0" text="License Number" />
-            <JFXTextField fx:id="license" disable="true" layoutX="210.0" layoutY="166.0" />
-            <Label fx:id="vehicleLabel" layoutX="27.0" layoutY="221.0" text="Vehicle" />
+            <Label layoutX="26.0" layoutY="20.0" text="Name" style="-fx-text-fill: WHITE"/>
+            <JFXButton fx:id="modify" layoutX="212.0" layoutY="249.0" onAction="#modify" stylesheets="styles/controls/jfx-button.css" text="Modify" style="-fx-background-color: #b61101; -fx-text-fill: WHITE"/>
+            <JFXButton fx:id="close" layoutX="307.0" layoutY="249.0" onAction="#userManaagement" text="Close" style="-fx-background-color: #b61101; -fx-text-fill: WHITE"/>
+            <JFXTextField fx:id="fname" disable="true" layoutX="134.0" layoutY="16.0" style="-fx-text-fill: WHITE"/>
+            <JFXTextField fx:id="lname" disable="true" layoutX="307.0" layoutY="16.0" style="-fx-text-fill: WHITE"/>
+            <JFXTextField fx:id="pass" disable="true" layoutX="212.0" layoutY="117.0" style="-fx-text-fill: WHITE"/>
+            <JFXComboBox fx:id="vehicle" disable="true" layoutX="212.0" layoutY="207.0" prefHeight="28.0" prefWidth="152.0" style="-fx-text-fill: WHITE"/>
+            <JFXTextField fx:id="username" disable="true" layoutX="212.0" layoutY="65.0" style="-fx-text-fill: WHITE"/>
+            <Label layoutX="26.0" layoutY="69.0" text="Username" style="-fx-text-fill: WHITE"/>
+            <Label layoutX="27.0" layoutY="121.0" text="Password" style="-fx-text-fill: WHITE"/>
+            <Label fx:id="licenceLabel" layoutX="26.0" layoutY="170.0" text="License Number" style="-fx-text-fill: WHITE"/>
+            <JFXTextField fx:id="license" disable="true" layoutX="210.0" layoutY="166.0" style="-fx-text-fill: WHITE"/>
+            <Label fx:id="vehicleLabel" layoutX="27.0" layoutY="221.0" text="Vehicle" style="-fx-text-fill: WHITE"/>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="save" disable="true" layoutX="474.0" layoutY="25.0" onAction="#save" text="Save changes" visible="false" style="-fx-background-color: #b61101;" />
-      <JFXButton fx:id="delete" disable="true" layoutX="363.0" layoutY="25.0" onAction="#delete" text="Delete User" visible="false"  style="-fx-background-color: #b61101;"/>
+      <JFXButton fx:id="save" disable="true" layoutX="474.0" layoutY="25.0" onAction="#save" text="Save changes" visible="false" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" />
+      <JFXButton fx:id="delete" disable="true" layoutX="363.0" layoutY="25.0" onAction="#delete" text="Delete User" visible="false"  style="-fx-background-color: #b61101; -fx-text-fill: WHITE"/>
       <Label fx:id="error" layoutX="129.0" layoutY="32.0" prefHeight="18.0" prefWidth="454.0" textFill="#bf0303" />
    </children>
 

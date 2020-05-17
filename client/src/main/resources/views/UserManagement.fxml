@@ -13,40 +13,43 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXComboBox?>
+
 <AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #242424" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.UserManagementController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="User Manager">
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="User Manager" textFill="WHITE" style="-fx-background-color: #242424; -fx-text-fill: WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TabPane layoutX="14.0" layoutY="67.0" prefHeight="524.0" prefWidth="875.0" styleClass="black" tabClosingPolicy="UNAVAILABLE">
+      <JFXTabPane layoutX="14.0" layoutY="67.0" prefHeight="524.0" prefWidth="875.0" styleClass="black" tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: #242424; -fx-border-color: #242424;">
         <tabs>
-          <Tab styleClass="black" text="User Overview">
+          <Tab styleClass="black" text="User Overview" style="-fx-background-color: #242424; -fx-border-color: #242424;">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE">
                      <children>
 
-                        <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="534.0" prefWidth="1175.0" AnchorPane.bottomAnchor="-70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="534.0" prefWidth="1175.0" AnchorPane.bottomAnchor="-70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE">
                                  <children>
-                                     <ComboBox fx:id="userRole" layoutX="73.0" layoutY="15.0" prefHeight="16.0" prefWidth="99.0">
+                                     <JFXComboBox fx:id="userRole" layoutX="73.0" layoutY="15.0" prefHeight="16.0" prefWidth="99.0">
                                          <items>
                                              <FXCollections fx:factory="observableArrayList">
                                                  <String fx:value="Dispatcher" />
                                                  <String fx:value="Driver" />
                                              </FXCollections>
                                          </items>
-                                     </ComboBox>
-                                    <TableView fx:id="userTable" layoutX="14.0" layoutY="57.0" prefHeight="396.0" prefWidth="845.0">
-                                      <columns>
-                                        <TableColumn fx:id="name" editable="false" prefWidth="114.0" text="Name" />
-                                        <TableColumn fx:id="surname" editable="false" prefWidth="127.0" text="Surname" />
-                                          <TableColumn fx:id="username" editable="false" minWidth="0.0" prefWidth="144.0" text="username" />
-                                          <TableColumn fx:id="userVehicle" editable="false" prefWidth="115.0" text="Vehicle" />
-                                          <TableColumn fx:id="licenceNumber" editable="false" prefWidth="125.0" text="License Number" />
-                                          <TableColumn fx:id="available" editable="false" prefWidth="241.0" text="Available?" />
+                                     </JFXComboBox>
+                                    <TableView fx:id="userTable" layoutX="14.0" layoutY="57.0" prefHeight="396.0" prefWidth="845.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE">
+                                      <columns >
+                                        <TableColumn fx:id="name" editable="false" prefWidth="114.0" text="Name" style="-fx-background-color: #a29e98; -fx-text: WHITE"/>
+                                        <TableColumn fx:id="surname" editable="false" prefWidth="127.0" text="Surname" style="-fx-background-color: #a29e98; -fx-text: WHITE"/>
+                                          <TableColumn fx:id="username" editable="false" minWidth="0.0" prefWidth="144.0" text="username" style="-fx-background-color: #a29e98; -fx-text: WHITE"/>
+                                          <TableColumn fx:id="userVehicle" editable="false" prefWidth="115.0" text="Vehicle" style="-fx-background-color: #a29e98; -fx-text: WHITE"/>
+                                          <TableColumn fx:id="licenceNumber" editable="false" prefWidth="125.0" text="License Number" style="-fx-background-color: #a29e98; -fx-text: WHITE"/>
+                                          <TableColumn fx:id="available" editable="false" prefWidth="241.0" text="Available?" style="-fx-background-color: #a29e98; -fx-text: WHITE"/>
                                       </columns>
                                     </TableView>
                                     <JFXButton fx:id="newUser" layoutX="710.0" layoutY="14.0" onAction="#newUser" prefHeight="32.0" prefWidth="138.0" text="Create New User" style="-fx-background-color: #b61101;"/>
@@ -59,7 +62,7 @@
             </content>
           </Tab>
         </tabs>
-      </TabPane>
+      </JFXTabPane>
       <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" text="Home" style="-fx-background-color: #b61101;"/>
       <Label fx:id="error" layoutX="244.0" layoutY="35.0" prefHeight="18.0" prefWidth="413.0" textFill="#bf0303" />
    </children>
