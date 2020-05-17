@@ -2,6 +2,7 @@ package cms.client.controllers;
 
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Message;
+import cms.client.controllers.entityhelpers.Vehicle;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -40,13 +41,13 @@ public class VehicleManagementController extends AbstractController {
 
     private void intitVehicles() {
         setRowFact();
-        Service<String> service = getInitRequest("/vehicles");
+        Service<String> service = getInitRequest("/vehicle-driver");
         service.setOnSucceeded((WorkerStateEvent event) -> {
             tableView.getItems().clear();
-            licencePlate.setCellValueFactory(new PropertyValueFactory<Message, String>("user"));
-            availability.setCellValueFactory(new PropertyValueFactory<Message, String>("date"));
-            driver.setCellValueFactory(new PropertyValueFactory<Message, String>("time"));
-            tableView.getItems().addAll(EntityFactory.parseMessages(parse(service.getValue())));
+            licencePlate.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("licencePlate"));
+            availability.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("available"));
+            driver.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("driver"));
+            tableView.getItems().addAll(EntityFactory.parseVehicle(parse(service.getValue())));
             initSynchronizers.add(setTimeout(60,service));
         });
     }

@@ -13,6 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ModifyUserController extends AbstractController {
 
 
@@ -40,18 +43,31 @@ public class ModifyUserController extends AbstractController {
     private ModifyUserInterface userModifier;
 
 
+    private List<JFXTextField> textFields;
+
+
 
 
     @FXML
     public void initialize() {
        User showingUser = stageManager.getSession().getViewingUser();
+       initTextfields();
        if(showingUser.getUserVehicle().equals("Dispatcher")){
            userModifier = new ModifyDispatcherStrategy(this);
        }else {
            userModifier = new ModifyDriverStrategy(this);
+           textFields.add(license);
        }
        userModifier.init(showingUser);
 
+    }
+
+
+    private void initTextfields(){
+        textFields = new ArrayList<>();
+        textFields.add(lname);
+        textFields.add(fname);
+        textFields.add(username);
     }
     public void modify(ActionEvent event) {
         save.setDisable(false);
@@ -72,9 +88,7 @@ public class ModifyUserController extends AbstractController {
     }
 
     public void save(ActionEvent event) {
-        if(getUsername().getText().trim().equals("")||getFname().getText().trim().equals("")||getLname().getText().trim().equals("")){
-            LOG.debug("please fill all");
-            displayError("Please fill all the fields");
+        if(!validator.validate(textFields)){
             return;
         }
         userModifier.save();
@@ -93,6 +107,9 @@ public class ModifyUserController extends AbstractController {
 
     //-------------GETTERS-----------------------
 
+    public List<JFXTextField> getTextFields() {
+        return textFields;
+    }
    public JFXTextField getLicense() {
         return license;
     }

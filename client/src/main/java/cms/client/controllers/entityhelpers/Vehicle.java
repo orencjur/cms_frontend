@@ -10,7 +10,7 @@ public class Vehicle {
 
     public Vehicle(String licencePlate,String driver) {
         this.licencePlate = new SimpleStringProperty(licencePlate);
-        if(driver.trim().equals("")){
+        if(driver.trim().equals("null")){
             this.driver=new SimpleStringProperty("none");
             this.available= new SimpleStringProperty("yes");
         }else {

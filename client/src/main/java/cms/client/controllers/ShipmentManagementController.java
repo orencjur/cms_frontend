@@ -13,6 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShipmentManagementController extends AbstractController {
     @FXML
@@ -59,7 +60,7 @@ public class ShipmentManagementController extends AbstractController {
             return;
         }
         intitStatuses();
-        initVehicleCombo(vehicle);
+        initVehicleCombo(vehicle,"/vehicles");
         init=true;
     }
 

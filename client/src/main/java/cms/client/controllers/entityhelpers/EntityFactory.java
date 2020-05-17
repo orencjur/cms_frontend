@@ -55,7 +55,7 @@ public class EntityFactory<T > {
             LOG.debug("bad parsing "+strings.size());
             return result;
         }
-        for(int i=0;i<strings.size();i+=6){
+        for(int i=0;i<strings.size();i+=2){
             result.add(new Vehicle(strings.get(i),strings.get(i+1)));
         }
         return result;

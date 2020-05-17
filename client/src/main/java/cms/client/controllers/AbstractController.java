@@ -1,30 +1,19 @@
 package cms.client.controllers;
 
 import cms.client.async.TimeoutSericeSynchronizer;
-import cms.client.fxmlhandler.AppSession;
+import cms.client.controllers.validators.Validator;
 import cms.client.fxmlhandler.StageManager;
 import cms.client.async.Timeout;
 import cms.client.http.HtttpService;
 import cms.client.view.FxmlView;
-import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import org.apache.log4j.Logger;
-import javafx.scene.layout.*;
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -37,8 +26,10 @@ public abstract class  AbstractController {
     private TimeoutSericeSynchronizer lastRequest;
     protected final StageManager stageManager =StageManager.getInstance();
     protected final static Logger LOG = Logger.getLogger(AbstractController.class);
-
-
+    protected Validator validator;
+    AbstractController(){
+        validator = new Validator(this);
+    }
 
     protected void switchSceneEvent(FxmlView view){
         shutdown();
@@ -129,12 +120,12 @@ public abstract class  AbstractController {
     @FXML
     private Label error;
 
-    protected void displayError(String message){
+    public void displayError(String message){
         error.setText(message);
     }
     //Inits ---------------------------------------------------------------------------------------------
-    protected void initVehicleCombo(ComboBox<String> vehicle){
-        Service<String> service = getInitRequest("/vehicles");
+    protected void initVehicleCombo(ComboBox<String> vehicle,String url){
+        Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
@@ -142,8 +133,8 @@ public abstract class  AbstractController {
         });
     }
 
-    protected void initVehicleCombo(ComboBox<String> vehicle, String defaultValue){
-        Service<String> service = getInitRequest("/vehicles");
+    protected void initVehicleCombo(ComboBox<String> vehicle, String defaultValue,String url){
+        Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));

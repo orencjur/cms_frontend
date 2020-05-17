@@ -7,7 +7,11 @@ import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewUserController extends AbstractController {
 
@@ -28,11 +32,16 @@ public class NewUserController extends AbstractController {
     @FXML
     private JFXTextField licenceNumber;
 
+    private List<JFXTextField> textFields;
+
+
 
     @FXML
     public void initialize() {
+        initTextFields();
         if(stageManager.getSession().isCreatingDriver()){
-            initVehicleCombo(vehicle);
+            textFields.add(licenceNumber);
+            initVehicleCombo(vehicle,"/vehicles/available");
             licenceNumber.setVisible(true);
             vehicle.setVisible(true);
             vehicleLabel.setVisible(true);
@@ -44,10 +53,15 @@ public class NewUserController extends AbstractController {
             licenceLabel.setVisible(false);
         }
     }
+    private void initTextFields(){
+        textFields=new ArrayList<>();
+        textFields.add(firstName);
+        textFields.add(lastName);
+        textFields.add(password);
+        textFields.add(username);
+    }
     public void send(ActionEvent event) {
-        if(username.getText().trim().equals("")||firstName.getText().trim().equals("")||password.getText().trim().equals("")||lastName.getText().trim().equals("")){
-            LOG.debug("please fill all");
-            displayError("Please fill every field");
+        if(!validator.validate(textFields)){
             return;
         }
         Service<String> service;
@@ -70,11 +84,7 @@ public class NewUserController extends AbstractController {
     }
 
     private Service<String> createDriver() {
-        if(licenceNumber.getText().trim().equals("")){
-            LOG.debug("fill all");
-            displayError("Please fill every field");
-            return null;
-        }
+
         return getRequest("/regularuser/create?username="+username.getText().trim()+"&name="+firstName.getText().trim()+":"+lastName.getText().trim()+"&password="+password.getText().trim()+"&licence="+licenceNumber.getText().trim()+"&vehicle="+vehicle.getValue());
     }
 
