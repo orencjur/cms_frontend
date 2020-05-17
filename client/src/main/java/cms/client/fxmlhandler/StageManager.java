@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-
 import java.util.Objects;
 import org.apache.log4j.Logger;
 

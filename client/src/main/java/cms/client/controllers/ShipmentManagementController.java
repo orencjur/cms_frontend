@@ -80,10 +80,9 @@ public class ShipmentManagementController extends AbstractController {
         if(cargo.getText().trim().equals("") || country.getText().trim().equals("") || city.getText().trim().equals("") || adress.getText().trim().equals("") || vehicle.getSelectionModel().isEmpty() || date.getValue()==null) {
             System.out.println("kokot");
             displayError("Please fill every field");
-            //vokno please fill everythin}
         }
         else if(date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay())<0){
-            LOG.debug("nobody cant change their past");
+            LOG.debug("nobody can change their past");
             displayError("Please enter a valid date");
         }
         else {

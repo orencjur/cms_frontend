@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.MsgBoardController">
+<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #242424" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.MsgBoardController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Message Board">
          <font>
@@ -16,7 +16,7 @@
       </Label>
       <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="304.0" prefWidth="571.0">
          <children>
-            <JFXButton layoutX="224.0" layoutY="260.0" onAction="#newMessage" prefHeight="38.0" prefWidth="127.0" text="New Message" />
+            <JFXButton layoutX="224.0" layoutY="260.0" onAction="#newMessage" prefHeight="38.0" prefWidth="127.0" text="New Message"  style="-fx-background-color: #b61101;"/>
             <TableView fx:id="tableView" layoutX="14.0" layoutY="8.0" prefHeight="246.0" prefWidth="546.0">
               <columns>
                 <TableColumn fx:id="user" editable="false" prefWidth="66.0" text="User" />
@@ -27,7 +27,7 @@
             </TableView>
          </children>
       </AnchorPane>
-      <JFXButton layoutX="534.0" layoutY="25.0" minWidth="52.0" onAction="#home" prefHeight="32.0" prefWidth="52.0" text="Home" />
+      <JFXButton layoutX="534.0" layoutY="25.0" minWidth="52.0" onAction="#home" prefHeight="32.0" prefWidth="52.0" text="Home" style="-fx-background-color: #b61101;" />
       <Label fx:id="error" layoutX="220.0" layoutY="32.0" prefHeight="18.0" prefWidth="256.0" textFill="#bf0303" />
    </children>
 

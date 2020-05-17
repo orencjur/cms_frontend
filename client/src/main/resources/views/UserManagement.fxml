@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.UserManagementController">
+<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #242424" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.UserManagementController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="User Manager">
          <font>
@@ -49,7 +49,7 @@
                                           <TableColumn fx:id="available" editable="false" prefWidth="241.0" text="Available?" />
                                       </columns>
                                     </TableView>
-                                    <JFXButton fx:id="newUser" layoutX="710.0" layoutY="14.0" onAction="#newUser" prefHeight="32.0" prefWidth="138.0" text="Create New User" />
+                                    <JFXButton fx:id="newUser" layoutX="710.0" layoutY="14.0" onAction="#newUser" prefHeight="32.0" prefWidth="138.0" text="Create New User" style="-fx-background-color: #b61101;"/>
                                  </children>
                               </AnchorPane>
                           </content>
@@ -60,7 +60,7 @@
           </Tab>
         </tabs>
       </TabPane>
-      <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" text="Home" />
+      <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" text="Home" style="-fx-background-color: #b61101;"/>
       <Label fx:id="error" layoutX="244.0" layoutY="35.0" prefHeight="18.0" prefWidth="413.0" textFill="#bf0303" />
    </children>
 
