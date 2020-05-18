@@ -1,5 +1,7 @@
 package cms.client.controllers;
 
+import cms.client.async.Timeout;
+import cms.client.async.TimeoutSericeSynchronizer;
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.Shipment;
@@ -43,6 +45,7 @@ public class UserManagementController extends AbstractController {
 
 
 
+
     @FXML
     public void initialize() {
         if(init==true){
@@ -55,27 +58,26 @@ public class UserManagementController extends AbstractController {
 
     private void intitUsers() {
         setRowFact();
+
         ArrayList<Service<String>> userServices = initServices();
         userRole.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                initSynchronizers.remove(userServices);
+                shutdown();
                 if (userRole.getValue().equals("Dispatcher")) {
                     stageManager.getSession().setCreatingDriver(false);
                     newUser.setText("create Dispatcher");
                     licenceNumber.setVisible(false);
                     available.setVisible(false);
                     userVehicle.setText("Role");
-                    userServices.get(0).restart();
-                    initSynchronizers.add(setTimeout(60,userServices.get(0)));
+                    initServices().get(0).restart();
                 } else {
                     stageManager.getSession().setCreatingDriver(true);
                     newUser.setText("create Driver");
                     licenceNumber.setVisible(true);
                     available.setVisible(true);
                     userVehicle.setText("Vehicle");
-                    userServices.get(1).restart();
-                    initSynchronizers.add(setTimeout(60,userServices.get(1)));
+                    initServices().get(1).restart();
                 }
             }
         });
@@ -102,6 +104,7 @@ public class UserManagementController extends AbstractController {
             licenceNumber.setCellValueFactory(new PropertyValueFactory<User, String>("licenceNumber"));
             available.setCellValueFactory(new PropertyValueFactory<User, String>("availability"));
             userTable.getItems().addAll(EntityFactory.parseUser(parse(service.getValue())));
+            initSynchronizers.add(setTimeout(5,service));
         });
     }
 

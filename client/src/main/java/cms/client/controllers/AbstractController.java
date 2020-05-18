@@ -51,6 +51,7 @@ public abstract class  AbstractController {
         Timeout timeout = new Timeout();
         timeout.timeout(seconds);
         TimeoutSericeSynchronizer synchronizer = new TimeoutSericeSynchronizer(timeout,requestSer);
+        lastRequest=synchronizer;
         return synchronizer;
     }
 
@@ -80,6 +81,9 @@ public abstract class  AbstractController {
 
 
     public void shutdown(){
+        if(service!=null) {
+            service.cancel();
+        }
         for (TimeoutSericeSynchronizer s:initSynchronizers){
             s.stop();
         }
@@ -88,6 +92,12 @@ public abstract class  AbstractController {
     protected void restart(){
         for (TimeoutSericeSynchronizer s:initSynchronizers){
             s.restart();
+        }
+    }
+
+    protected void stop(List<TimeoutSericeSynchronizer> list){
+        for (TimeoutSericeSynchronizer s:list){
+            s.stop();
         }
     }
 

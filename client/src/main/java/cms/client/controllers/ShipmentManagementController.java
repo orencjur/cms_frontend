@@ -1,7 +1,10 @@
 package cms.client.controllers;
 
+import cms.client.async.Timeout;
+import cms.client.async.TimeoutSericeSynchronizer;
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Shipment;
+import cms.client.http.HtttpService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
@@ -13,6 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ShipmentManagementController extends AbstractController {
@@ -52,6 +56,9 @@ public class ShipmentManagementController extends AbstractController {
     @FXML
     private TableView<Shipment> shipmentTable;
 
+    private List<TextField> textFields;
+
+    private TimeoutSericeSynchronizer statusSynchronizer;
 
     @FXML
     public void initialize() {
@@ -60,8 +67,14 @@ public class ShipmentManagementController extends AbstractController {
             return;
         }
         intitStatuses();
-        initCombo(vehicle,"/vehicles");
+        initCombo(vehicle,"/regularuser/name/available");
+        initTextfields();
         init=true;
+    }
+
+    private void initTextfields() {
+        textFields = new ArrayList<>();
+        textFields.addAll(Arrays.asList(cargo,country,city,adress));
     }
 
 
@@ -77,11 +90,13 @@ public class ShipmentManagementController extends AbstractController {
     }
 
     public void confirm(ActionEvent event) {
-        if(cargo.getText().trim().equals("") || country.getText().trim().equals("") || city.getText().trim().equals("") || adress.getText().trim().equals("") || vehicle.getSelectionModel().isEmpty() || date.getValue()==null) {
-            System.out.println("kokot");
-            displayError("Please fill every field");
-        }
-        else if(date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay())<0){
+       if(!validator.validateTextFields(textFields)){
+           return;
+       }
+       if(vehicle.getValue()==null){
+           displayError("Please enter driver");
+       }
+        if(date.getValue()==null || date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay())<0){
             LOG.debug("nobody can change their past");
             displayError("Please enter a valid date");
         }
@@ -91,6 +106,8 @@ public class ShipmentManagementController extends AbstractController {
             service.setOnSucceeded(e -> {
                 LOG.debug("shipment created");
                 displayError("shipment created succesfully");
+                shutdown();
+                restart();
             });
         }
     }
@@ -99,24 +116,26 @@ public class ShipmentManagementController extends AbstractController {
         statuses.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                initSynchronizers.remove(statusServices);
+                if(statusSynchronizer!=null){
+                    statusSynchronizer.stop();
+                }
                 if (statuses.getValue().equals("Active")) {
-                    statusServices.get(0).restart();
+                    initStatusServices().get(0).restart();
                 } else if(statuses.getValue().equals("Inactive")){
-                    statusServices.get(1).restart();
+                    initStatusServices().get(1).restart();
                 }else if(statuses.getValue().equals("Both")){
-                    statusServices.get(2).restart();
+                    initStatusServices().get(2).restart();
             }
             }
         });
-        statuses.setValue("Both");
+        statuses.setValue("Active");
     }
 
     private ArrayList<Service<String>> initStatusServices(){
         ArrayList<Service<String>> statusServices = new ArrayList<>();
-        statusServices.add(getRequest("/activeshipment"));
-        statusServices.add(getRequest("/inactiveshipment"));
-        statusServices.add(getRequest("/shipment"));
+        statusServices.add(new HtttpService("/activeshipment"));
+        statusServices.add(new HtttpService("/inactiveshipment"));
+        statusServices.add(new HtttpService("/shipment"));
         for(Service s : statusServices){
             setSucceededStatusService(s);
         }
@@ -133,7 +152,8 @@ public class ShipmentManagementController extends AbstractController {
             driver.setCellValueFactory(new PropertyValueFactory<Shipment, String>("driver"));
             destination.setCellValueFactory(new PropertyValueFactory<Shipment, String>("destination"));
             shipmentTable.getItems().addAll(EntityFactory.parseShipment(parse(service.getValue())));
-            initSynchronizers.add(setTimeout(60,service));
+            statusSynchronizer=setTimeout(60,service);
+            initSynchronizers.add(statusSynchronizer);
         });
     }
 

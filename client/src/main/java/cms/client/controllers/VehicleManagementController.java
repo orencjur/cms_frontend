@@ -55,6 +55,7 @@ public class VehicleManagementController extends AbstractController {
             restart();
             return;
         }
+        initCombo(driverCombo,"/regularuser/name/truckless");
         intitVehicles();
         init=true;
     }

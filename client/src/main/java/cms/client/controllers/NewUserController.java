@@ -8,6 +8,7 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class NewUserController extends AbstractController {
     @FXML
     private JFXTextField licenceNumber;
 
-    private List<JFXTextField> textFields;
+    private List<TextField> textFields;
 
 
 

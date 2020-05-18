@@ -11,14 +11,14 @@ import java.util.List;
 public class Validator {
     private final static Logger LOG = Logger.getLogger(Validator.class);
     private AbstractController parent;
-    private static List<String> allowed = Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~/?#[]!$&'()*+,;=))".split(""));
+    private static List<String> allowed = Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~/?#[]!$&'()+,;=))".split(""));
 
     public Validator(AbstractController parent){
         this.parent=parent;
     }
 
 
-    public boolean validateTextFields(List<JFXTextField> textFields) {
+    public boolean validateTextFields(List<TextField> textFields) {
 
         for(TextField textField:textFields) {
             if (textField.getText().trim().equals("")) {
@@ -38,4 +38,6 @@ public class Validator {
         }
         return true;
         }
+
+
 }

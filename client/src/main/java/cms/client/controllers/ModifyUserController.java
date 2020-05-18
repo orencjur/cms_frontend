@@ -12,6 +12,7 @@ import javafx.concurrent.Service;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ModifyUserController extends AbstractController {
     private ModifyUserInterface userModifier;
 
 
-    private List<JFXTextField> textFields;
+    private List<TextField> textFields;
 
 
 
@@ -94,7 +95,7 @@ public class ModifyUserController extends AbstractController {
         userModifier.save();
     }
 
-    protected void setOnSucceeded(Service<String> service){
+    public void setOnSucceeded(Service<String> service){
         service.setOnSucceeded(workerStateEvent -> {
             if(service.getValue().equals("true")){
                 switchSceneEvent(FxmlView.USERMANAGEMENT);
@@ -107,7 +108,7 @@ public class ModifyUserController extends AbstractController {
 
     //-------------GETTERS-----------------------
 
-    public List<JFXTextField> getTextFields() {
+    public List<TextField> getTextFields() {
         return textFields;
     }
    public JFXTextField getLicense() {
