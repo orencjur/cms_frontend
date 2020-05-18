@@ -16,37 +16,25 @@ import java.util.ArrayList;
 
 public class DriverShipmentController extends AbstractController {
     @FXML
+    private TableView shipmentTable1;
+    @FXML
+    private TableColumn expedition1;
+    @FXML
+    private TableColumn status1;
+    @FXML
+    private TableColumn cargo1;
+    @FXML
+    private TableColumn destination1;
+    @FXML
     private TableColumn expedition;
     @FXML
     private TableColumn status;
-    @FXML
-    private TableColumn completition;
-    @FXML
-    private TableColumn shipmentVehicle;
-    @FXML
-    private TableColumn driver;
+
     @FXML
     private TableColumn destination;
     @FXML
-    private TextField cargo;
+    private TableColumn cargo;
 
-    @FXML
-    private DatePicker date;
-
-    @FXML
-    private TextField country;
-
-    @FXML
-    private TextField city;
-
-    @FXML
-    private TextField adress;
-
-    @FXML
-    private ComboBox<String> vehicle;
-
-    @FXML
-    private ComboBox<String> statuses;
 
     @FXML
     private TableView<Shipment> shipmentTable;
@@ -54,85 +42,53 @@ public class DriverShipmentController extends AbstractController {
 
     @FXML
     public void initialize() {
-        if(init==true){
-            restart();
-            return;
-        }
+
         intitStatuses();
-        initCombo(vehicle,"/vehicles");
-        init=true;
     }
 
 
-    public void clear(ActionEvent event) {
-        cargo.clear();
-        date.getEditor().clear();
-        country.clear();
-        city.clear();
-        adress.clear();
-        try {
-            vehicle.valueProperty().setValue(null);
-        }catch (Exception e){/*nothing to worry about just not filled*/}
-    }
 
-    public void confirm(ActionEvent event) {
-        if(cargo.getText().trim().equals("") || country.getText().trim().equals("") || city.getText().trim().equals("") || adress.getText().trim().equals("") || vehicle.getSelectionModel().isEmpty() || date.getValue()==null) {
-            System.out.println("kokot");
-            //vokno please fill everythin}
-        }
-        else if(date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay())<0){
-            LOG.debug("nobody cant change their past");
-            displayError("Please enter a valid date");
-        }
-        else {
-            String url ="/createshipment?cargo="+cargo.getText()+"&vehicle="+vehicle.getValue()+"&date="+date.getValue()+"&destination="+country.getText()+city.getText()+adress.getText();
-            Service<String> service = getRequest(url);
-            service.setOnSucceeded(e -> {
-                LOG.debug("shipment created");
-            });
-        }
-    }
+
     private void intitStatuses() {
         ArrayList<Service<String>> statusServices = initStatusServices();
-        statuses.valueProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                initSynchronizers.remove(statusServices);
-                if (statuses.getValue().equals("Active")) {
-                    statusServices.get(0).restart();
-                } else if(statuses.getValue().equals("Inactive")){
-                    statusServices.get(1).restart();
-                }else if(statuses.getValue().equals("Both")){
-                    statusServices.get(2).restart();
-            }
-            }
-        });
-        statuses.setValue("Both");
+
     }
 
     private ArrayList<Service<String>> initStatusServices(){
         ArrayList<Service<String>> statusServices = new ArrayList<>();
-        statusServices.add(getRequest("/activeshipment"));
-        for(Service s : statusServices){
-            setSucceededStatusService(s);
-        }
+        statusServices.add(getInitRequest("/inactiveShipment/driver?driver="+stageManager.getSession().getLoggedUser()));
+        statusServices.add(getInitRequest("/activeshipment/driver?driver="+stageManager.getSession().getLoggedUser()));
+        setSucceededStatusService(statusServices.get(0));
+        setSucceededStatusService1(statusServices.get(1));
         return statusServices;
     }
 
     private void setSucceededStatusService(Service<String> service){
+        setSucceededStatusService(service, shipmentTable, expedition, status, cargo, destination);
+    }
+
+    private void setSucceededStatusService(Service<String> service, TableView<Shipment> shipmentTable, TableColumn expedition, TableColumn status, TableColumn cargo, TableColumn destination) {
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             shipmentTable.getItems().clear();
             expedition.setCellValueFactory(new PropertyValueFactory<Shipment, String>("expedion"));
             status.setCellValueFactory(new PropertyValueFactory<Shipment, String>("status"));
-            completition.setCellValueFactory(new PropertyValueFactory<Shipment, String>("completion"));
-            shipmentVehicle.setCellValueFactory(new PropertyValueFactory<Shipment, String>("vehicle"));
-            driver.setCellValueFactory(new PropertyValueFactory<Shipment, String>("driver"));
+            cargo.setCellValueFactory(new PropertyValueFactory<Shipment, String>("vehicle"));
             destination.setCellValueFactory(new PropertyValueFactory<Shipment, String>("destination"));
             shipmentTable.getItems().addAll(EntityFactory.parseShipment(parse(service.getValue())));
             initSynchronizers.add(setTimeout(60,service));
         });
     }
 
+    private void setSucceededStatusService1(Service<String> service){
+        setSucceededStatusService(service, shipmentTable1, expedition1, status1, cargo1, destination1);
+    }
 
 
+    public void finished(ActionEvent event) {
+       Service<String> service =  getRequest("/finished?driver="+stageManager.getSession().getLoggedUser());
+        service.setOnSucceeded((WorkerStateEvent e) -> {
+            initialize();
+        });
+    }
 }

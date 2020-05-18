@@ -32,13 +32,12 @@ public abstract class  AbstractController {
     }
 
     protected void switchSceneEvent(FxmlView view){
-        shutdown();
         if(lastRequest!=null) {
             lastRequest.stop();
         }
         if(view.equals(FxmlView.NOCONNECTION)){
             lastRequest=setTimeout(10,service);
-            //timeout(10,url);
+            displayError("no connection");
             return;
         }
         stageManager.switchScene(view);
@@ -71,8 +70,10 @@ public abstract class  AbstractController {
         service =ser;
         return ser;
     }
-    private void HttpErrorWindow(String response){
-
+    protected void httpErrorWindow(String response){
+        if(response.equals("NOCONNECTION")){
+            displayError("no connection");
+        }
     }
     protected static List<String> parse(String toparse){
         return  Arrays.asList(toparse.split("@",0));
@@ -128,15 +129,16 @@ public abstract class  AbstractController {
 
 
     @FXML
-    private Label error;
+    private  Label error;
 
-    public void displayError(String message){
+    public  void displayError(String message){
         error.setText(message);
     }
     //Inits ---------------------------------------------------------------------------------------------
     protected void initCombo(ComboBox vehicle,String url){
         Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
             initSynchronizers.add(setTimeout(60,service));
@@ -146,6 +148,7 @@ public abstract class  AbstractController {
     protected void initCombo(ComboBox vehicle, String defaultValue,String url){
         Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
             vehicle.setValue(defaultValue);

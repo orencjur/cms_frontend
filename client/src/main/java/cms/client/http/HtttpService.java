@@ -1,6 +1,7 @@
 package cms.client.http;
 
 import cms.client.async.Timeout;
+import cms.client.controllers.AbstractController;
 import cms.client.fxmlhandler.StageManager;
 import cms.client.http.requests.HttpRequest;
 

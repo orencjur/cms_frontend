@@ -62,14 +62,10 @@ public class ShipmentManagementController extends AbstractController {
 
     @FXML
     public void initialize() {
-        if(init==true){
-            restart();
-            return;
-        }
+
         intitStatuses();
         initCombo(vehicle,"/regularuser/name/available");
         initTextfields();
-        init=true;
     }
 
     private void initTextfields() {
@@ -106,8 +102,7 @@ public class ShipmentManagementController extends AbstractController {
             service.setOnSucceeded(e -> {
                 LOG.debug("shipment created");
                 displayError("shipment created succesfully");
-                shutdown();
-                restart();
+                initialize();
             });
         }
     }
@@ -134,7 +129,7 @@ public class ShipmentManagementController extends AbstractController {
     private ArrayList<Service<String>> initStatusServices(){
         ArrayList<Service<String>> statusServices = new ArrayList<>();
         statusServices.add(new HtttpService("/activeshipment"));
-        statusServices.add(new HtttpService("/inactiveshipment"));
+        statusServices.add(new HtttpService("/inactiveShipment"));
         statusServices.add(new HtttpService("/shipment"));
         for(Service s : statusServices){
             setSucceededStatusService(s);
@@ -144,10 +139,11 @@ public class ShipmentManagementController extends AbstractController {
 
     private void setSucceededStatusService(Service<String> service){
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             shipmentTable.getItems().clear();
             expedition.setCellValueFactory(new PropertyValueFactory<Shipment, String>("expedion"));
             status.setCellValueFactory(new PropertyValueFactory<Shipment, String>("status"));
-            completition.setCellValueFactory(new PropertyValueFactory<Shipment, String>("completion"));
+            //completition.setCellValueFactory(new PropertyValueFactory<Shipment, String>("completion"));
             shipmentVehicle.setCellValueFactory(new PropertyValueFactory<Shipment, String>("vehicle"));
             driver.setCellValueFactory(new PropertyValueFactory<Shipment, String>("driver"));
             destination.setCellValueFactory(new PropertyValueFactory<Shipment, String>("destination"));

@@ -38,12 +38,12 @@ public class EntityFactory<T > {
     public static List<Shipment> parseShipment(List<String> strings){
 
         List<Shipment> result = new ArrayList<>();
-        if(strings.size()%6!=0){
+        if(strings.size()%5!=0){
             LOG.debug("bad parsing "+strings.size());
             return result;
         }
         for(int i=0;i<strings.size();i+=6){
-            result.add(new Shipment(strings.get(i),strings.get(i+1),strings.get(i+2),strings.get(i+3),strings.get(i+4),strings.get(i+5)));
+            result.add(new Shipment(strings.get(i),strings.get(i+1),strings.get(i+2),strings.get(i+3),strings.get(i+4)));
         }
         return result;
     }

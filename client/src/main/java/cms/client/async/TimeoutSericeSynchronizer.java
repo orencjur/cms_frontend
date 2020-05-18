@@ -32,4 +32,8 @@ public class TimeoutSericeSynchronizer {
     public void restart(){
         service.restart();
     }
+
+    Service getService() {
+        return service;
+    }
 }

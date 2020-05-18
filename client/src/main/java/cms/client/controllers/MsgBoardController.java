@@ -23,13 +23,11 @@ public class MsgBoardController extends AbstractController {
 
     @FXML
     public void initialize() {
-        if(init==true){
-            restart();
-            return;
-        }
+
         setRowFact();
         Service<String> service = getInitRequest("/messages?user="+stageManager.getSession().getLoggedUser()+"&role="+stageManager.getSession().getLoggedRole());
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             tableView.getItems().clear();
             user.setCellValueFactory(new PropertyValueFactory<Message, String>("user"));
             date.setCellValueFactory(new PropertyValueFactory<Message, String>("date"));
@@ -39,7 +37,6 @@ public class MsgBoardController extends AbstractController {
             initSynchronizers.add(setTimeout(60,service));
         });
 
-        init=true;
     }
 
     private void setRowFact(){

@@ -48,12 +48,8 @@ public class UserManagementController extends AbstractController {
 
     @FXML
     public void initialize() {
-        if(init==true){
-            restart();
-            return;
-        }
+
         intitUsers();
-        init=true;
     }
 
     private void intitUsers() {
@@ -96,6 +92,7 @@ public class UserManagementController extends AbstractController {
 
     private void setSucceededStatusService(Service<String> service){
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             userTable.getItems().clear();
             name.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
             surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
@@ -104,7 +101,7 @@ public class UserManagementController extends AbstractController {
             licenceNumber.setCellValueFactory(new PropertyValueFactory<User, String>("licenceNumber"));
             available.setCellValueFactory(new PropertyValueFactory<User, String>("availability"));
             userTable.getItems().addAll(EntityFactory.parseUser(parse(service.getValue())));
-            initSynchronizers.add(setTimeout(5,service));
+            initSynchronizers.add(setTimeout(60,service));
         });
     }
 

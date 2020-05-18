@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #242424" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.ShipmentManagementController">
+<AnchorPane maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #242424" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.DriverShipmentController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Shipments" textFill="WHITE">
          <font>
@@ -31,7 +31,7 @@
                                       <columns>
                                         <TableColumn fx:id="expedition" editable="false" prefWidth="114.0" text="Date of expedition" />
                                         <TableColumn fx:id="status" editable="false" prefWidth="61.0" text="Status" />
-                                          <TableColumn fx:id="completition" editable="false" minWidth="0.0" prefWidth="154.0" text="Date of completion" />
+                                          <TableColumn fx:id="cargo" editable="false" minWidth="0.0" prefWidth="154.0" text="cargo" />
                                           <TableColumn fx:id="destination" editable="false" prefWidth="279.0" text="Destination" />
                                       </columns>
                                     </TableView>
@@ -40,7 +40,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <JFXButton buttonType="RAISED" layoutX="745.0" layoutY="19.0" style="-fx-background-color: #b61101;" text="Mark as finished" />
+                                    <JFXButton onAction="#finished" buttonType="RAISED" layoutX="745.0" layoutY="19.0" style="-fx-background-color: #b61101;" text="Mark as finished" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -49,7 +49,7 @@
                            <columns>
                               <TableColumn fx:id="expedition1" editable="false" prefWidth="114.0" text="Date of expedition" />
                               <TableColumn fx:id="status1" editable="false" prefWidth="61.0" text="Status" />
-                              <TableColumn fx:id="completition1" editable="false" minWidth="0.0" prefWidth="154.0" text="Date of completion" />
+                              <TableColumn fx:id="cargo1" editable="false" minWidth="0.0" prefWidth="154.0" text="Cargo" />
                               <TableColumn fx:id="destination1" editable="false" prefWidth="279.0" text="Destination" />
                            </columns>
                         </TableView>

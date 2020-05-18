@@ -40,6 +40,7 @@ public class LoginController extends AbstractController {
                 stageManager.getSession().setLoggedRole(FxmlView.valueOf(service.getValue()));
                 if(FxmlView.valueOf(service.getValue()).equals(FxmlView.LOGIN)){
                     displayError("Invalid username or password");
+                    return;
                 }
                 switchSceneEvent(FxmlView.valueOf(service.getValue()));
             });

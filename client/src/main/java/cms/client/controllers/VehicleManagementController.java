@@ -51,13 +51,9 @@ public class VehicleManagementController extends AbstractController {
 
     @FXML
     public void initialize() {
-        if(init==true){
-            restart();
-            return;
-        }
+
         initCombo(driverCombo,"/regularuser/name/truckless");
         intitVehicles();
-        init=true;
     }
 
 
@@ -65,6 +61,7 @@ public class VehicleManagementController extends AbstractController {
         setRowFact();
         Service<String> service = getInitRequest("/vehicle-driver");
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             tableView.getItems().clear();
             licencePlate.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("licencePlate"));
             availability.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("available"));

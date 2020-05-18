@@ -97,6 +97,7 @@ public class ModifyUserController extends AbstractController {
 
     public void setOnSucceeded(Service<String> service){
         service.setOnSucceeded(workerStateEvent -> {
+            httpErrorWindow(service.getValue());
             if(service.getValue().equals("true")){
                 switchSceneEvent(FxmlView.USERMANAGEMENT);
             }else{

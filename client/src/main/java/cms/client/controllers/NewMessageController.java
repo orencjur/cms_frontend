@@ -29,6 +29,7 @@ public class NewMessageController extends AbstractController {
             return;
         }
         service.setOnSucceeded((WorkerStateEvent event) -> {
+            httpErrorWindow(service.getValue());
             users.getItems().clear();
             users.getItems().addAll(parse(service.getValue()));
             initSynchronizers.add(setTimeout(60,service));
