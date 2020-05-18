@@ -139,7 +139,7 @@ public class ShipmentManagementController extends AbstractController {
 
     private void setSucceededStatusService(Service<String> service){
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            httpErrorWindow(service.getValue());
+            httpErrorWindow(service);
             shipmentTable.getItems().clear();
             expedition.setCellValueFactory(new PropertyValueFactory<Shipment, String>("expedion"));
             status.setCellValueFactory(new PropertyValueFactory<Shipment, String>("status"));

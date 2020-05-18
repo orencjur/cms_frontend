@@ -58,8 +58,8 @@ public class DriverShipmentController extends AbstractController {
         ArrayList<Service<String>> statusServices = new ArrayList<>();
         statusServices.add(getInitRequest("/inactiveShipment/driver?driver="+stageManager.getSession().getLoggedUser()));
         statusServices.add(getInitRequest("/activeshipment/driver?driver="+stageManager.getSession().getLoggedUser()));
-        setSucceededStatusService(statusServices.get(0));
-        setSucceededStatusService1(statusServices.get(1));
+        setSucceededStatusService1(statusServices.get(0));
+        setSucceededStatusService(statusServices.get(1));
         return statusServices;
     }
 
@@ -69,7 +69,7 @@ public class DriverShipmentController extends AbstractController {
 
     private void setSucceededStatusService(Service<String> service, TableView<Shipment> shipmentTable, TableColumn expedition, TableColumn status, TableColumn cargo, TableColumn destination) {
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            httpErrorWindow(service.getValue());
+            httpErrorWindow(service);
             shipmentTable.getItems().clear();
             expedition.setCellValueFactory(new PropertyValueFactory<Shipment, String>("expedion"));
             status.setCellValueFactory(new PropertyValueFactory<Shipment, String>("status"));

@@ -92,7 +92,7 @@ public class UserManagementController extends AbstractController {
 
     private void setSucceededStatusService(Service<String> service){
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            httpErrorWindow(service.getValue());
+            httpErrorWindow(service);
             userTable.getItems().clear();
             name.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
             surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));

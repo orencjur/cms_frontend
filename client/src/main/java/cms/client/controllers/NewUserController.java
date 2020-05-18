@@ -80,7 +80,7 @@ public class NewUserController extends AbstractController {
                 LOG.debug("username exists");
                 displayError("This username is already taken");
             }
-            httpErrorWindow(service.getValue());
+            httpErrorWindow(service);
         });
     }
 

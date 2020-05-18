@@ -70,9 +70,10 @@ public abstract class  AbstractController {
         service =ser;
         return ser;
     }
-    protected void httpErrorWindow(String response){
-        if(response.equals("NOCONNECTION")){
+    protected void httpErrorWindow(Service<String> service){
+        if(service.getValue().equals("NOCONNECTION")){
             displayError("no connection");
+            service.restart();
         }
     }
     protected static List<String> parse(String toparse){
@@ -138,7 +139,7 @@ public abstract class  AbstractController {
     protected void initCombo(ComboBox vehicle,String url){
         Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            httpErrorWindow(service.getValue());
+            httpErrorWindow(service);
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
             initSynchronizers.add(setTimeout(60,service));
@@ -148,7 +149,7 @@ public abstract class  AbstractController {
     protected void initCombo(ComboBox vehicle, String defaultValue,String url){
         Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            httpErrorWindow(service.getValue());
+            httpErrorWindow(service);
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
             vehicle.setValue(defaultValue);

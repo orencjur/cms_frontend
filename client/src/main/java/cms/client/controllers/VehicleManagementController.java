@@ -61,7 +61,7 @@ public class VehicleManagementController extends AbstractController {
         setRowFact();
         Service<String> service = getInitRequest("/vehicle-driver");
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            httpErrorWindow(service.getValue());
+            httpErrorWindow(service);
             tableView.getItems().clear();
             licencePlate.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("licencePlate"));
             availability.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("available"));
