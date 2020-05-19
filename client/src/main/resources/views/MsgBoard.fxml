@@ -24,7 +24,8 @@
                   <TableColumn fx:id="content" editable="false" prefWidth="296.0" text="Content" />
               </columns>
             </TableView>
-            <JFXButton layoutX="372.0" layoutY="465.0" onAction="#newMessage" prefHeight="38.0" prefWidth="127.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="New Message" />
+            <JFXButton layoutX="373.0" layoutY="433.0" onAction="#newMessage" prefHeight="38.0" prefWidth="127.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="New Message" />
+            <JFXButton layoutX="303.0" layoutY="484.0" onAction="#newMessage" prefHeight="38.0" prefWidth="267.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Clear messages older than 7 days" />
          </children>
       </AnchorPane>
       <JFXButton layoutX="797.0" layoutY="25.0" minWidth="52.0" onAction="#home" prefHeight="32.0" prefWidth="86.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Home" />

@@ -19,7 +19,7 @@
       </Label>
       <JFXTabPane layoutX="14.0" layoutY="67.0" prefHeight="524.0" prefWidth="875.0" style="-fx-background-color: #242424;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab closable="false" style="-fx-background-color: #242424" styleClass="black" text="                                                                                                                                                                                   ">
+          <Tab closable="false" style="-fx-background-color: #242424" styleClass="black" text="                                                                                                                                                                         ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #242424;">
                      <children>

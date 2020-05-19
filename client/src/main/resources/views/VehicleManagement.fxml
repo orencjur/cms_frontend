@@ -30,7 +30,7 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0" style="-fx-background-color: #242424">
                                  <children>
-                                    <TableView fx:id="tableView" layoutX="14.0" layoutY="10.0" prefHeight="443.0" prefWidth="845.0">
+                                    <TableView fx:id="tableView" layoutX="1.0" layoutY="10.0" prefHeight="479.0" prefWidth="875.0">
                                       <columns>
                                         <TableColumn fx:id="licencePlate" editable="false" prefWidth="180.0" text="License plate" />
                                         <TableColumn fx:id="availability" editable="false" prefWidth="136.0" text="Availability" />
@@ -63,7 +63,7 @@
       </JFXTabPane>
       <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Home" />
       <Label layoutX="195.0" layoutY="35.0" prefHeight="18.0" prefWidth="413.0" text="" textFill="#bf0303" />
-      <AnchorPane layoutX="227.0" layoutY="62.0" prefHeight="38.0" prefWidth="665.0" style="-fx-background-color: #242424;">
+      <AnchorPane layoutX="255.0" layoutY="62.0" prefHeight="38.0" prefWidth="637.0" style="-fx-background-color: #242424;">
          <effect>
             <Blend />
          </effect>
