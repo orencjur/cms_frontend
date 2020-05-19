@@ -20,7 +20,7 @@
             <Label layoutX="159.0" layoutY="86.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" text="Driver" />
             <JFXTextField fx:id="cargo1" disable="true" layoutX="319.0" layoutY="27.0" prefHeight="26.0" prefWidth="151.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" />
             <JFXComboBox fx:id="vehicle1" layoutX="318.0" layoutY="81.0" prefHeight="28.0" prefWidth="154.0" />
-            <JFXButton layoutX="219.0" layoutY="136.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Confirm" />
+            <JFXButton layoutX="219.0" layoutY="136.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" style=" -fx-background-color: WHITE;" text="Confirm" />
             <JFXButton layoutX="219.0" layoutY="176.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Clear" />
             <JFXButton layoutX="219.0" layoutY="216.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Unassign" />
             <JFXButton layoutX="219.0" layoutY="258.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Remove vehicle" />

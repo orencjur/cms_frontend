@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,15 +17,15 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TabPane layoutX="14.0" layoutY="67.0" prefHeight="524.0" prefWidth="875.0" styleClass="black" tabClosingPolicy="UNAVAILABLE">
+      <JFXTabPane layoutX="14.0" layoutY="67.0" prefHeight="524.0" prefWidth="875.0" style="-fx-background-color: #242424;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab styleClass="black">
+          <Tab closable="false" style="-fx-background-color: #242424" styleClass="black" text="                                                                                                                                                                                             ">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #242424;">
                      <children>
-                        <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="176.0" prefWidth="1175.0" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="176.0" prefWidth="1175.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="288.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="156.0" prefWidth="875.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="218.0" prefWidth="875.0" style="-fx-background-color: #242424;">
                                  <children>
                                     <TableView fx:id="shipmentTable" layoutX="14.0" layoutY="57.0" prefHeight="80.0" prefWidth="845.0" style="-fx-background-color: grey;">
                                       <columns>
@@ -40,7 +40,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <JFXButton onAction="#finished" buttonType="RAISED" layoutX="745.0" layoutY="19.0" style="-fx-background-color: #b61101;" text="Mark as finished" />
+                                    <JFXButton buttonType="RAISED" layoutX="745.0" layoutY="19.0" onAction="#finished" style="-fx-background-color: #b61101;" text="Mark as finished" textFill="WHITE" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -63,10 +63,11 @@
             </content>
           </Tab>
         </tabs>
-      </TabPane>
-      <JFXButton buttonType="RAISED" layoutX="813.0" layoutY="28.0" onAction="#home" style="-fx-background-color: #b61101;" text="Home" />
+      </JFXTabPane>
+      <JFXButton buttonType="RAISED" layoutX="813.0" layoutY="28.0" onAction="#home" style="-fx-background-color: #b61101;" text="Home" textFill="WHITE" />
 
             <Label fx:id="error" layoutX="12.0" layoutY="5.0" prefHeight="18.0" prefWidth="413.0" text="" textFill="#bf0303" />
+      <AnchorPane layoutX="843.0" layoutY="65.0" prefHeight="47.0" prefWidth="46.0" style="-fx-background-color: #242424;" />
 
    </children>
 </AnchorPane>
