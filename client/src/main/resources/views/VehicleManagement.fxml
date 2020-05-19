@@ -2,32 +2,32 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="black" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.VehicleManagementController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #242424" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.VehicleManagementController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" text="Vehicle Manager">
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="53.0" prefWidth="311.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" text="Vehicle Manager">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TabPane layoutX="14.0" layoutY="67.0" prefHeight="524.0" prefWidth="875.0" styleClass="black" tabClosingPolicy="UNAVAILABLE">
+      <JFXTabPane layoutX="14.0" layoutY="67.0" prefHeight="524.0" prefWidth="875.0" style="-fx-background-color: #242424" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab styleClass="black" text="Overview">
+          <Tab style="-fx-background-color: #242424" text="Overview">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #242424">
                      <children>
-                        <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="534.0" prefWidth="1175.0" AnchorPane.bottomAnchor="-70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane layoutX="114.0" layoutY="33.0" prefHeight="534.0" prefWidth="1175.0" style="-fx-background-color: #242424" AnchorPane.bottomAnchor="-70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-300.0" AnchorPane.topAnchor="0.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="463.0" prefWidth="874.0" style="-fx-background-color: #242424">
                                  <children>
                                     <TableView fx:id="tableView" layoutX="14.0" layoutY="10.0" prefHeight="443.0" prefWidth="845.0">
                                       <columns>
@@ -36,6 +36,7 @@
                                           <TableColumn fx:id="driver" editable="false" minWidth="0.0" prefWidth="528.0" text="Driver" />
                                       </columns>
                                     </TableView>
+                                    <AnchorPane layoutX="201.0" layoutY="-36.0" prefHeight="41.0" prefWidth="674.0" style="-fx-background-color: #242424;" />
                                  </children>
                               </AnchorPane>
                           </content>
@@ -44,39 +45,39 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab styleClass="black" text="New Vehicle">
+          <Tab style="-fx-background-color: #242424; -fx-text-fill: WHITE" styleClass="black" text="New Vehicle">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: -red-900;">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #242424">
                      <children>
-                        <Label layoutX="252.0" layoutY="90.0" text="License Plate" />
-                        <Label layoutX="274.0" layoutY="170.0" text="Driver" />
-                        <JFXTextField fx:id="licencefill" layoutX="464.0" layoutY="86.0" prefHeight="26.0" prefWidth="151.0" />
-                        <JFXComboBox fx:id="driverCombo" layoutX="463.0" layoutY="165.0" prefHeight="28.0" prefWidth="154.0" />
-                        <JFXButton layoutX="225.0" layoutY="399.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" text="Confirm" />
-                        <JFXButton layoutX="473.0" layoutY="399.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" text="Clear" />
+                        <Label layoutX="252.0" layoutY="90.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" text="License Plate" />
+                        <Label layoutX="274.0" layoutY="170.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" text="Driver" />
+                        <JFXTextField fx:id="licencefill" layoutX="464.0" layoutY="86.0" prefHeight="26.0" prefWidth="151.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" />
+                        <JFXComboBox fx:id="driverCombo" layoutX="463.0" layoutY="165.0" prefHeight="28.0" prefWidth="154.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" />
+                        <JFXButton layoutX="225.0" layoutY="399.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Confirm" />
+                        <JFXButton layoutX="473.0" layoutY="399.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Clear" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab styleClass="black" text="Modify vehicle">
+            <Tab style="-fx-background-color: #242424" styleClass="black" text="Modify vehicle">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: -red-900;">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #242424">
                      <children>
-                        <Label layoutX="252.0" layoutY="90.0" text="License Plate" />
-                        <Label layoutX="274.0" layoutY="170.0" text="Driver" />
-                        <JFXTextField fx:id="cargo1" layoutX="464.0" layoutY="86.0" prefHeight="26.0" prefWidth="151.0" />
+                        <Label layoutX="252.0" layoutY="90.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" text="License Plate" />
+                        <Label layoutX="274.0" layoutY="170.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" text="Driver" />
+                        <JFXTextField fx:id="cargo1" layoutX="464.0" layoutY="86.0" prefHeight="26.0" prefWidth="151.0" style="-fx-background-color: #242424; -fx-text-fill: WHITE" />
                         <JFXComboBox fx:id="vehicle1" layoutX="463.0" layoutY="165.0" prefHeight="28.0" prefWidth="154.0" />
-                        <JFXButton layoutX="371.0" layoutY="275.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" text="Confirm" />
-                        <JFXButton layoutX="371.0" layoutY="321.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" text="Clear" />
-                        <JFXButton layoutX="371.0" layoutY="367.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" text="Unassign" />
-                        <JFXButton layoutX="371.0" layoutY="410.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" text="Remove vehicle" />
+                        <JFXButton layoutX="371.0" layoutY="275.0" onAction="#confirm" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Confirm" />
+                        <JFXButton layoutX="371.0" layoutY="321.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Clear" />
+                        <JFXButton layoutX="371.0" layoutY="367.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Unassign" />
+                        <JFXButton layoutX="371.0" layoutY="410.0" onAction="#clear" prefHeight="32.0" prefWidth="133.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Remove vehicle" />
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
         </tabs>
-      </TabPane>
-      <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" text="Home" />
+      </JFXTabPane>
+      <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" text="Home" style="-fx-background-color: #b61101; -fx-text-fill: WHITE"/>
       <Label layoutX="12.0" layoutY="5.0" prefHeight="18.0" prefWidth="413.0" text="" textFill="#bf0303" />
    </children>
 
