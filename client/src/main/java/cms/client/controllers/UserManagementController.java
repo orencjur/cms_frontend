@@ -62,14 +62,14 @@ public class UserManagementController extends AbstractController {
                 shutdown();
                 if (userRole.getValue().equals("Dispatcher")) {
                     stageManager.getSession().setCreatingDriver(false);
-                    newUser.setText("create Dispatcher");
+                    newUser.setText("Create Dispatcher");
                     licenceNumber.setVisible(false);
                     available.setVisible(false);
                     userVehicle.setText("Role");
                     initServices().get(0).restart();
                 } else {
                     stageManager.getSession().setCreatingDriver(true);
-                    newUser.setText("create Driver");
+                    newUser.setText("Create Driver");
                     licenceNumber.setVisible(true);
                     available.setVisible(true);
                     userVehicle.setText("Vehicle");

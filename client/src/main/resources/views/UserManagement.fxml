@@ -62,7 +62,7 @@
       </JFXTabPane>
       <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Home" />
       <Label fx:id="error" layoutX="244.0" layoutY="35.0" prefHeight="18.0" prefWidth="413.0" textFill="#bf0303" />
-      <AnchorPane layoutX="144.0" layoutY="65.0" prefHeight="47.0" prefWidth="752.0" style="-fx-background-color: #242424;" />
+      <AnchorPane layoutX="160.0" layoutY="65.0" prefHeight="47.0" prefWidth="736.0" style="-fx-background-color: #242424;" />
    </children>
 
 

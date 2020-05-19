@@ -16,8 +16,8 @@
       </Label>
       <AnchorPane layoutX="14.0" layoutY="67.0" prefHeight="517.0" prefWidth="874.0">
          <children>
-            <JFXTextField fx:id="content" alignment="TOP_LEFT" centerShape="false" layoutX="307.0" layoutY="109.0" prefHeight="315.0" prefWidth="456.0" scaleShape="false" style="-fx-text-fill: WHITE" />
-            <JFXComboBox fx:id="users" layoutX="307.0" layoutY="95.0" prefHeight="28.0" prefWidth="206.0" style=" -fx-background-color: WHITE;"/>
+            <JFXTextField fx:id="content" alignment="TOP_LEFT" centerShape="false" layoutX="307.0" layoutY="152.0" prefHeight="272.0" prefWidth="456.0" scaleShape="false" style="-fx-text-fill: WHITE; -fx-background-color: BLACK;" />
+            <JFXComboBox fx:id="users" layoutX="307.0" layoutY="95.0" prefHeight="28.0" prefWidth="206.0" style=" -fx-background-color: WHITE;" />
             <Label layoutX="195.0" layoutY="100.0" style="-fx-text-fill: WHITE" text="To:" />
             <Label layoutX="175.0" layoutY="258.0" style="-fx-text-fill: WHITE" text="Message:" />
             <JFXButton layoutX="372.0" layoutY="447.0" onAction="#send" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Send" />

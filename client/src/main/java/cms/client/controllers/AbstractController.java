@@ -142,6 +142,7 @@ public abstract class  AbstractController {
             httpErrorWindow(service);
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
+
             initSynchronizers.add(setTimeout(60,service));
         });
     }
@@ -153,6 +154,7 @@ public abstract class  AbstractController {
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
             vehicle.setValue(defaultValue);
+
             initSynchronizers.add(setTimeout(60,service));
         });
     }

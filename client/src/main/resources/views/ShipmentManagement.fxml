@@ -45,12 +45,12 @@
                                     <Label layoutX="22.0" layoutY="20.0" style="-fx-text-fill: WHITE" text="Show" />
                                     <TableView fx:id="shipmentTable" layoutX="2.0" layoutY="57.0" prefHeight="432.0" prefWidth="875.0" style="-fx-background-color: #000000; -fx-text-fill: #000000">
                                       <columns>
-                                        <TableColumn fx:id="expedition" editable="false" prefWidth="114.0" resizable="false"  text="Date of expedition" />
+                                        <TableColumn fx:id="expedition" editable="false" prefWidth="114.0" resizable="false" text="Date of expedition" />
                                         <TableColumn fx:id="status" editable="false" prefWidth="61.0" resizable="false" text="Status" />
-                                          <TableColumn fx:id="completition" editable="false" minWidth="0.0" prefWidth="154.0" resizable="false"  text="Date of completion" />
-                                          <TableColumn fx:id="shipmentVehicle" editable="false" prefWidth="89.0" resizable="false"  text="Vehicle" />
+                                          <TableColumn fx:id="completition" editable="false" minWidth="0.0" prefWidth="154.0" resizable="false" text="Date of completion" />
+                                          <TableColumn fx:id="shipmentVehicle" editable="false" prefWidth="89.0" resizable="false" text="Vehicle" />
                                           <TableColumn fx:id="driver" editable="false" prefWidth="134.0" resizable="false" text="Driver" />
-                                          <TableColumn fx:id="destination" editable="false" prefWidth="317.0" resizable="false"  text="Destination" />
+                                          <TableColumn fx:id="destination" editable="false" prefWidth="317.0" resizable="false" text="Destination" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -87,7 +87,7 @@
       </JFXTabPane>
       <JFXButton layoutX="813.0" layoutY="28.0" onAction="#home" style="-fx-background-color: #b61101;" text="Home" textFill="WHITE" />
        <Label fx:id="error" layoutX="286.0" layoutY="35.0" prefHeight="18.0" prefWidth="413.0" textFill="#bf0303" />
-      <AnchorPane disable="true" layoutX="264.0" layoutY="68.0" prefHeight="39.0" prefWidth="625.0" style="-fx-background-color: #242424;">
+      <AnchorPane disable="true" layoutX="281.0" layoutY="68.0" prefHeight="39.0" prefWidth="608.0" style="-fx-background-color: #242424;">
          <effect>
             <Blend opacity="0.0" />
          </effect>
