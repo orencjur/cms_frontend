@@ -107,7 +107,7 @@ public class ShipmentManagementController extends AbstractController {
         }
     }
     private void intitStatuses() {
-        ArrayList<Service<String>> statusServices = initStatusServices();
+        List<Service<String>> statusServices = initStatusServices();
         statuses.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -126,8 +126,8 @@ public class ShipmentManagementController extends AbstractController {
         statuses.setValue("Active");
     }
 
-    private ArrayList<Service<String>> initStatusServices(){
-        ArrayList<Service<String>> statusServices = new ArrayList<>();
+    private List<Service<String>> initStatusServices(){
+        List<Service<String>> statusServices = new ArrayList<>();
         statusServices.add(new HtttpService("/activeshipment"));
         statusServices.add(new HtttpService("/inactiveShipment"));
         statusServices.add(new HtttpService("/shipment"));

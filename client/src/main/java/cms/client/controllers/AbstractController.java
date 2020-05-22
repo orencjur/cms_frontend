@@ -39,7 +39,7 @@ public abstract class  AbstractController {
             lastRequest=setTimeout(10,service);
             displayError("no connection");
             return;
-        }
+        }shutdown();
         stageManager.switchScene(view);
     }
 
@@ -70,11 +70,16 @@ public abstract class  AbstractController {
         service =ser;
         return ser;
     }
-    protected void httpErrorWindow(Service<String> service){
+    protected boolean httpErrorWindow(Service<String> service){
         if(service.getValue().equals("NOCONNECTION")){
             displayError("no connection");
-            service.restart();
+            setTimeout(60,service);
+            return false;
         }
+        if(error.getText().equals("no connection")){
+            displayError("");
+        }
+        return true;
     }
     protected static List<String> parse(String toparse){
         return  Arrays.asList(toparse.split("@",0));

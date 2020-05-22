@@ -3,6 +3,7 @@ package cms.client.controllers;
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.view.FxmlView;
+import com.jfoenix.controls.JFXButton;
 import javafx.concurrent.Service;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MsgBoardController extends AbstractController {
 
+    @FXML private JFXButton old;
     @FXML private TableView<Message> tableView;
     @FXML private TableColumn<Message, String> user;
     @FXML private TableColumn<Message, String> date;
@@ -25,6 +27,10 @@ public class MsgBoardController extends AbstractController {
     public void initialize() {
 
         setRowFact();
+        if(stageManager.getSession().getLoggedRole() == FxmlView.DRIVER){
+            old.setVisible(false);
+            old.setDisable(true);
+        }
         Service<String> service = getInitRequest("/messages?user="+stageManager.getSession().getLoggedUser()+"&role="+stageManager.getSession().getLoggedRole());
         service.setOnSucceeded((WorkerStateEvent event) -> {
             httpErrorWindow(service);
@@ -55,6 +61,13 @@ public class MsgBoardController extends AbstractController {
 
     public void newMessage(ActionEvent event) {
         switchSceneEvent(FxmlView.NEW);
+    }
+
+    public void deleteOld(ActionEvent event) {
+        Service<String> service = getRequest("/message/deleteold?user="+stageManager.getSession().getLoggedUser());
+        service.setOnSucceeded((WorkerStateEvent e) -> {
+            initialize();
+        });
     }
 
 

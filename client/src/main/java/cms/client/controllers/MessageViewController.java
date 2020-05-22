@@ -1,6 +1,10 @@
 package cms.client.controllers;
 
 import cms.client.controllers.entityhelpers.Message;
+import cms.client.view.FxmlView;
+import javafx.concurrent.Service;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -22,5 +26,15 @@ public class MessageViewController extends AbstractController {
         }
        date.setText(date.getText()+": "+message.getDate()+" "+message.getTime());
        content.setText(message.getContent());
+    }
+
+    public void delete(ActionEvent actionEvent){
+        Service<String> service = getRequest("/message/delete?id="+stageManager.getSession().getViewingMessage().getId());
+        service.setOnSucceeded((WorkerStateEvent event) -> {
+            if(!httpErrorWindow(service)){
+               return;
+            }
+            switchSceneEvent(FxmlView.MSGBOARD);
+        });
     }
 }
