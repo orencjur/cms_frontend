@@ -2,6 +2,7 @@ package cms.client.fxmlhandler;
 
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.User;
+import cms.client.controllers.entityhelpers.Vehicle;
 import cms.client.view.FxmlView;
 
 public class AppSession {
@@ -12,6 +13,16 @@ public class AppSession {
     private boolean creatingDriver;
     private User viewingUser;
     private String Error;
+    private Vehicle viewingVehicle;
+
+    public Vehicle getViewingVehicle() {
+        return viewingVehicle;
+    }
+
+    public void setViewingVehicle(Vehicle viewingVehicle) {
+        this.viewingVehicle = viewingVehicle;
+    }
+
 
     public String getLoggedUser() {
         return loggedUser;

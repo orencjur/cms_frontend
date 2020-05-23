@@ -9,6 +9,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.apache.commons.codec.binary.Hex;
 
+import java.util.Arrays;
+
 public class NewMessageController extends AbstractController {
     @FXML
     ComboBox<String> users;
@@ -37,6 +39,9 @@ public class NewMessageController extends AbstractController {
     }
 
     public void send(ActionEvent event) {
+        if(!validator.validateTextFields(Arrays.asList(content))){
+            return;
+        }
         String cont= content.getText();
         if(cont.trim().equals("")||users.getSelectionModel().isEmpty()){
             LOG.debug("fill everythig");

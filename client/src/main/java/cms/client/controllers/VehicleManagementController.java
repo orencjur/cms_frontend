@@ -3,6 +3,7 @@ package cms.client.controllers;
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.Vehicle;
+import cms.client.view.FxmlView;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import javafx.concurrent.Service;
@@ -78,12 +79,12 @@ public class VehicleManagementController extends AbstractController {
 
     private void setRowFact() {
         tableView.setRowFactory(tv -> {
-            TableRow<Message> row = new TableRow<>();
+            TableRow<Vehicle> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                   // Message rowData = row.getItem();
-                    //stageManager.getSession().setViewingMessage(rowData);
-                   // switchSceneEvent(FxmlView.MSGVIEW);
+                       Vehicle rowData = row.getItem();
+                    stageManager.getSession().setViewingVehicle(rowData);
+                    switchSceneEvent(FxmlView.MODIFYVEHICLE);
                 }
             });
             return row ;
