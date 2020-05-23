@@ -8,50 +8,18 @@ public class AppSession {
 
     private String loggedUser;
     private FxmlView loggedRole;
-    private Message ViewingMessage;
-    private boolean CreatingDriver;
-    private User ViewingUser;
+    private Message viewingMessage;
+    private boolean creatingDriver;
+    private User viewingUser;
     private String Error;
 
-    public User getViewingUser() {
-        return ViewingUser;
+    public String getLoggedUser() {
+        return loggedUser;
     }
 
-    public void setViewingUser(User viewingUser) {
-        ViewingUser = viewingUser;
+    public void setLoggedUser(String loggedUser) {
+        this.loggedUser = loggedUser;
     }
-
-    public String getError() {
-        return Error;
-    }
-
-    public void setError(String error) {
-        Error = error;
-    }
-
-
-
-
-    public boolean isCreatingDriver() {
-        return CreatingDriver;
-    }
-
-
-
-    public void setCreatingDriver(boolean creatingDriver) {
-        CreatingDriver = creatingDriver;
-    }
-
-
-
-    public Message getViewingMessage() {
-        return ViewingMessage;
-    }
-
-    public void setViewingMessage(Message viewingMessage) {
-        ViewingMessage = viewingMessage;
-    }
-
 
     public FxmlView getLoggedRole() {
         return loggedRole;
@@ -61,11 +29,35 @@ public class AppSession {
         this.loggedRole = loggedRole;
     }
 
-    public void setLoggedUser(String loggedUser) {
-        this.loggedUser = loggedUser;
+    public Message getViewingMessage() {
+        return viewingMessage;
     }
 
-    public String getLoggedUser() {
-        return loggedUser;
+    public void setViewingMessage(Message viewingMessage) {
+        this.viewingMessage = viewingMessage;
+    }
+
+    public boolean isCreatingDriver() {
+        return creatingDriver;
+    }
+
+    public void setCreatingDriver(boolean creatingDriver) {
+        this.creatingDriver = creatingDriver;
+    }
+
+    public User getViewingUser() {
+        return viewingUser;
+    }
+
+    public void setViewingUser(User viewingUser) {
+        this.viewingUser = viewingUser;
+    }
+
+    public String getError() {
+        return Error;
+    }
+
+    public void setError(String error) {
+        Error = error;
     }
 }

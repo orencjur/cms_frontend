@@ -6,7 +6,7 @@ import cms.client.controllers.entityhelpers.User;
 import cms.client.view.FxmlView;
 import javafx.concurrent.Service;
 
-public class ModifyDriverStrategy extends ModifyUserController implements ModifyUserInterface {
+public class ModifyDriverStrategy extends ModifyUserController  implements ModifyUserInterface {
     private ModifyUserController parent;
     public ModifyDriverStrategy(ModifyUserController modifyUserController) {
         parent=modifyUserController;
@@ -24,7 +24,7 @@ public class ModifyDriverStrategy extends ModifyUserController implements Modify
         parent.getFname().setText(user.getName());
         parent.getLname().setText(user.getSurname());
         parent.getUsername().setText(user.getUsername());
-        initCombo(parent.getVehicle(),user.getUserVehicle(),"/vehicles/available");
+        parent.initCombo("/vehicles/available");
         parent.getLicense().setText(user.getLicenceNumber());
     }
 
@@ -33,4 +33,6 @@ public class ModifyDriverStrategy extends ModifyUserController implements Modify
         Service<String> service = getRequest("/regularuser/delete?username="+parent.getUsername().getText().trim());
        parent.setOnSucceeded(service);
     }
+
+
 }

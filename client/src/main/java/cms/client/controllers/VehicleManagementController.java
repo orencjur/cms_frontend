@@ -36,9 +36,13 @@ public class VehicleManagementController extends AbstractController {
         if(!validator.validateTextFields(Arrays.asList(licencefill))){
             return;
         }
-       Service<String> service = getRequest("/vehicles/create?licence="+licencefill);
+       Service<String> service = getRequest("/vehicles/create?licence="+licencefill.getText()+"&driver="+driverCombo.getValue());
         service.setOnSucceeded((WorkerStateEvent e) -> {
             displayError("Vehicle created successfully");
+            if(service.getValue().equals("false")){
+                displayError("duplicate licence plate");
+            }
+            httpErrorWindow(service);
         });
     }
 

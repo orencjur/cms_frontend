@@ -26,6 +26,9 @@ public class User {
         this.availability = new SimpleStringProperty(availibility);
     }
 
+    public void setUserVehicle(String userVehicle) {
+        this.userVehicle.set(userVehicle);
+    }
 
     public User (String fullname, String username){
         try {
