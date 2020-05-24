@@ -1,6 +1,6 @@
 package cms.client.controllers;
 
-import cms.client.async.TimeoutSericeSynchronizer;
+import cms.client.async.TimeoutServiceSynchronizer;
 import cms.client.controllers.validators.Validator;
 import cms.client.fxmlhandler.StageManager;
 import cms.client.async.Timeout;
@@ -18,12 +18,16 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * This controller contains methods that operate components shared by all the other controllers.
+ * Controllers then use FXML views located in resources/views
+ */
 public abstract class  AbstractController {
 
-    protected HashSet<TimeoutSericeSynchronizer> initSynchronizers = new HashSet<>();
+    protected HashSet<TimeoutServiceSynchronizer> initSynchronizers = new HashSet<>();
     boolean init;
     private Service<String> service;
-    private TimeoutSericeSynchronizer lastRequest;
+    private TimeoutServiceSynchronizer lastRequest;
     protected final StageManager stageManager =StageManager.getInstance();
     protected final static Logger LOG = Logger.getLogger(AbstractController.class);
     protected Validator validator;
@@ -46,10 +50,10 @@ public abstract class  AbstractController {
 
 
 
-    protected TimeoutSericeSynchronizer setTimeout(int seconds,Service<String> requestSer){
+    protected TimeoutServiceSynchronizer setTimeout(int seconds, Service<String> requestSer){
         Timeout timeout = new Timeout();
         timeout.timeout(seconds);
-        TimeoutSericeSynchronizer synchronizer = new TimeoutSericeSynchronizer(timeout,requestSer);
+        TimeoutServiceSynchronizer synchronizer = new TimeoutServiceSynchronizer(timeout,requestSer);
         lastRequest=synchronizer;
         return synchronizer;
     }
@@ -86,19 +90,19 @@ public abstract class  AbstractController {
         if(service!=null) {
             service.cancel();
         }
-        for (TimeoutSericeSynchronizer s:initSynchronizers){
+        for (TimeoutServiceSynchronizer s:initSynchronizers){
             s.stop();
         }
     }
 
     protected void restart(){
-        for (TimeoutSericeSynchronizer s:initSynchronizers){
+        for (TimeoutServiceSynchronizer s:initSynchronizers){
             s.restart();
         }
     }
 
-    protected void stop(List<TimeoutSericeSynchronizer> list){
-        for (TimeoutSericeSynchronizer s:list){
+    protected void stop(List<TimeoutServiceSynchronizer> list){
+        for (TimeoutServiceSynchronizer s:list){
             s.stop();
         }
     }

@@ -1,7 +1,7 @@
 package cms.client.controllers;
 
 import cms.client.async.Timeout;
-import cms.client.async.TimeoutSericeSynchronizer;
+import cms.client.async.TimeoutServiceSynchronizer;
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.Shipment;

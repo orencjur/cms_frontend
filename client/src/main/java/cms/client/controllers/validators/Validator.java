@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import java.util.Arrays;
 import java.util.List;
 
-public class Validator {
+public class Validator{
     private final static Logger LOG = Logger.getLogger(Validator.class);
     private AbstractController parent;
     private static List<String> allowed = Arrays.asList("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~/?#[]!$&'()+,;=))".split(""));

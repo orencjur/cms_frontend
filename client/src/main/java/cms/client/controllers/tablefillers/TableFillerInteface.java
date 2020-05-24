@@ -5,6 +5,10 @@ import javafx.concurrent.Service;
 
 import java.util.ArrayList;
 
+
+/**
+ * This package contains methods that are used to fill the table components
+ */
 interface TableFillerInteface {
 
     void initTable();

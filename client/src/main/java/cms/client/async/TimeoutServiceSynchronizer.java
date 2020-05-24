@@ -5,12 +5,12 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 
-public class TimeoutSericeSynchronizer {
+public class TimeoutServiceSynchronizer {
     private Timeout timeout;
     private Service service;
 
 
-    public TimeoutSericeSynchronizer(Timeout timeout, Service service) {
+    public TimeoutServiceSynchronizer(Timeout timeout, Service service) {
         this.timeout = timeout;
         this.service = service;
         timeout.intProperty().addListener(new ChangeListener<Number>() {
