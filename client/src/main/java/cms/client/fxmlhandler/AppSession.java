@@ -2,56 +2,35 @@ package cms.client.fxmlhandler;
 
 import cms.client.controllers.entityhelpers.Message;
 import cms.client.controllers.entityhelpers.User;
+import cms.client.controllers.entityhelpers.Vehicle;
 import cms.client.view.FxmlView;
 
 public class AppSession {
 
     private String loggedUser;
     private FxmlView loggedRole;
-    private Message ViewingMessage;
-    private boolean CreatingDriver;
-    private User ViewingUser;
+    private Message viewingMessage;
+    private boolean creatingDriver;
+    private User viewingUser;
     private String Error;
+    private Vehicle viewingVehicle;
 
-    public User getViewingUser() {
-        return ViewingUser;
+    public Vehicle getViewingVehicle() {
+        return viewingVehicle;
     }
 
-    public void setViewingUser(User viewingUser) {
-        ViewingUser = viewingUser;
-    }
-
-    public String getError() {
-        return Error;
-    }
-
-    public void setError(String error) {
-        Error = error;
+    public void setViewingVehicle(Vehicle viewingVehicle) {
+        this.viewingVehicle = viewingVehicle;
     }
 
 
-
-
-    public boolean isCreatingDriver() {
-        return CreatingDriver;
+    public String getLoggedUser() {
+        return loggedUser;
     }
 
-
-
-    public void setCreatingDriver(boolean creatingDriver) {
-        CreatingDriver = creatingDriver;
+    public void setLoggedUser(String loggedUser) {
+        this.loggedUser = loggedUser;
     }
-
-
-
-    public Message getViewingMessage() {
-        return ViewingMessage;
-    }
-
-    public void setViewingMessage(Message viewingMessage) {
-        ViewingMessage = viewingMessage;
-    }
-
 
     public FxmlView getLoggedRole() {
         return loggedRole;
@@ -61,11 +40,35 @@ public class AppSession {
         this.loggedRole = loggedRole;
     }
 
-    public void setLoggedUser(String loggedUser) {
-        this.loggedUser = loggedUser;
+    public Message getViewingMessage() {
+        return viewingMessage;
     }
 
-    public String getLoggedUser() {
-        return loggedUser;
+    public void setViewingMessage(Message viewingMessage) {
+        this.viewingMessage = viewingMessage;
+    }
+
+    public boolean isCreatingDriver() {
+        return creatingDriver;
+    }
+
+    public void setCreatingDriver(boolean creatingDriver) {
+        this.creatingDriver = creatingDriver;
+    }
+
+    public User getViewingUser() {
+        return viewingUser;
+    }
+
+    public void setViewingUser(User viewingUser) {
+        this.viewingUser = viewingUser;
+    }
+
+    public String getError() {
+        return Error;
+    }
+
+    public void setError(String error) {
+        Error = error;
     }
 }

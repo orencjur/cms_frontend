@@ -8,6 +8,17 @@ public enum FxmlView {
      * directories for Views are stored here
      */
     //TODO loginfailed not have fxml yet
+    MODIFYVEHICLE{
+        @Override
+        public String getTitle() {
+            return getStringFromResourceBundle("modifyVehicles.title");
+        }
+
+        @Override
+        public String getFxmlFile() {
+            return "/views/ModifyVehicle.fxml";
+        }
+    },
     VEHICLES{
         @Override
         public String getTitle() {

@@ -33,7 +33,7 @@
       </AnchorPane>
       <JFXButton fx:id="save" disable="true" layoutX="474.0" layoutY="25.0" onAction="#save" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Save changes" visible="false" />
       <JFXButton fx:id="delete" disable="true" layoutX="363.0" layoutY="25.0" onAction="#delete" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Delete User" visible="false" />
-      <Label fx:id="error" layoutX="129.0" layoutY="32.0" prefHeight="18.0" prefWidth="232.0" textFill="#bf0303" />
+      <Label fx:id="error" text="" layoutX="129.0" layoutY="32.0" prefHeight="18.0" prefWidth="232.0" textFill="#bf0303" />
    </children>
 
 

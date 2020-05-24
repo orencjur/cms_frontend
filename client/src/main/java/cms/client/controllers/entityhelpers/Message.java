@@ -9,6 +9,7 @@ public class Message {
     private SimpleStringProperty time;
     private SimpleStringProperty content;
     private FxmlView sender;
+    private String id;
 
 
 
@@ -49,8 +50,13 @@ public class Message {
         return content;
     }
 
-    public Message(String user, String time, String content, String sender){
+    public String getId() {
+        return id;
+    }
+
+    public Message(String user, String time, String content, String sender, String id){
         this.user=new SimpleStringProperty(user);
+        this.id = id;
         String []datetime = time.split(" ");
         this.date= new SimpleStringProperty(datetime[0]);
         this.time= new SimpleStringProperty(datetime[1]);

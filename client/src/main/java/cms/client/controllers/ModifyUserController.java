@@ -59,8 +59,12 @@ public class ModifyUserController extends AbstractController {
            userModifier = new ModifyDriverStrategy(this);
            textFields.add(license);
        }
+       LOG.debug(showingUser.getUserVehicle());
        userModifier.init(showingUser);
 
+    }
+    public void initCombo(String url){
+        initCombo(vehicle,stageManager.getSession().getViewingUser().getUserVehicle(),url);
     }
 
 
@@ -98,11 +102,12 @@ public class ModifyUserController extends AbstractController {
     public void setOnSucceeded(Service<String> service){
         service.setOnSucceeded(workerStateEvent -> {
             httpErrorWindow(service);
+
             if(service.getValue().equals("true")){
                 switchSceneEvent(FxmlView.USERMANAGEMENT);
             }else{
                 LOG.debug("username not found");
-                displayError("User not found");
+                displayError("vehicle not found");
             }
         });
     }

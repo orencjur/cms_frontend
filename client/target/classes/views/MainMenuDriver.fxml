@@ -13,7 +13,7 @@
          </font>
       </Label>
       <JFXButton fx:id="msgBoard" layoutX="330.0" layoutY="316.0" onAction="#msgBoard" prefHeight="53.0" prefWidth="233.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Message Board" />
-      <JFXButton alignment="BOTTOM_CENTER" contentDisplay="BOTTOM" layoutX="330.0" layoutY="247.0" onAction="#shipments" prefHeight="53.0" prefWidth="233.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Shipments" />
+      <JFXButton  contentDisplay="CENTER" layoutX="330.0" layoutY="247.0" onAction="#shipments" prefHeight="53.0" prefWidth="233.0" style="-fx-background-color: #b61101; -fx-text-fill: WHITE" text="Shipments" />
       <Label fx:id="name" layoutX="14.0" layoutY="14.0" text="Full Name" textFill="WHITE"/>
       <Label layoutX="14.0" layoutY="42.0" prefHeight="18.0" prefWidth="60.0" text="Vehicle" textFill="WHITE"/>
       <JFXButton layoutX="381.0" layoutY="433.0" onAction="#logout" prefHeight="53.0" prefWidth="131.0" text="Logout" style="-fx-background-color: #b61101; -fx-text-fill: WHITE"/>

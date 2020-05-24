@@ -43,7 +43,8 @@ public abstract class  AbstractController {
             lastRequest=setTimeout(10,service);
             displayError("no connection");
             return;
-        }
+        }shutdown();
+        LOG.info("switching scene to "+view);
         stageManager.switchScene(view);
     }
 
@@ -74,11 +75,17 @@ public abstract class  AbstractController {
         service =ser;
         return ser;
     }
-    protected void httpErrorWindow(Service<String> service){
+    protected boolean httpErrorWindow(Service<String> service){
         if(service.getValue().equals("NOCONNECTION")){
             displayError("no connection");
-            service.restart();
+            setTimeout(60,service);
+            return false;
         }
+        LOG.debug(error);
+        if(error.getText().equals("no connection")){
+            displayError("");
+        }
+        return true;
     }
     protected static List<String> parse(String toparse){
         return  Arrays.asList(toparse.split("@",0));
@@ -146,19 +153,21 @@ public abstract class  AbstractController {
             httpErrorWindow(service);
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
-
             initSynchronizers.add(setTimeout(60,service));
         });
     }
 
-    protected void initCombo(ComboBox vehicle, String defaultValue,String url){
+    protected  void initCombo(ComboBox vehicle, String defaultValue, String url){
         Service<String> service = getInitRequest(url);
         service.setOnSucceeded((WorkerStateEvent event) -> {
             httpErrorWindow(service);
             vehicle.getItems().clear();
             vehicle.getItems().addAll(parse(service.getValue()));
+            //vehicle.getItems().add(null);
+            LOG.debug(vehicle+defaultValue);
+            vehicle.getItems().add(defaultValue);
             vehicle.setValue(defaultValue);
-
+            LOG.debug(vehicle.getValue());
             initSynchronizers.add(setTimeout(60,service));
         });
     }
