@@ -29,7 +29,7 @@ public class Validator{
                 if(allowed.contains(Character.toString(c))){
                     return true;
                 }
-                parent.displayError("sorry you cannot use '"+Character.toString(c)+"'");
+                parent.displayError("sorry you cannot use '"+Character.toString(c)+"' in "+textField.getId());
                 return false;
             });
             if(!check){

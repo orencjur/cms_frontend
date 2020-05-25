@@ -67,7 +67,7 @@
                      <children>
                         <Label layoutX="278.0" layoutY="103.0" text="Cargo:" textFill="WHITE" />
                         <Label layoutX="260.0" layoutY="163.0" text="Date to ship:" textFill="WHITE" />
-                        <Label layoutX="274.0" layoutY="223.0" text="Vehicle:" textFill="WHITE" />
+                        <Label layoutX="274.0" layoutY="223.0" text="Driver:" textFill="WHITE" />
                         <JFXTextField fx:id="cargo" layoutX="464.0" layoutY="99.0" prefHeight="26.0" prefWidth="151.0" />
                         <JFXDatePicker fx:id="date" defaultColor="#e43232" layoutX="463.0" layoutY="158.0" />
                         <Label layoutX="573.0" layoutY="309.0" text="Address" textFill="WHITE" />
