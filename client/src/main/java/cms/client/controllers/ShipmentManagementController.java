@@ -4,6 +4,7 @@ import cms.client.async.TimeoutServiceSynchronizer;
 import cms.client.controllers.entityhelpers.EntityFactory;
 import cms.client.controllers.entityhelpers.Shipment;
 import cms.client.http.HtttpService;
+import cms.client.view.FxmlView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
@@ -101,7 +102,7 @@ public class ShipmentManagementController extends AbstractController {
             service.setOnSucceeded(e -> {
                 LOG.debug("shipment created");
                 displayError("shipment created succesfully");
-                initialize();
+                switchSceneEvent(FxmlView.SHIPMENT);
             });
         }
     }

@@ -39,15 +39,15 @@ public class NewMessageController extends AbstractController {
     }
 
     public void send(ActionEvent event) {
-        if(!validator.validateTextFields(Arrays.asList(content))){
-            return;
-        }
         String cont= content.getText();
         if(cont.trim().equals("")||users.getSelectionModel().isEmpty()){
             LOG.debug("fill everythig");
             displayError("Please fill every field");
         }else {
             cont=cont.replaceAll("\\s",":");
+            if(!validator.validateString(cont)){
+                return;
+            }
             String receiver = users.getValue();
             String url ="/send?dispatcher=";
             if(stageManager.getSession().getLoggedRole()== FxmlView.DRIVER) {
