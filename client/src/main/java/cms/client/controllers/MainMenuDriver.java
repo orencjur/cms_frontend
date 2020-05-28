@@ -5,6 +5,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
+/**
+ * Controlls the driver main menu that give the user access to other functionalities
+ */
 public class MainMenuDriver extends AbstractController{
 
     @FXML

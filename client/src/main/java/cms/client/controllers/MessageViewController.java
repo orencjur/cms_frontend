@@ -9,6 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * Displays the message
+ */
 public class MessageViewController extends AbstractController {
 
     @FXML private Label from;

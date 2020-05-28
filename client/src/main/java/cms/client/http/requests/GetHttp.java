@@ -5,6 +5,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+/**
+ * Creates GET request
+ */
 public class GetHttp extends HttpRequest {
 
     public GetHttp(String url) throws IOException {
