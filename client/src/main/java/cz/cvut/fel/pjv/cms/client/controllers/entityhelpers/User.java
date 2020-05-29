@@ -11,12 +11,12 @@ public class User {
     private SimpleStringProperty availability;
     private SimpleStringProperty licenceNumber;
 
-    public User(String fullname,String username,String vehicle, String licenceNumber,String availibility){
+    public User(String fullname, String username, String vehicle, String licenceNumber, String availibility) {
         try {
-            String [] full = fullname.split(":");
+            String[] full = fullname.split(":");
             name = new SimpleStringProperty(full[0]);
-            surname   = new SimpleStringProperty(full[1]);
-        }catch (Exception e){//idiot with fucking name
+            surname = new SimpleStringProperty(full[1]);
+        } catch (Exception e) {//idiot with fucking name
             name = new SimpleStringProperty(fullname);
             surname = new SimpleStringProperty("who the fuck knows");
         }
@@ -30,12 +30,12 @@ public class User {
         this.userVehicle.set(userVehicle);
     }
 
-    public User (String fullname, String username){
+    public User(String fullname, String username) {
         try {
-        String [] full = fullname.split(" ");
-        name = new SimpleStringProperty(full[0]);
-        surname   = new SimpleStringProperty(full[1]);
-        }catch (Exception e){//idiot with fucking name
+            String[] full = fullname.split(" ");
+            name = new SimpleStringProperty(full[0]);
+            surname = new SimpleStringProperty(full[1]);
+        } catch (Exception e) {//idiot with fucking name
             name = new SimpleStringProperty(fullname);
             surname = new SimpleStringProperty("who the fuck knows");
         }

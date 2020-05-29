@@ -8,14 +8,14 @@ public class Vehicle {
     private SimpleStringProperty driver;
     private SimpleStringProperty available;
 
-    public Vehicle(String licencePlate,String driver) {
+    public Vehicle(String licencePlate, String driver) {
         this.licencePlate = new SimpleStringProperty(licencePlate);
-        if(driver.trim().equals("null")){
-            this.driver=new SimpleStringProperty("none");
-            this.available= new SimpleStringProperty("yes");
-        }else {
-            this.driver= new SimpleStringProperty(driver);
-            this.available= new SimpleStringProperty("no");
+        if (driver.trim().equals("null")) {
+            this.driver = new SimpleStringProperty("none");
+            this.available = new SimpleStringProperty("yes");
+        } else {
+            this.driver = new SimpleStringProperty(driver);
+            this.available = new SimpleStringProperty("no");
         }
     }
 

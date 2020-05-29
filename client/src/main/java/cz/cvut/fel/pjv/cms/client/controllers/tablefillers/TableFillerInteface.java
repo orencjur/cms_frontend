@@ -13,15 +13,15 @@ interface TableFillerInteface {
 
     void initTable();
 
-    default ArrayList<Service<String>> initServices(ArrayList<String> strings){
+    default ArrayList<Service<String>> initServices(ArrayList<String> strings) {
         ArrayList<Service<String>> statusServices = new ArrayList<>();
-        for (String s : strings ){
+        for (String s : strings) {
             statusServices.add(new HtttpService(s));
         }
         statusServices.add(new HtttpService("/activeshipment"));
         statusServices.add(new HtttpService("/inactiveshipment"));
         statusServices.add(new HtttpService("/shipment"));
-        for(Service s : statusServices){
+        for (Service s : statusServices) {
             setSucceededService(s);
         }
         return statusServices;

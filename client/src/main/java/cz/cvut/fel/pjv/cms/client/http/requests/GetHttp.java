@@ -14,9 +14,8 @@ public class GetHttp extends HttpRequest {
         try {
             obj = new URL(url);
             con = (HttpURLConnection) obj.openConnection();
-        }
-        catch (MalformedURLException e) {
-            LOG.debug("url went wrong",e);
+        } catch (MalformedURLException e) {
+            LOG.debug("url went wrong", e);
         }
     }
 }

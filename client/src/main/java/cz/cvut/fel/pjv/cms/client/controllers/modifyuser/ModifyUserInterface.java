@@ -5,7 +5,7 @@ import cz.cvut.fel.pjv.cms.client.controllers.entityhelpers.User;
 /**
  * This interface is used as a baseline for the CRUD operations with both types of users
  */
-public interface ModifyUserInterface  {
+public interface ModifyUserInterface {
 
     /**
      * creates/saves changes in a user
@@ -21,7 +21,6 @@ public interface ModifyUserInterface  {
      * Delets the user
      */
     public void delete();
-
 
 
 }

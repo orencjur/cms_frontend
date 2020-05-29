@@ -64,13 +64,13 @@ public class ShipmentManagementController extends AbstractController {
     public void initialize() {
 
         intitStatuses();
-        initCombo(vehicle,"/regularuser/name/available");
+        initCombo(vehicle, "/regularuser/name/available");
         initTextfields();
     }
 
     private void initTextfields() {
         textFields = new ArrayList<>();
-        textFields.addAll(Arrays.asList(cargo,country,city,adress));
+        textFields.addAll(Arrays.asList(cargo, country, city, adress));
     }
 
 
@@ -82,22 +82,21 @@ public class ShipmentManagementController extends AbstractController {
         adress.clear();
         try {
             vehicle.valueProperty().setValue(null);
-        }catch (Exception e){/*nothing to worry about just not filled*/}
+        } catch (Exception e) {/*nothing to worry about just not filled*/}
     }
 
     public void confirm(ActionEvent event) {
-       if(!validator.validateTextFields(textFields)){
-           return;
-       }
-       if(vehicle.getValue()==null){
-           displayError("Please enter driver");
-       }
-        if(date.getValue()==null || date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay())<0){
+        if (!validator.validateTextFields(textFields)) {
+            return;
+        }
+        if (vehicle.getValue() == null) {
+            displayError("Please enter driver");
+        }
+        if (date.getValue() == null || date.getValue().atStartOfDay().compareTo(LocalDate.now().atStartOfDay()) < 0) {
             LOG.debug("nobody can change their past");
             displayError("Please enter a valid date");
-        }
-        else {
-            String url ="/createshipment?cargo="+cargo.getText()+"&vehicle="+vehicle.getValue()+"&date="+date.getValue()+"&destination="+country.getText()+city.getText()+adress.getText();
+        } else {
+            String url = "/createshipment?cargo=" + cargo.getText() + "&vehicle=" + vehicle.getValue() + "&date=" + date.getValue() + "&destination=" + country.getText() + city.getText() + adress.getText();
             Service<String> service = getRequest(url);
             service.setOnSucceeded(e -> {
                 LOG.debug("shipment created");
@@ -106,38 +105,39 @@ public class ShipmentManagementController extends AbstractController {
             });
         }
     }
+
     private void intitStatuses() {
         List<Service<String>> statusServices = initStatusServices();
         statuses.valueProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                if(statusSynchronizer!=null){
+                if (statusSynchronizer != null) {
                     statusSynchronizer.stop();
                 }
                 if (statuses.getValue().equals("Active")) {
                     initStatusServices().get(0).restart();
-                } else if(statuses.getValue().equals("Inactive")){
+                } else if (statuses.getValue().equals("Inactive")) {
                     initStatusServices().get(1).restart();
-                }else if(statuses.getValue().equals("Both")){
+                } else if (statuses.getValue().equals("Both")) {
                     initStatusServices().get(2).restart();
-            }
+                }
             }
         });
         statuses.setValue("Active");
     }
 
-    private List<Service<String>> initStatusServices(){
+    private List<Service<String>> initStatusServices() {
         List<Service<String>> statusServices = new ArrayList<>();
         statusServices.add(new HtttpService("/activeshipment"));
         statusServices.add(new HtttpService("/inactiveShipment"));
         statusServices.add(new HtttpService("/shipment"));
-        for(Service s : statusServices){
+        for (Service s : statusServices) {
             setSucceededStatusService(s);
         }
         return statusServices;
     }
 
-    private void setSucceededStatusService(Service<String> service){
+    private void setSucceededStatusService(Service<String> service) {
         service.setOnSucceeded((WorkerStateEvent event) -> {
             httpErrorWindow(service);
             shipmentTable.getItems().clear();
@@ -148,11 +148,10 @@ public class ShipmentManagementController extends AbstractController {
             driver.setCellValueFactory(new PropertyValueFactory<Shipment, String>("driver"));
             destination.setCellValueFactory(new PropertyValueFactory<Shipment, String>("destination"));
             shipmentTable.getItems().addAll(EntityFactory.parseShipment(parse(service.getValue())));
-            statusSynchronizer=setTimeout(60,service);
+            statusSynchronizer = setTimeout(60, service);
             initSynchronizers.add(statusSynchronizer);
         });
     }
-
 
 
 }

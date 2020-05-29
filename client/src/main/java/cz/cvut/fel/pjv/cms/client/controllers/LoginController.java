@@ -17,23 +17,20 @@ public class LoginController extends AbstractController {
     private TextField password;
 
 
-
-
-
     public void login(ActionEvent actionEvent) {
         String user = username.getText().trim(); //textfield add some rubbish
         String pass = password.getText().trim();
-        LOG.debug("username= "+user+" password= "+ pass);
-        if(user.equals("") || pass.equals("") ){
+        LOG.debug("username= " + user + " password= " + pass);
+        if (user.equals("") || pass.equals("")) {
             displayError("Please fill all textfields");
-        }else {
+        } else {
             LOG.debug("login submit");
-            String url ="/login?username="+user+"&password="+pass;
+            String url = "/login?username=" + user + "&password=" + pass;
             Service<String> service = getRequest(url);
             service.setOnSucceeded((WorkerStateEvent event) -> {
                 stageManager.getSession().setLoggedUser(user);
                 stageManager.getSession().setLoggedRole(FxmlView.valueOf(service.getValue()));
-                if(FxmlView.valueOf(service.getValue()).equals(FxmlView.LOGIN)){
+                if (FxmlView.valueOf(service.getValue()).equals(FxmlView.LOGIN)) {
                     displayError("Invalid username or password");
                     return;
                 }

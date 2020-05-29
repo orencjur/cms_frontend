@@ -44,23 +44,21 @@ public class DriverShipmentController extends AbstractController {
     }
 
 
-
-
     private void intitStatuses() {
         ArrayList<Service<String>> statusServices = initStatusServices();
 
     }
 
-    private ArrayList<Service<String>> initStatusServices(){
+    private ArrayList<Service<String>> initStatusServices() {
         ArrayList<Service<String>> statusServices = new ArrayList<>();
-        statusServices.add(getInitRequest("/inactiveShipment/driver?driver="+stageManager.getSession().getLoggedUser()));
-        statusServices.add(getInitRequest("/activeshipment/driver?driver="+stageManager.getSession().getLoggedUser()));
+        statusServices.add(getInitRequest("/inactiveShipment/driver?driver=" + stageManager.getSession().getLoggedUser()));
+        statusServices.add(getInitRequest("/activeshipment/driver?driver=" + stageManager.getSession().getLoggedUser()));
         setSucceededStatusService1(statusServices.get(0));
         setSucceededStatusService(statusServices.get(1));
         return statusServices;
     }
 
-    private void setSucceededStatusService(Service<String> service){
+    private void setSucceededStatusService(Service<String> service) {
         setSucceededStatusService(service, shipmentTable, expedition, status, cargo, destination);
     }
 
@@ -73,17 +71,17 @@ public class DriverShipmentController extends AbstractController {
             cargo.setCellValueFactory(new PropertyValueFactory<Shipment, String>("vehicle"));
             destination.setCellValueFactory(new PropertyValueFactory<Shipment, String>("destination"));
             shipmentTable.getItems().addAll(EntityFactory.parseShipment(parse(service.getValue())));
-            initSynchronizers.add(setTimeout(60,service));
+            initSynchronizers.add(setTimeout(60, service));
         });
     }
 
-    private void setSucceededStatusService1(Service<String> service){
+    private void setSucceededStatusService1(Service<String> service) {
         setSucceededStatusService(service, shipmentTable1, expedition1, status1, cargo1, destination1);
     }
 
 
     public void finished(ActionEvent event) {
-       Service<String> service =  getRequest("/finished?driver="+stageManager.getSession().getLoggedUser());
+        Service<String> service = getRequest("/finished?driver=" + stageManager.getSession().getLoggedUser());
         service.setOnSucceeded((WorkerStateEvent e) -> {
             initialize();
         });

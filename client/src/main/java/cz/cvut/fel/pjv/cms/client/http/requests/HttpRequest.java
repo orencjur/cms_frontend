@@ -11,7 +11,7 @@ import java.net.URL;
 public abstract class HttpRequest {
     protected final static Logger LOG = Logger.getLogger(HttpRequest.class);
     protected HttpURLConnection con;
-      protected URL obj;
+    protected URL obj;
 
     public HttpURLConnection getCon() {
         return con;

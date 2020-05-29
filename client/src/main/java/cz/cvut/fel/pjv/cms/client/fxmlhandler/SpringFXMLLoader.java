@@ -12,16 +12,16 @@ public class SpringFXMLLoader {
 
     private FXMLLoader loader;
 
-    public SpringFXMLLoader( ){
+    public SpringFXMLLoader() {
     }
 
     public Parent load(String fxmlPath) throws IOException {
-         loader = new FXMLLoader();
+        loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlPath));
         return loader.load();
     }
 
-    public  AbstractController getController() {
+    public AbstractController getController() {
         return loader.getController();
     }
 }

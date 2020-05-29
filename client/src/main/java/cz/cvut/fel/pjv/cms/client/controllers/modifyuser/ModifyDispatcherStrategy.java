@@ -8,17 +8,17 @@ public class ModifyDispatcherStrategy extends ModifyUserController implements Mo
     private ModifyUserController parent;
 
     public ModifyDispatcherStrategy(ModifyUserController modifyUserController) {
-        parent=modifyUserController;
+        parent = modifyUserController;
     }
 
 
     @Override
     public void save() {
 
-        Service<String> service=getRequest("/manager/modify?previoususername="+stageManager.getSession().getViewingUser().getUsername()+"&username="+parent.getUsername().getText().trim()+"&name="+parent.getFname().getText().trim()+":"+parent.getLname().getText().trim()+"&password="+parent.getPass().getText().trim()+"&vehicle="+parent.getVehicle().getValue());
+        Service<String> service = getRequest("/manager/modify?previoususername=" + stageManager.getSession().getViewingUser().getUsername() + "&username=" + parent.getUsername().getText().trim() + "&name=" + parent.getFname().getText().trim() + ":" + parent.getLname().getText().trim() + "&password=" + parent.getPass().getText().trim() + "&vehicle=" + parent.getVehicle().getValue());
         setOnSucceeded(service);
     }
-        
+
 
     @Override
     public void init(User user) {
@@ -33,7 +33,7 @@ public class ModifyDispatcherStrategy extends ModifyUserController implements Mo
 
     @Override
     public void delete() {
-        Service<String> service = getRequest("/manager/delete?username="+parent.getUsername().getText().trim());
+        Service<String> service = getRequest("/manager/delete?username=" + parent.getUsername().getText().trim());
         setOnSucceeded(service);
     }
 

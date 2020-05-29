@@ -33,13 +33,13 @@ public class VehicleManagementController extends AbstractController {
 
 
     public void confirm(ActionEvent event) {
-        if(!validator.validateTextFields(Arrays.asList(licencefill))){
+        if (!validator.validateTextFields(Arrays.asList(licencefill))) {
             return;
         }
-       Service<String> service = getRequest("/vehicles/create?licence="+licencefill.getText()+"&driver="+driverCombo.getValue());
+        Service<String> service = getRequest("/vehicles/create?licence=" + licencefill.getText() + "&driver=" + driverCombo.getValue());
         service.setOnSucceeded((WorkerStateEvent e) -> {
             displayError("Vehicle created successfully");
-            if(service.getValue().equals("false")){
+            if (service.getValue().equals("false")) {
                 displayError("duplicate licence plate");
             }
             if(service.getValue().equals("deleted")){
@@ -55,13 +55,13 @@ public class VehicleManagementController extends AbstractController {
         licencefill.setText("");
         try {
             driverCombo.valueProperty().setValue(null);
-        }catch (Exception e){/*nothing to worry about just not filled*/}
+        } catch (Exception e) {/*nothing to worry about just not filled*/}
     }
 
     @FXML
     public void initialize() {
 
-        initCombo(driverCombo,"/regularuser/name/truckless");
+        initCombo(driverCombo, "/regularuser/name/truckless");
         intitVehicles();
     }
 
@@ -76,7 +76,7 @@ public class VehicleManagementController extends AbstractController {
             availability.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("available"));
             driver.setCellValueFactory(new PropertyValueFactory<Vehicle, String>("driver"));
             tableView.getItems().addAll(EntityFactory.parseVehicle(parse(service.getValue())));
-            initSynchronizers.add(setTimeout(60,service));
+            initSynchronizers.add(setTimeout(60, service));
         });
     }
 
@@ -85,13 +85,13 @@ public class VehicleManagementController extends AbstractController {
         tableView.setRowFactory(tv -> {
             TableRow<Vehicle> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                       Vehicle rowData = row.getItem();
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Vehicle rowData = row.getItem();
                     stageManager.getSession().setViewingVehicle(rowData);
                     switchSceneEvent(FxmlView.MODIFYVEHICLE);
                 }
             });
-            return row ;
+            return row;
         });
     }
 }

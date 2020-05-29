@@ -15,13 +15,14 @@ public class MainMenuDispatchController extends AbstractController {
 
     @FXML
     public void initialize() {
-        name.setText("Logged as "+stageManager.getSession().getLoggedUser());
+        name.setText("Logged as " + stageManager.getSession().getLoggedUser());
     }
 
     @FXML
-    public void shipments(ActionEvent event){
+    public void shipments(ActionEvent event) {
         switchSceneEvent(FxmlView.SHIPMENT);
     }
+
     @FXML
     public void msgBoard(ActionEvent event) {
         switchSceneEvent(FxmlView.MSGBOARD);
