@@ -8,7 +8,7 @@ public enum FxmlView {
      * directories for Views are stored here
      */
     //TODO loginfailed not have fxml yet
-    MODIFYVEHICLE{
+    MODIFYVEHICLE {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("modifyVehicles.title");
@@ -19,7 +19,7 @@ public enum FxmlView {
             return "/views/ModifyVehicle.fxml";
         }
     },
-    VEHICLES{
+    VEHICLES {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("vehicles.title");
@@ -30,7 +30,7 @@ public enum FxmlView {
             return "/views/VehicleManagement.fxml";
         }
     },
-    MODIFYUSER{
+    MODIFYUSER {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("modifyuser.title");
@@ -41,7 +41,7 @@ public enum FxmlView {
             return "/views/ModifyUser.fxml";
         }
     },
-    ERROR{
+    ERROR {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("error.title");
@@ -52,7 +52,7 @@ public enum FxmlView {
             return "/views/Error.fxml";
         }
     },
-    NEWUSER{
+    NEWUSER {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("newuser.title");
@@ -63,7 +63,7 @@ public enum FxmlView {
             return "/views/NewUser.fxml";
         }
     },
-    USERMANAGEMENT{
+    USERMANAGEMENT {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("userman.title");
@@ -74,7 +74,7 @@ public enum FxmlView {
             return "/views/UserManagement.fxml";
         }
     },
-    MSGVIEW{
+    MSGVIEW {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("msgview.title");
@@ -85,7 +85,7 @@ public enum FxmlView {
             return "/views/MessageView.fxml";
         }
     },
-    NEW{
+    NEW {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("new.title");
@@ -96,7 +96,7 @@ public enum FxmlView {
             return "/views/NewMessage.fxml";
         }
     },
-    MSGBOARD{
+    MSGBOARD {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("msgboard.title");
@@ -107,7 +107,7 @@ public enum FxmlView {
             return "/views/MsgBoard.fxml";
         }
     },
-    NOCONNECTION{
+    NOCONNECTION {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("driver.title");
@@ -175,7 +175,7 @@ public enum FxmlView {
         }
     },
 
-    POPUP{
+    POPUP {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("error.title");
@@ -187,7 +187,7 @@ public enum FxmlView {
         }
     },
 
-    DRIVER_SHIPMENT{
+    DRIVER_SHIPMENT {
         @Override
         public String getTitle() {
             return getStringFromResourceBundle("shipment.title");
@@ -200,12 +200,11 @@ public enum FxmlView {
     };
 
 
-
-
     public abstract String getTitle();
+
     public abstract String getFxmlFile();
 
-    String getStringFromResourceBundle(String key){
+    String getStringFromResourceBundle(String key) {
         return ResourceBundle.getBundle("Bundle").getString(key);
     }
 

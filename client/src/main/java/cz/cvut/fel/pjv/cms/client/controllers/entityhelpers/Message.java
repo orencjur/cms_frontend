@@ -16,7 +16,6 @@ public class Message {
     private String id;
 
 
-
     public FxmlView getSender() {
         return sender;
     }
@@ -58,13 +57,13 @@ public class Message {
         return id;
     }
 
-    public Message(String user, String time, String content, String sender, String id){
-        this.user=new SimpleStringProperty(user);
+    public Message(String user, String time, String content, String sender, String id) {
+        this.user = new SimpleStringProperty(user);
         this.id = id;
-        String []datetime = time.split(" ");
-        this.date= new SimpleStringProperty(datetime[0]);
-        this.time= new SimpleStringProperty(datetime[1]);
-        this.content= new SimpleStringProperty(content.replaceAll(":"," "));
-        this.sender=FxmlView.valueOf(sender);
+        String[] datetime = time.split(" ");
+        this.date = new SimpleStringProperty(datetime[0]);
+        this.time = new SimpleStringProperty(datetime[1]);
+        this.content = new SimpleStringProperty(content.replaceAll(":", " "));
+        this.sender = FxmlView.valueOf(sender);
     }
 }

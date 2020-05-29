@@ -19,15 +19,12 @@ public class Shipment {
     }
 
 
-
-
-
     public Shipment(String s, String s1, String s3, String s4, String s5) {
         this.expedion = new SimpleStringProperty(s);
         this.status = new SimpleStringProperty(s1);
-      //  this.completion =new SimpleStringProperty(s2);
-        this.vehicle =new SimpleStringProperty(s3);
-        this.driver =new SimpleStringProperty(s4);
+        //  this.completion =new SimpleStringProperty(s2);
+        this.vehicle = new SimpleStringProperty(s3);
+        this.driver = new SimpleStringProperty(s4);
         this.destination = new SimpleStringProperty(s5);
     }
 

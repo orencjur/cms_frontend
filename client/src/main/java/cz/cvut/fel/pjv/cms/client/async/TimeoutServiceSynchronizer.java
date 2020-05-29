@@ -25,11 +25,12 @@ public class TimeoutServiceSynchronizer {
         });
     }
 
-    public void stop(){
+    public void stop() {
         service.cancel();
         timeout.cancel();
     }
-    public void restart(){
+
+    public void restart() {
         service.restart();
     }
 

@@ -40,8 +40,6 @@ public class UserManagementController extends AbstractController {
     private TableView<User> userTable;
 
 
-
-
     @FXML
     public void initialize() {
 
@@ -80,13 +78,13 @@ public class UserManagementController extends AbstractController {
         ArrayList<Service<String>> statusServices = new ArrayList<>();
         statusServices.add(new HtttpService("/manager/full"));
         statusServices.add(new HtttpService("/regularuser/full"));
-        for(Service s : statusServices){
+        for (Service s : statusServices) {
             setSucceededStatusService(s);
         }
         return statusServices;
     }
 
-    private void setSucceededStatusService(Service<String> service){
+    private void setSucceededStatusService(Service<String> service) {
         service.setOnSucceeded((WorkerStateEvent event) -> {
             httpErrorWindow(service);
             userTable.getItems().clear();
@@ -97,21 +95,21 @@ public class UserManagementController extends AbstractController {
             licenceNumber.setCellValueFactory(new PropertyValueFactory<User, String>("licenceNumber"));
             available.setCellValueFactory(new PropertyValueFactory<User, String>("availability"));
             userTable.getItems().addAll(EntityFactory.parseUser(parse(service.getValue())));
-            initSynchronizers.add(setTimeout(60,service));
+            initSynchronizers.add(setTimeout(60, service));
         });
     }
 
-    private void setRowFact(){
-        userTable.setRowFactory( tv -> {
+    private void setRowFact() {
+        userTable.setRowFactory(tv -> {
             TableRow<User> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     User rowData = row.getItem();
                     stageManager.getSession().setViewingUser(rowData);
                     switchSceneEvent(FxmlView.MODIFYUSER);
                 }
             });
-            return row ;
+            return row;
         });
     }
 

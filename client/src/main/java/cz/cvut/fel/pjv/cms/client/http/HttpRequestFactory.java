@@ -8,13 +8,13 @@ import java.io.IOException;
 public class HttpRequestFactory {
 
 
-    private String baseurl ;
+    private String baseurl;
 
-    public HttpRequestFactory(String baseurl){
+    public HttpRequestFactory(String baseurl) {
         this.baseurl = baseurl;
     }
 
     public HttpRequest createGetRequest(String url) throws IOException {
-        return new GetHttp(baseurl+url);
+        return new GetHttp(baseurl + url);
     }
 }

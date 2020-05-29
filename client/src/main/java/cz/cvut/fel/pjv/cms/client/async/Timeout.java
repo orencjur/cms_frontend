@@ -16,27 +16,28 @@ public class Timeout {
         intProperty = new SimpleIntegerProperty(this, "int", 0);
     }
 
-    public void timeout(int seconds)  {
-         timer = new Timer();
+    public void timeout(int seconds) {
+        timer = new Timer();
 
         TimerTask task = new TimerTask() {
             public void run() {
-                intProperty.setValue(intProperty.getValue()+1);
+                intProperty.setValue(intProperty.getValue() + 1);
             }
         };
         timer.schedule(task, seconds * 1000);
     }
+
     public IntegerProperty intProperty() {
         return intProperty;
     }
 
-    public void cancel(){
-        if(timer!=null) {
+    public void cancel() {
+        if (timer != null) {
             timer.cancel();
         }
     }
 
-    public void schedule(){
+    public void schedule() {
 
     }
 

@@ -47,33 +47,33 @@ public class ModifyUserController extends AbstractController {
     private List<TextField> textFields;
 
 
-
-
     @FXML
     public void initialize() {
-       User showingUser = stageManager.getSession().getViewingUser();
-       initTextfields();
-       if(showingUser.getUserVehicle().equals("Dispatcher")){
-           userModifier = new ModifyDispatcherStrategy(this);
-       }else {
-           userModifier = new ModifyDriverStrategy(this);
-           textFields.add(license);
-       }
-       LOG.debug(showingUser.getUserVehicle());
-       userModifier.init(showingUser);
+        User showingUser = stageManager.getSession().getViewingUser();
+        initTextfields();
+        if (showingUser.getUserVehicle().equals("Dispatcher")) {
+            userModifier = new ModifyDispatcherStrategy(this);
+        } else {
+            userModifier = new ModifyDriverStrategy(this);
+            textFields.add(license);
+        }
+        LOG.debug(showingUser.getUserVehicle());
+        userModifier.init(showingUser);
 
     }
-    public void initCombo(String url){
-        initCombo(vehicle,stageManager.getSession().getViewingUser().getUserVehicle(),url);
+
+    public void initCombo(String url) {
+        initCombo(vehicle, stageManager.getSession().getViewingUser().getUserVehicle(), url);
     }
 
 
-    private void initTextfields(){
+    private void initTextfields() {
         textFields = new ArrayList<>();
         textFields.add(lname);
         textFields.add(fname);
         textFields.add(username);
     }
+
     public void modify(ActionEvent event) {
         save.setDisable(false);
         save.setVisible(true);
@@ -93,19 +93,19 @@ public class ModifyUserController extends AbstractController {
     }
 
     public void save(ActionEvent event) {
-        if(!validator.validateTextFields(textFields)){
+        if (!validator.validateTextFields(textFields)) {
             return;
         }
         userModifier.save();
     }
 
-    public void setOnSucceeded(Service<String> service){
+    public void setOnSucceeded(Service<String> service) {
         service.setOnSucceeded(workerStateEvent -> {
             httpErrorWindow(service);
 
-            if(service.getValue().equals("true")){
+            if (service.getValue().equals("true")) {
                 switchSceneEvent(FxmlView.USERMANAGEMENT);
-            }else{
+            } else {
                 LOG.debug("username not found");
                 displayError("vehicle not found");
             }
@@ -117,7 +117,8 @@ public class ModifyUserController extends AbstractController {
     public List<TextField> getTextFields() {
         return textFields;
     }
-   public JFXTextField getLicense() {
+
+    public JFXTextField getLicense() {
         return license;
     }
 
@@ -148,7 +149,6 @@ public class ModifyUserController extends AbstractController {
     public Label getLicenceLabel() {
         return licenceLabel;
     }
-
 
 
 }

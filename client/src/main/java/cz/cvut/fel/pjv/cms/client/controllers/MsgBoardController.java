@@ -15,23 +15,29 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MsgBoardController extends AbstractController {
 
-    @FXML private JFXButton old;
-    @FXML private TableView<Message> tableView;
-    @FXML private TableColumn<Message, String> user;
-    @FXML private TableColumn<Message, String> date;
-    @FXML private TableColumn<Message, String> content;
-    @FXML private TableColumn<Message, String> time;
+    @FXML
+    private JFXButton old;
+    @FXML
+    private TableView<Message> tableView;
+    @FXML
+    private TableColumn<Message, String> user;
+    @FXML
+    private TableColumn<Message, String> date;
+    @FXML
+    private TableColumn<Message, String> content;
+    @FXML
+    private TableColumn<Message, String> time;
 
 
     @FXML
     public void initialize() {
 
         setRowFact();
-        if(stageManager.getSession().getLoggedRole() == FxmlView.DRIVER){
+        if (stageManager.getSession().getLoggedRole() == FxmlView.DRIVER) {
             old.setVisible(false);
             old.setDisable(true);
         }
-        Service<String> service = getInitRequest("/messages?user="+stageManager.getSession().getLoggedUser()+"&role="+stageManager.getSession().getLoggedRole());
+        Service<String> service = getInitRequest("/messages?user=" + stageManager.getSession().getLoggedUser() + "&role=" + stageManager.getSession().getLoggedRole());
         service.setOnSucceeded((WorkerStateEvent event) -> {
             httpErrorWindow(service);
             tableView.getItems().clear();
@@ -40,22 +46,22 @@ public class MsgBoardController extends AbstractController {
             time.setCellValueFactory(new PropertyValueFactory<Message, String>("time"));
             content.setCellValueFactory(new PropertyValueFactory<Message, String>("content"));
             tableView.getItems().addAll(EntityFactory.parseMessages(parse(service.getValue())));
-            initSynchronizers.add(setTimeout(60,service));
+            initSynchronizers.add(setTimeout(60, service));
         });
 
     }
 
-    private void setRowFact(){
-        tableView.setRowFactory( tv -> {
+    private void setRowFact() {
+        tableView.setRowFactory(tv -> {
             TableRow<Message> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
                     Message rowData = row.getItem();
                     stageManager.getSession().setViewingMessage(rowData);
                     switchSceneEvent(FxmlView.MSGVIEW);
                 }
             });
-            return row ;
+            return row;
         });
     }
 
@@ -64,7 +70,7 @@ public class MsgBoardController extends AbstractController {
     }
 
     public void deleteOld(ActionEvent event) {
-        Service<String> service = getRequest("/message/deleteold?user="+stageManager.getSession().getLoggedUser());
+        Service<String> service = getRequest("/message/deleteold?user=" + stageManager.getSession().getLoggedUser());
         service.setOnSucceeded((WorkerStateEvent e) -> {
             initialize();
         });

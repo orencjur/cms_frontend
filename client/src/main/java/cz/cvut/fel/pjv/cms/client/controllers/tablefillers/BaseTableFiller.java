@@ -8,5 +8,6 @@ import java.util.ArrayList;
 public abstract class BaseTableFiller<T> {
 
     abstract ArrayList<Service<String>> initServices();
+
     abstract void initTable(TableView<T> table);
 }

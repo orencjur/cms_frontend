@@ -10,6 +10,6 @@ public class ErrorController extends AbstractController {
 
     @FXML
     public void initialize() {
-            lblLogin1.setText(stageManager.getSession().getError());
+        lblLogin1.setText(stageManager.getSession().getError());
     }
 }

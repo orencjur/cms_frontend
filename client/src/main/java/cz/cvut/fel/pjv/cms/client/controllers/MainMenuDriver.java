@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 /**
  * Controlls the driver main menu that give the user access to other functionalities
  */
-public class MainMenuDriver extends AbstractController{
+public class MainMenuDriver extends AbstractController {
 
     @FXML
     public void msgBoard(ActionEvent event) {
@@ -25,6 +25,6 @@ public class MainMenuDriver extends AbstractController{
 
     @FXML
     public void initialize() {
-        name.setText("Logged as "+stageManager.getSession().getLoggedUser());
+        name.setText("Logged as " + stageManager.getSession().getLoggedUser());
     }
 }

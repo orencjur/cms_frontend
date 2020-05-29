@@ -5,7 +5,9 @@ import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.util.Objects;
+
 import org.apache.log4j.Logger;
 
 /**
@@ -16,18 +18,20 @@ public class StageManager {
     private final static Logger LOG = Logger.getLogger(StageManager.class);
     private final Stage primaryStage;
     private final SpringFXMLLoader springFXMLLoader;
-    private static  StageManager instance;
+    private static StageManager instance;
     private AppSession session;
 
-    private StageManager(SpringFXMLLoader fxmlLoader,Stage stage){
+    private StageManager(SpringFXMLLoader fxmlLoader, Stage stage) {
         this.springFXMLLoader = fxmlLoader;
         this.primaryStage = new Stage();
         session = new AppSession();
     }
-    public static synchronized StageManager getInstance(){
-        if(instance == null){
-            instance = new StageManager(new SpringFXMLLoader(),new Stage());
-        }return instance;
+
+    public static synchronized StageManager getInstance() {
+        if (instance == null) {
+            instance = new StageManager(new SpringFXMLLoader(), new Stage());
+        }
+        return instance;
     }
 
 
@@ -37,17 +41,17 @@ public class StageManager {
 
     public void switchScene(final FxmlView view) {
         Parent viewRootNodeHierarchy = loadViewNodeHierarchy(view.getFxmlFile());
-        show(primaryStage,viewRootNodeHierarchy, view.getTitle());
+        show(primaryStage, viewRootNodeHierarchy, view.getTitle());
     }
 
     public void errorPopup(String error) {
         session.setError(error);
         Parent viewRootNodeHierarchy = loadViewNodeHierarchy(FxmlView.ERROR.getFxmlFile());
-        show(new Stage(),viewRootNodeHierarchy, FxmlView.ERROR.getTitle());
+        show(new Stage(), viewRootNodeHierarchy, FxmlView.ERROR.getTitle());
     }
 
 
-    private void show(final Stage stage,final Parent rootnode, String title) {
+    private void show(final Stage stage, final Parent rootnode, String title) {
         Scene scene = prepareScene(rootnode);
         //scene.getStylesheets().add("/styles/Styles.css");
         //primaryStage.initStyle(StageStyle.TRANSPARENT);
@@ -59,12 +63,12 @@ public class StageManager {
         try {
             stage.show();
         } catch (Exception exception) {
-            logAndExit ("Unable to show scene for title" + title,  exception);
+            logAndExit("Unable to show scene for title" + title, exception);
         }
     }
 
-    private Scene prepareScene(Parent rootnode){
-        if(rootnode ==null){
+    private Scene prepareScene(Parent rootnode) {
+        if (rootnode == null) {
         }
         Scene scene = primaryStage.getScene();
 
@@ -92,8 +96,8 @@ public class StageManager {
         return rootNode;
     }
 
-    public void emptySession(){
-        this.session=new AppSession();
+    public void emptySession() {
+        this.session = new AppSession();
     }
 
 

@@ -14,28 +14,31 @@ import javafx.scene.control.TextField;
  */
 public class MessageViewController extends AbstractController {
 
-    @FXML private Label from;
-    @FXML private Label date;
-    @FXML private TextField content;
+    @FXML
+    private Label from;
+    @FXML
+    private Label date;
+    @FXML
+    private TextField content;
 
 
     @FXML
     public void initialize() {
         Message message = stageManager.getSession().getViewingMessage();
-        if(message.getSender().equals(stageManager.getSession().getLoggedRole())){
-            from.setText(from.getText()+" You to: "+message.getUser());
-        }else {
+        if (message.getSender().equals(stageManager.getSession().getLoggedRole())) {
+            from.setText(from.getText() + " You to: " + message.getUser());
+        } else {
             from.setText(from.getText() + " " + message.getUser());
         }
-       date.setText(date.getText()+": "+message.getDate()+" "+message.getTime());
-       content.setText(message.getContent());
+        date.setText(date.getText() + ": " + message.getDate() + " " + message.getTime());
+        content.setText(message.getContent());
     }
 
-    public void delete(ActionEvent actionEvent){
-        Service<String> service = getRequest("/message/delete?id="+stageManager.getSession().getViewingMessage().getId());
+    public void delete(ActionEvent actionEvent) {
+        Service<String> service = getRequest("/message/delete?id=" + stageManager.getSession().getViewingMessage().getId());
         service.setOnSucceeded((WorkerStateEvent event) -> {
-            if(!httpErrorWindow(service)){
-               return;
+            if (!httpErrorWindow(service)) {
+                return;
             }
             switchSceneEvent(FxmlView.MSGBOARD);
         });
