@@ -69,7 +69,7 @@
                 <option>--add-exports</option>
                 <option>javafx.base/com.sun.javafx.event=com.jfoenix</option>
             </options>
-            <mainClass>cms.client.Client</mainClass>
+            <mainClass>cz.cvut.fel.pjv.cms.client.Client</mainClass>
             <includePathExceptionsInClasspath>true</includePathExceptionsInClasspath>
         </configuration>
     </plugin>
