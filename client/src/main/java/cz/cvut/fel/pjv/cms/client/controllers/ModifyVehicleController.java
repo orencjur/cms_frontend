@@ -23,7 +23,11 @@ public class ModifyVehicleController extends AbstractController {
       service.setOnSucceeded(WorkerStateEvent  ->{
           if(service.getValue().trim().equals("true")){
               switchSceneEvent(FxmlView.VEHICLES);
-          }else {
+
+          }else if(service.getValue().equals("deleted")){
+              displayError("driver is deleted");
+          }
+          else {
               displayError("not modified");
           };
           httpErrorWindow(service);

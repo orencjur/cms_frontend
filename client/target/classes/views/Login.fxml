@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@jfoenix-main-demo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cms.client.controllers.LoginController">
+<AnchorPane stylesheets="@jfoenix-main-demo.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.cvut.fel.pjv.cms.client.controllers.LoginController">
     <children>
         <Rectangle fill="#242424" height="250.0" stroke="#ffffff8b" strokeType="INSIDE" width="400.0" />
         <Label fx:id="lblLogin" layoutX="52.0" layoutY="39.0" text="Login" textFill="WHITE">

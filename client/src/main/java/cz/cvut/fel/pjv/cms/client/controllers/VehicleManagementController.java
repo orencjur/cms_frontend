@@ -42,6 +42,9 @@ public class VehicleManagementController extends AbstractController {
             if(service.getValue().equals("false")){
                 displayError("duplicate licence plate");
             }
+            if(service.getValue().equals("deleted")){
+                displayError("driver is deleted");
+            }
             httpErrorWindow(service);
             initialize();
         });
