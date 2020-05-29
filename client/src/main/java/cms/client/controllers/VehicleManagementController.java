@@ -44,7 +44,9 @@ public class VehicleManagementController extends AbstractController {
                 displayError("duplicate licence plate");
             }
             httpErrorWindow(service);
+            initialize();
         });
+
     }
 
     public void clear(ActionEvent event) {

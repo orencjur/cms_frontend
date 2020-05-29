@@ -20,9 +20,9 @@ public class MessageViewController extends AbstractController {
     public void initialize() {
         Message message = stageManager.getSession().getViewingMessage();
         if(message.getSender().equals(stageManager.getSession().getLoggedRole())){
-            from.setText(from.getText()+": You to: "+message.getUser());
+            from.setText(from.getText()+" You to: "+message.getUser());
         }else {
-            from.setText(from.getText() + ": " + message.getUser());
+            from.setText(from.getText() + " " + message.getUser());
         }
        date.setText(date.getText()+": "+message.getDate()+" "+message.getTime());
        content.setText(message.getContent());
