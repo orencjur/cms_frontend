@@ -16,6 +16,9 @@ import org.apache.log4j.Logger;
 
 import static java.lang.Thread.sleep;
 
+/**
+ * Used to parse responses from the server
+ */
 public class HtttpService extends Service<String> {
 
     String baseurl ="http://localhost:8080/cms";

@@ -8,6 +8,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * Creates POST request
+ */
 public class PostHttp extends HttpRequest {
 
 

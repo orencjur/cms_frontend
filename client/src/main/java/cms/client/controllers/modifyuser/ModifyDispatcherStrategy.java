@@ -14,7 +14,6 @@ public class ModifyDispatcherStrategy extends ModifyUserController implements Mo
     }
 
 
-
     @Override
     public void save() {
 
@@ -22,7 +21,6 @@ public class ModifyDispatcherStrategy extends ModifyUserController implements Mo
         setOnSucceeded(service);
     }
         
-
 
     @Override
     public void init(User user) {
@@ -33,7 +31,6 @@ public class ModifyDispatcherStrategy extends ModifyUserController implements Mo
         parent.getUsername().setText(user.getUsername());
         parent.getFname().setText(user.getName());
         parent.getLname().setText(user.getSurname());
-
     }
 
     @Override

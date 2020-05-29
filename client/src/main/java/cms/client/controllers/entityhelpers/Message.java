@@ -3,6 +3,10 @@ package cms.client.controllers.entityhelpers;
 import cms.client.view.FxmlView;
 import javafx.beans.property.SimpleStringProperty;
 
+
+/**
+ * Parsing of the Message entity before displaying it
+ */
 public class Message {
     private SimpleStringProperty user;
     private SimpleStringProperty date;

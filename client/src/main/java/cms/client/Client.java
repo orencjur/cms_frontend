@@ -14,7 +14,9 @@ import java.io.File;
 import java.io.IOException;
 
 
-
+/**
+ * Method main runs the application
+ */
 public class Client extends Application {
 
     private final static Logger LOG = Logger.getLogger(Client.class);
