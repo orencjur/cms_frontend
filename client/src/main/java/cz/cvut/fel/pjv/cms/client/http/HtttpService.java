@@ -18,7 +18,7 @@ import static java.lang.Thread.sleep;
  */
 public class HtttpService extends Service<String> {
 
-    private final static String baseurl ="http://localhost:8080/cms";
+    private final static String baseurl ="https://nsscms.herokuapp.com/cms";
     private final static Logger LOG = Logger.getLogger(HtttpService.class);
     private HttpRequestFactory factory =new HttpRequestFactory(baseurl);
     private String url;
